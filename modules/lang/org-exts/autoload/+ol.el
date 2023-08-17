@@ -1,5 +1,7 @@
 ;;; lang/org-exts/autoload/+links.el -*- lexical-binding: t; -*-
 
+(autoload 'org-cliplink-elide-string "org-cliplink-string")
+
 (defun +ol--simplify-url (regexp url)
   (-some->> (s-match regexp url)
     (cdr) ;; elt 0 is the whole string
