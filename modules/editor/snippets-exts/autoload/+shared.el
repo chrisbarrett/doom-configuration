@@ -13,3 +13,21 @@ The rest of the line must be blank."
   `(let ((line (buffer-substring (line-beginning-position) (line-end-position))))
      (string-match-p (rx-to-string '(and ,@rx-forms))
                      line)))
+
+
+;;;###autoload
+(define-advice +snippet--completing-read-uuid (:override (prompt all-snippets &rest args) fix-text-property-access)
+  ;; TODO: Remove this advice once fixed upstream.
+  (let* ((choices
+          (cl-loop for (_ . tpl) in (mapcan #'yas--table-templates (if all-snippets
+                                                                       (hash-table-values yas--tables)
+                                                                     (yas--get-snippet-tables)))
+
+                   for txt = (format "%-25s%-30s%s"
+                                     (yas--template-key tpl)
+                                     (yas--template-name tpl)
+                                     (abbreviate-file-name (yas--template-load-file tpl)))
+                   collect
+                   (cons txt (yas--template-uuid tpl))))
+         (choice (apply #'completing-read prompt choices args)))
+    (alist-get choice choices nil nil #'string-equal)))
