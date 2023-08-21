@@ -1,0 +1,12 @@
+# key: cl
+# name: class
+# condition: (+yas-bolp)
+# uuid: 9d804eec-e47c-4378-85c9-19c93530d9a0
+# --
+class ${1:Name} {
+    $0
+
+    init() {
+
+    }
+}

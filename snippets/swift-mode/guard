@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: guard
+# key: g
+# condition: (+yas-bolp)
+# uuid: 5cfb7499-6027-413b-98a2-e997944b2d05
+# --
+guard ${1:expr} else {
+    $0
+}

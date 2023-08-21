@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: async function
+# key: af
+# condition: (+yas-bolp)
+# uuid: fa6b94b4-d381-441f-87e6-9bb5ce6b2386
+# --
+async function ${1:name}($2): Promise<void> {
+  $0
+}

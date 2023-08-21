@@ -1,0 +1,8 @@
+# key: it
+# name: it
+# condition: (and (+yas-bolp) (+yas-js-inside-describe-p))
+# uuid: 47c994f4-1db9-4354-a821-deea67d6f125
+# --
+it('${1:behaviour}', () => {
+  $0
+});

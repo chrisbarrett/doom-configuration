@@ -1,0 +1,6 @@
+# key: b
+# name: destructuring-bind
+# uuid: 758a3271-7aa0-45df-8430-a998f8fbb053
+# --
+(cl-destructuring-bind ($1) $2
+  $0)

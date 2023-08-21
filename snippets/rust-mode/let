@@ -1,0 +1,6 @@
+# key: l
+# name: let
+# condition: (+yas-bolp)
+# uuid: f06259ef-7939-45e9-9322-ebcc6b429798
+# --
+let ${1:name} = $2;

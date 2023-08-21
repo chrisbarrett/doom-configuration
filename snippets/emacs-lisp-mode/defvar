@@ -1,0 +1,6 @@
+# key: v
+# name: defvar
+# condition: (+yas-bolp)
+# uuid: 31cb27fc-55bb-4eca-8ac8-77e8b0c3970c
+# --
+(defvar `(+yas-emacs-lisp-package-prefix)`-$0)

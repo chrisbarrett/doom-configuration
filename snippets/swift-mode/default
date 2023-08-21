@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: default
+# key: d
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: 20c1455d-cd13-4602-8ae4-650b82becaa4
+# --
+default:
+    $0

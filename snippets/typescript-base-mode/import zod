@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: import zod
+# key: iz
+# condition: (+yas-bolp)
+# uuid: 34f3c4b9-06b9-4c29-8fa2-bbe20af9fa34
+# --
+import { z } from "zod";

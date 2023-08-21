@@ -1,0 +1,9 @@
+# key: ie
+# name: if-else
+# condition: (+yas-bolp)
+# uuid: 158e9da4-5b9c-4684-8003-ca2e9f2a8997
+# --
+if ${1:pred} {
+  $0
+} else {
+}

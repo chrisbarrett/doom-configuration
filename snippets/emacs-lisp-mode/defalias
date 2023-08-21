@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: defalias
+# key: da
+# condition: (+yas-bolp)
+# uuid: 6a77fb1e-8f6b-468a-9dc4-b3ea0b389f3d
+# --
+(defalias '${1:new} #'${2:old})

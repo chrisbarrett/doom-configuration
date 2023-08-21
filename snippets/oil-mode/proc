@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: proc
+# key: p
+# condition: (+yas-bolp)
+# uuid: 92a714e6-aea0-45bb-b1e3-3408a060b2d7
+# --
+proc ${1:name}(${2:args...}) {
+  ### Doc
+  $0
+}

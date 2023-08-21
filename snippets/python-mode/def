@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: def
+# key: d
+# condition: (+yas-bolp)
+# uuid: 08bafc59-13ab-43ee-b5ae-c5f139d10698
+# --
+def ${1:name}($2):
+    $0

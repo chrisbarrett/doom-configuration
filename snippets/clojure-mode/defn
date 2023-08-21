@@ -1,0 +1,7 @@
+# key: dd
+# name: defn
+# condition: (+yas-bolp)
+# uuid: 24c04618-bc30-4cdd-8d7d-048d460a372c
+# --
+(defn ${1:name} [${2:arglist}]
+  $0)

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: assert!
+# key: as
+# condition: (+yas-bolp)
+# uuid: 5ba60097-422c-4195-8529-42227fafee79
+# --
+assert!($0);

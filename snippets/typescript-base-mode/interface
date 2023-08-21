@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: interface
+# key: in
+# condition: (+yas-bolp)
+# uuid: a415ae92-21e1-4241-801d-1d528989b8d9
+# --
+interface ${Name} {
+  $0
+}

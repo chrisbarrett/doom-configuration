@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: for...in
+# key: for
+# condition: (+yas-bolp)
+# uuid: e14a161d-7f02-401e-aa39-0e41d3704232
+# --
+for ${1:x} in ${2:iterable} {
+    $0
+}

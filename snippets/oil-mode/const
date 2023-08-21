@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: const
+# key: c
+# condition: (+yas-bolp)
+# uuid: 893cc6d4-bd54-40f1-9862-e4a3653e35e3
+# --
+const ${1:name} = $0

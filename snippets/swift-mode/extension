@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: extension
+# key: ex
+# condition: (+yas-bolp)
+# uuid: 730b4be0-94ef-4d67-9ee9-9bf7791b2568
+# --
+extension ${1:Name} {
+  $0
+}

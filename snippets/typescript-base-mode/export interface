@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: export interface
+# key: ei
+# condition: (+yas-bolp)
+# uuid: 2843d688-6700-4f65-93b2-e55fd342e313
+# --
+export interface ${1:Name} {
+  $0
+}

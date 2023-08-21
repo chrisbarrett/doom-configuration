@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: describe
+# key: ds
+# condition: (+yas-bolp)
+# uuid: 4d6d15f4-c67d-4993-9651-ebdc7815375b
+# --
+describe('${1:feature}', () => {
+  $0
+});

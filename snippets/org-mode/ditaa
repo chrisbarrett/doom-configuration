@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: ditaa
+# key: ditaa
+# condition: (+yas-bolp)
+# uuid: f4ca408b-20fd-4ce4-808d-7a58e3eb4d18
+# --
+#+begin_src ditaa :file ${1:filename}.png
+$0
+#+end_src

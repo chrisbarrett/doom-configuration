@@ -1,0 +1,6 @@
+# key: pr
+# name: Package-Requires
+# condition: (+yas-bolp)
+# uuid: 3835c782-9465-42f5-9124-9e7772eefd95
+# --
+;; Package-Requires: ((emacs "24") (s "1.10.0") (f "0.17.2") (dash "2.12.0"))

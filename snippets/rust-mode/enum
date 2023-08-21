@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: enum
+# key: en
+# condition: (+yas-bolp)
+# uuid: 7f660510-ebad-4936-ae3f-260a506eb192
+# --
+enum $1 {
+    $0
+}

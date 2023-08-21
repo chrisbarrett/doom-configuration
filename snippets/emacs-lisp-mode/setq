@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: setq
+# key: s
+# condition: (+yas-bolp)
+# uuid: 6dc59f5a-fe26-4862-a101-861c6f3aa457
+# --
+(setq $0)

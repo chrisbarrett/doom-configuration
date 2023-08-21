@@ -1,0 +1,6 @@
+# key: a
+# name: await
+# condition: (or (+yas-bolp) (+yas-csharp-expression-context-p a))
+# uuid: 04b55b8b-6179-43ad-9d6b-d740ba957458
+# --
+await $0;

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: for
+# key: for
+# condition: (+yas-bolp)
+# uuid: 8b4d5900-3630-4d62-9686-9df6773e10e0
+# --
+for (const ${1:x} of ${2:xs}) {
+  $0
+}

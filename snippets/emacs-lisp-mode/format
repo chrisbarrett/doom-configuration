@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: format
+# key: f
+# uuid: cc07a128-7c78-4599-8d79-25fcf4438591
+# --
+(format "${1:%s}" $0)

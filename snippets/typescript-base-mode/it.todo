@@ -1,0 +1,6 @@
+# key: todo
+# name: it.todo
+# condition: (and (+yas-bolp) (+yas-js-inside-describe-p))
+# uuid: d9e808f1-f02f-49cf-9a8d-240c1134514a
+# --
+it.todo('$0');

@@ -1,0 +1,6 @@
+# key: cw
+# name: Console.WriteLine
+# condition: (or (+yas-bolp) (+yas-csharp-expression-context-p "cw"))
+# uuid: 2221bd87-afb9-443c-aad7-a49b60a144c3
+# --
+Console.WriteLine($0);

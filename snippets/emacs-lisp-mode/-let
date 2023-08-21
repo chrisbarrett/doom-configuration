@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: -let
+# key: -l
+# binding: direct-keybinding
+# uuid: 29434acd-411b-407a-8c78-6c47629b9f69
+# --
+(-let [$1]
+  $0)

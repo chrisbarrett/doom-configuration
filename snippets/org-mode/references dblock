@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: references dblock
+# key: ref
+# condition: (+yas-bolp)
+# uuid: 76be4e0e-baed-48d5-9521-a58885b828b2
+# --
+#+BEGIN: backlinks :tags litnotes :only-missing t
+
+#+END:

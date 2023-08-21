@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: lazy var
+# key: lv
+# condition: (+yas-bolp)
+# uuid: 2ef15933-3f60-4df9-9f36-032d6ffa8657
+# --
+lazy var ${1:name} = {
+    $0
+}

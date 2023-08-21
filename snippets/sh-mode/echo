@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: echo
+# key: e
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: 6734959e-3a9a-4231-a81b-1e12703912fa
+# --
+echo $0

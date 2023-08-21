@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: protocol
+# key: pr
+# condition: (+yas-bolp)
+# uuid: ef703c06-6752-48db-873f-1c0345f274da
+# --
+protocol ${1:Name} {
+    $0
+}

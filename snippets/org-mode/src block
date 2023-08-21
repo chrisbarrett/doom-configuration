@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src block
+# key: src
+# condition: (+yas-bolp)
+# uuid: c962237c-ebe4-4b25-ba26-7ddf06276411
+# --
+#+begin_src $1
+  $0
+#+end_src

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: source block
+# key: <s
+# uuid: a616ed43-edae-448b-ab9c-1854e0f3b8c7
+# --
+#+begin_src $1
+  $0
+#+end_src

@@ -1,0 +1,8 @@
+# key: m
+# name: module
+# condition: (+yas-bolp)
+# uuid: aadad405-de3d-4a34-b9dd-3e8d2ec9bce3
+# --
+module "${1:name}" {
+  source = $0
+}

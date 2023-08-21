@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: ifeq
+# key: i
+# uuid: f6abf146-b19a-402a-bfe8-e2cb035da1a5
+# --
+ifeq (${1:left},${2:right})
+  $0
+else
+
+endif

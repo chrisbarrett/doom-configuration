@@ -1,0 +1,9 @@
+# key: af
+# name: async function
+# condition: (+yas-bolp)
+# uuid: c88ac198-47e9-4128-b5a1-a34f9fb85f61
+# --
+async ${1:TReturn} ${2:Name}(${3:args...})
+{
+  $0
+}

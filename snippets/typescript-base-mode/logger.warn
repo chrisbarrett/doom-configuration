@@ -1,0 +1,6 @@
+# key: warn
+# name: logger.warn
+# condition: (and (+yas-bolp) (+yas-js-buffer-imports-logger-p))
+# uuid: 558b226b-307e-498d-bee3-c5b2c7763c79
+# --
+logger.warn({ message: '$0' });

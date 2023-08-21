@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: for
+# key: for
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: fcf0eaed-7484-4383-a7d8-2a7e0c424e94
+# --
+for ${1:VAR} in ${2:str}; do
+    $0
+done

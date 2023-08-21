@@ -1,0 +1,6 @@
+# key: r
+# name: return
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: 391c291f-f3c3-4f77-8afd-f1a7555a5c48
+# --
+return $0;

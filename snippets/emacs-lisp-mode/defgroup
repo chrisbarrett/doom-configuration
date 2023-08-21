@@ -1,0 +1,9 @@
+# key: g
+# name: defgroup
+# condition: (+yas-bolp)
+# uuid: 4d11dbc7-b483-4eaf-af95-93f1a44785af
+# --
+(defgroup `(file-name-sans-extension (file-name-nondirectory buffer-file-name))` nil
+  "$0"
+  :group '${1:languages}
+  :prefix "`(file-name-sans-extension (file-name-nondirectory buffer-file-name))`-")

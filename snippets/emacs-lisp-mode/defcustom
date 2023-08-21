@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: defcustom
+# key: dc
+# condition: (+yas-bolp)
+# uuid: d7a90ffd-29b8-477f-897e-5c22db1e423f
+# --
+(defcustom ${1:name} ${2:value}
+  "$3"
+  :group '`(+yas-emacs-lisp-custom-group)`
+  :type '$4)

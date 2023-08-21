@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: if
+# key: i
+# condition: (+yas-bolp)
+# uuid: 4b2bc3f5-48b8-4cad-a7f0-62e5a0ad80c0
+# --
+if ($1) {
+    $0
+}

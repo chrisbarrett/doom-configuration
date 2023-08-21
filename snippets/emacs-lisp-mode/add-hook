@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: add-hook
+# key: ah
+# uuid: dc7cee5b-ab4c-4970-8ac7-b8583b43acd8
+# --
+(add-hook '$0)

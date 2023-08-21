@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: autoload directive
+# key: al
+# binding: direct-keybinding
+# condition: (and (+yas-bolp) (+yas-emacs-lisp-at-line-above-decl-p))
+# uuid: 50ef29e4-07d3-48e6-ba89-dc46d81c7747
+# --
+;;;###autoload

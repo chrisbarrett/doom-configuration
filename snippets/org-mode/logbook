@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: logbook
+# key: lb
+# condition: (+yas-bolp)
+# uuid: 748ca5a5-99d3-4f7f-9782-d13f7110d176
+# --
+:LOGBOOK:
+$0
+:END:

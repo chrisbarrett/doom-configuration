@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: include
+# key: in
+# condition: (+yas-bolp)
+# uuid: 226788a0-7fcb-4004-b574-2a86c4d34b7c
+# --
+!include <$0>

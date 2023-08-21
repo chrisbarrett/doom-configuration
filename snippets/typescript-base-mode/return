@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: return
+# key: r
+# uuid: 0f2eb5cc-f317-4b2b-b5bf-c71a067f92dc
+# --
+return $0;

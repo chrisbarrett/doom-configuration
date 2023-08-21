@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: item-src
+# key: s
+# condition: (+yas-line-rx-p bol (* space) "-" (* space) "s" (* space) eol)
+# uuid: 1afda2ed-bb32-4396-bf27-cec5fd53f82a
+# --
+`(just-one-space)`Source:
+    #+begin_src ${1:lang}
+      $0
+    #+end_quote

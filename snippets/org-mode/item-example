@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: item-example
+# key: e
+# condition: (+yas-line-rx-p bol (* space) "-" (* space) "e" (* space) eol)
+# uuid: 993402e8-10b0-42d4-87cd-3da7302e43d5
+# --
+`(just-one-space)`${1:Example}:
+    #+begin_example ${2:lang}
+      $0
+    #+end_quote

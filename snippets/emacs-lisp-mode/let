@@ -1,0 +1,7 @@
+# key: l
+# name: let
+# condition: (not (s-matches? "-l" (buffer-substring (line-beginning-position) (line-end-position))))
+# uuid: d58e095b-d782-49e7-9f30-83deec8c5a18
+# --
+(let (($1))
+  $0)

@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: connection
+# key: c
+# condition: (+yas-bolp)
+# uuid: 06102fca-a948-4b34-aa3a-925e46a47526
+# --
+connection {
+  type = "ssh"
+  user = "ec2-user"
+  private_key = file("TODO")
+  host = self.public_ip
+}

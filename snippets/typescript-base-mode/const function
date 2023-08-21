@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: const function
+# key: f
+# uuid: e33e350e-e921-4940-bed7-09bf1a654467
+# --
+const $1 = ($2) => {
+  $0
+};

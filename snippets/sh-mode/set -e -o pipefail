@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: set -e -o pipefail
+# key: set
+# condition: (+yas-bolp)
+# uuid: 0c7fb122-a2ac-4e02-8a38-6e76cbffbce7
+# --
+set -e -o pipefail

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: perror
+# key: pe
+# condition: (+yas-bolp)
+# uuid: fcd30804-f75b-4666-a19e-cbae2d04989a
+# --
+perror("$0");

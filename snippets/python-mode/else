@@ -1,0 +1,7 @@
+# key: e
+# name: else
+# condition: (+yas-bolp)
+# uuid: 37c0310b-7a53-4a31-ae8a-ec1b78d18d66
+# --
+else:
+    $0

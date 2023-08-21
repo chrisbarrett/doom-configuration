@@ -1,0 +1,8 @@
+# key: pr
+# name: provisioner (local)
+# condition: (+yas-bolp)
+# uuid: 7b404e85-1346-4b72-9c55-4ef1d483b9b8
+# --
+provisioner "local_exec" {
+  command = "$0"
+}

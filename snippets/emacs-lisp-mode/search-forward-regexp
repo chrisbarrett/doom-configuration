@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: search-forward-regexp
+# key: sfr
+# uuid: e63a2b99-a820-41ac-bd53-9e655c3548f2
+# --
+(search-forward-regexp (rx $0))

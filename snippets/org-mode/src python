@@ -1,0 +1,8 @@
+# key: py
+# name: src python
+# condition: (+yas-bolp)
+# uuid: 4df19f7c-3dc4-4e3f-a5e6-788eefdae780
+# --
+#+begin_src python
+  $0
+#+end_src

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: pub trait
+# key: pt
+# condition: (+yas-bolp)
+# uuid: b318ea34-97d9-4a89-8385-b2fe14b2b2a8
+# --
+pub trait $1 {
+    $0
+}

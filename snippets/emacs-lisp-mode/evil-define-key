@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: evil-define-key
+# key: edk
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: 4acbd394-8667-4191-96c4-e5df7e860b4c
+# --
+(evil-define-key '${1:state} ${2:keymap} (kbd "${3:key}") #'${4:cmd})

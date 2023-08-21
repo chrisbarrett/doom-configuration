@@ -1,0 +1,7 @@
+# key: c
+# name: case
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: b2102988-c89b-4233-8960-0bf39e2ee001
+# --
+case $1:
+    $0

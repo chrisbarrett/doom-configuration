@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: overlay
+# key: ov
+# condition: (+yas-bolp)
+# uuid: e5d9686a-dbc5-482a-ac0b-31c162d40ba1
+# --
+self: super: {
+  ${1:pkgs} = super.pkgs.${1}.overrideAttrs (old: rec {
+    $0
+  });
+}

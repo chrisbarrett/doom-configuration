@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: module ref
+# key: m
+# condition: (not (+yas-bolp))
+# uuid: 0cab152b-0fdd-4ea3-8d18-c40c3f8748c5
+# --
+module.$0

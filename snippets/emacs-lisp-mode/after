@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: with-eval-after-load
+# key: a
+# uuid: 69295bcc-4798-43d9-9fa8-562e0097811f
+# condition: (+yas-bolp)
+# --
+(`(if (+yas-emacs-lisp-doom-file-p) "after! " "with-eval-after-load '")`$0)

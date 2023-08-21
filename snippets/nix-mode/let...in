@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: let...in
+# key: l
+# condition: (+yas-bolp)
+# uuid: 66cbd912-fdb7-4c5e-a733-0dd570471cd0
+# --
+let
+  ${1:name} = ${2:value};
+in
+$0

@@ -1,0 +1,11 @@
+# key: sw
+# name: switch
+# expand-env: ((yas-indent-line (quote fixed)) (yas-wrap-around-region (quote t)))
+# condition: (+yas-bolp)
+# uuid: 30028a82-906b-4df6-9aa1-4bb2ea3c9bd2
+# --
+switch (${1:scrutinee}) {
+  case ${2:pat}: {
+    return $0
+  }
+}

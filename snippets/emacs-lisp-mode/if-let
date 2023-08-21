@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: if-let
+# key: il
+# uuid: af2bedc7-5b76-45a3-ae20-2e898e31e774
+# --
+(if-let* (($0))
+)

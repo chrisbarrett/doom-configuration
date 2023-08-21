@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: trait
+# key: tr
+# condition: (+yas-bolp)
+# uuid: fc3357a6-a7f3-48a8-9a73-35f23ccd3b11
+# --
+trait $1 {
+    $0
+}

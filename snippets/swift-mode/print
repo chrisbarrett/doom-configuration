@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: print
+# key: p
+# condition: (+yas-bolp)
+# uuid: 6c97efca-7b98-42d8-8b69-2432fbe6ac0c
+# --
+print($0)

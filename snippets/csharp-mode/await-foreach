@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: await-foreach
+# key: afe
+# condition: (or (+yas-bolp) (+yas-csharp-expression-context-p "afe"))
+# uuid: 8d0dfc68-835f-4ceb-a72b-481b3580fc6c
+# --
+await foreach (var ${1:value} in ${2:coll})
+{
+    $0
+}

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: extend type
+# key: et
+# condition: (+yas-bolp)
+# uuid: ae095241-f491-49ed-a6e2-c5cb18623c10
+# --
+extend type ${1:Name} {
+  $0
+}

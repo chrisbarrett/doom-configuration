@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: use
+# key: u
+# condition: (+yas-bolp)
+# uuid: 6d3ddc5d-c1bb-40e7-aa3f-b9550f281386
+# --
+use $0;

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: line-end-position
+# key: lep
+# uuid: 7a84ff57-e386-45fb-8514-1dba049c5052
+# --
+(line-end-position)

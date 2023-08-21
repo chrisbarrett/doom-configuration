@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: public
+# key: p
+# condition: (+yas-bolp)
+# type: command
+# uuid: a57860de-ff8c-40df-9db3-484d5200ed09
+# --
+(insert "public")
+(just-one-space)

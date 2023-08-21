@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: switch
+# key: sw
+# condition: (+yas-bolp)
+# uuid: 5c4869e8-25fb-428e-8bf2-75ac59b368f4
+# --
+switch $1 {
+case $2:
+    $0
+}

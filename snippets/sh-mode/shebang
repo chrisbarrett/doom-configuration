@@ -1,0 +1,6 @@
+# key: #
+# name: shebang
+# condition: (save-excursion (goto-char (line-beginning-position)) (bobp))
+# uuid: ed3c4c8f-8e85-4083-aec5-0134e752bcd2
+# --
+#!/usr/bin/env ${1:bash}

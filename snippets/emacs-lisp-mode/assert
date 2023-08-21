@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: assert
+# key: as
+# uuid: 2e9e1704-04ef-405e-9d23-8f8b57d85c62
+# --
+(cl-assert $0)

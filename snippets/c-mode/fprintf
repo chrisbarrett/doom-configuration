@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: fprintf
+# key: fp
+# condition: (+yas-bolp)
+# uuid: dd0d08a1-bb56-49d3-ba6f-73c7f6f55bca
+# --
+fprintf($0);

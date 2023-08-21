@@ -1,0 +1,7 @@
+# key: dm
+# name: defmacro
+# condition: (+yas-bolp)
+# uuid: 9acda2bb-0fad-4509-881a-64e090b16853
+# --
+(defmacro `(+yas-emacs-lisp-package-prefix)`${1:name} ($2)
+  $0)

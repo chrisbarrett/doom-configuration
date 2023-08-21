@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: test
+# key: test
+# condition: (+yas-bolp)
+# uuid: ccb7e101-a02f-4595-aa96-e9c8ee550f3e
+# --
+#[test]
+fn test_$1() {
+    $0
+}

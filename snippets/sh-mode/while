@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: while
+# key: wh
+# binding: direct-keybinding
+# uuid: b59ae71d-5797-4cc4-8ec3-b8a71cef97a1
+# --
+while [[ ${1:test} ]]; do
+  $0
+done

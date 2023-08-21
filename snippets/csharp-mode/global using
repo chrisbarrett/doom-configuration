@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: global using
+# key: gu
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: 9b4f8fe6-95e6-4f62-8db9-efd86f064466
+# --
+global using $0;

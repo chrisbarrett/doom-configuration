@@ -1,0 +1,6 @@
+# key: info
+# name: logger.info
+# condition: (and (+yas-bolp) (+yas-js-buffer-imports-logger-p))
+# uuid: 8bf914c2-40bd-476a-b5a4-f68604c55a83
+# --
+logger.info({ message: '$0' });

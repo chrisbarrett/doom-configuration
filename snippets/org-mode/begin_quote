@@ -1,0 +1,7 @@
+# key: <q
+# name: begin_quote
+# uuid: 63b13e89-2ee4-493f-9bf2-f995449b6db2
+# --
+#+begin_quote
+$0
+#+end_quote

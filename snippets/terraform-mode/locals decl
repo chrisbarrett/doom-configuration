@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: locals decl
+# key: l
+# condition: (+yas-bolp)
+# uuid: 5405b639-edb2-4d38-8841-b5f1f673ea3d
+# --
+locals {
+  ${1:name} = $0
+}

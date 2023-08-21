@@ -1,0 +1,7 @@
+# key: p
+# name: .PHONY
+# expand-env: ((yas/indent-line (quote fixed)))
+# uuid: c8a079e6-7342-4560-9ce3-665f9bdd04b9
+# --
+.PHONY: $1
+$1 : $0

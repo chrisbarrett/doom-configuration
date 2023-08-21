@@ -1,0 +1,6 @@
+# key: l
+# name: lambda function
+# condition: (or (+yas-bolp) (+yas-csharp-expression-context-p "l"))
+# uuid: b8606ab4-f57f-413e-9412-a74f97900155
+# --
+(${1:params...}) => $0

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: eval-and-compile
+# key: eac
+# uuid: 52af7c0d-47b9-4731-82af-de95832491be
+# --
+(eval-and-compile
+  $0)

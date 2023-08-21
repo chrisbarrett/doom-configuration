@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: bol condition
+# key: c
+# binding: direct-keybinding
+# uuid: f61a4a49-a3a9-461e-9065-106f937d675a
+# --
+# condition: (+yas-bolp)

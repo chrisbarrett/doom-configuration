@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: case
+# key: ca
+# condition: (+yas-bolp)
+# uuid: 3ff1faf2-39cc-4a10-aef1-e47b25500a3d
+# --
+case ${1:pred} {
+  (${2:pattern})
+    $0
+    ;;
+  (*)
+    ;;
+}

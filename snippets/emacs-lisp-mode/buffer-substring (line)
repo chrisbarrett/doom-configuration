@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: buffer-substring (line)
+# key: bsl
+# uuid: db91256f-37cb-41d7-ba6d-1cd1863ee778
+# --
+(buffer-substring (line-beginning-position) (line-end-position))

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: output
+# key: o
+# condition: (+yas-bolp)
+# uuid: 29a34583-9300-4a63-92d2-4e2e499e6635
+# --
+output "${1:name}" {
+  value = $0
+  # description = ""
+  # sensitive = true
+}

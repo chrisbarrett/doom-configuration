@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: struct
+# key: st
+# condition: (+yas-bolp)
+# uuid: bd3420e3-95c9-404f-98a4-9ce3f396592d
+# --
+struct ${1:Name} {
+    $0
+}

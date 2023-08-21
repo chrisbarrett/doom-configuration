@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: zod infer
+# key: zi
+# condition: (+yas-bolp)
+# uuid: 8ff4fbec-88ef-4ee8-8935-591fcf4f5de4
+# --
+export type ${1:name} = z.infer<typeof $1>;

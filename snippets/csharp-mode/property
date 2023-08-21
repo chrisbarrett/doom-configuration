@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: property
+# key: pp
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: 8b5ad37f-5101-4837-aec5-06de232ac270
+# --
+public ${1:Type} ${2:Name} { get; init; }

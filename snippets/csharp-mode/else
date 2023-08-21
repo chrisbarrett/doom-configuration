@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: else
+# key: e
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: 3080fd76-84aa-4156-89d0-28655b0ec267
+# --
+else
+{
+  $0
+}

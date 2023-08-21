@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: save-restriction
+# key: sr
+# uuid: 4ca8977f-033e-4d9e-b6fc-979622da5352
+# --
+(save-restriction
+  (narrow-to-region $1)
+  $0)

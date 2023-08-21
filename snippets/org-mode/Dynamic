@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Dynamic
+# key: dy
+# condition: (+yas-bolp)
+# uuid: 77a51316-c04e-495a-abbd-4340dfe16ac7
+# --
+* [[id:BBA271F7-56AA-4A88-B48A-DB2A7A979263][Dynamic]] - ${2:title}
+:PROPERTIES:
+:ID:       `(org-id-uuid)`
+:END:

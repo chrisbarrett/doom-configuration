@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: when-let
+# key: wl
+# uuid: 17a86cda-a9c5-47fc-ab0c-ca6ea94ff4cf
+# --
+(when-let* (($0))
+)

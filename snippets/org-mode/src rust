@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: src rust
+# key: rs
+# condition: (+yas-bolp)
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))
+# uuid: dedae57e-513c-4b7b-ae58-6ed8bf30a150
+# --
+#+begin_src rust
+  $0
+#+end_src

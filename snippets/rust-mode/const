@@ -1,0 +1,6 @@
+# key: c
+# name: const
+# condition: (+yas-bolp)
+# uuid: d8040327-1967-4800-a557-16817d5b5acb
+# --
+const ${1:$$(upcase (or yas-text "NAME"))}: ${2:T} = $0;

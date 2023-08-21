@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: provider
+# key: p
+# condition: (+yas-bolp)
+# uuid: 8fea3803-7964-43e7-8ba0-e32c4b89fc21
+# --
+provider "${1:name}" {
+  $0
+}

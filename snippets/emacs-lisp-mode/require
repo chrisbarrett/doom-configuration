@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: require
+# key: r
+# condition: (+yas-bolp)
+# uuid: 07046d92-919e-46fe-977f-dd5d95a14637
+# --
+(require '$0)

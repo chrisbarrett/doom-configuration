@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: attribute (enclosing)
+# key: !
+# uuid: 6185b81f-0e61-4f22-b624-c36fe62298be
+# --
+#![$1]

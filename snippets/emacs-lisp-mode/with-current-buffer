@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: with-current-buffer
+# key: wcb
+# uuid: abacf1b7-495a-495d-987c-1a6f29f2d22a
+# --
+(with-current-buffer $0)

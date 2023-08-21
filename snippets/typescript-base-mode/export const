@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: export const
+# key: ec
+# uuid: aefac22a-2a4b-4f2b-922c-19412bac03c0
+# --
+export const ${1:ident} = $0;

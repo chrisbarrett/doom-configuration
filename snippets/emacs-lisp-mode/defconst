@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: defconst
+# key: dc
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: 47b3f9b7-6b85-4753-9970-b073260bd87c
+# --
+(defconst `(+yas-emacs-lisp-package-prefix)`-$0)

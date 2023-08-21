@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: goto-char
+# key: gc
+# uuid: b3d73d66-a08e-4967-941c-0ad334eb9efb
+# --
+(goto-char ${1:(point-min)})$0

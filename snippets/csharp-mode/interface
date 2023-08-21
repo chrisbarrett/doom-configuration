@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: interface
+# key: in
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: 27f7a87d-9f10-4431-9c06-631183e40669
+# --
+interface ${1:Name}
+{
+  $0
+}

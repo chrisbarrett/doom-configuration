@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: it-lambda
+# key: it
+# uuid: b4ef9aac-1a1e-4742-b394-7dafbe6f34fd
+# --
+(lambda (it) $0)

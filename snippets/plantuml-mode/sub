@@ -1,0 +1,8 @@
+# key: sub
+# name: sub
+# condition: (+yas-bolp)
+# uuid: 6beb0c5d-5050-40cd-9cca-04ef067da575
+# --
+!startsub ${1:NAME}
+  $0
+!endsub

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: let
+# key: l
+# uuid: 578d897d-7acc-4146-8d5c-1ebc154abaa5
+# --
+(let [$1]
+  $0)

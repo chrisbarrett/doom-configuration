@@ -1,0 +1,7 @@
+# key: m
+# name: match
+# uuid: 688dde12-c639-4204-a672-3287e6865ee0
+# --
+match $1 {
+    ${2:pat} => $0,
+}

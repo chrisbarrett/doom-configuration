@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: variable
+# key: v
+# condition: (+yas-bolp)
+# uuid: 87ea6618-7f06-432e-a216-52e07be926a4
+# --
+variable "${1:name}" {
+  type = $0
+  # default =
+  # description =
+  # validation { condition =   error_message = "" }
+}

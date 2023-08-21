@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: unwind-protect
+# key: up
+# binding: direct-keybinding
+# condition: (and (cl-plusp (syntax-ppss-depth (syntax-ppss))) (or (+yas-bolp) (region-active-p)))
+# uuid: 25fc9e7b-1685-4d73-81eb-3b582623ea65
+# --
+(unwind-protect
+  $0)

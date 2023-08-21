@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: fn
+# key: fn
+# uuid: 9cd719ed-ac86-42a0-891a-0eab2729e11a
+# --
+(fn [$1] $0)

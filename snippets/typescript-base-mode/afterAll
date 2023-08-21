@@ -1,0 +1,8 @@
+# key: aa
+# name: afterAll
+# condition: (and (+yas-bolp) (+yas-js-inside-describe-p))
+# uuid: 76946310-8d31-4c07-8846-cdfc73aa5ef7
+# --
+afterAll(async () => {
+  $0
+});

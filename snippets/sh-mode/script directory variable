@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: script directory variable
+# key: dir
+# uuid: 078c611a-b485-4bc8-8ec7-3f0c7f3bb8f9
+# --
+# shellcheck disable=SC2039
+DIR="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"

@@ -1,0 +1,6 @@
+# key: s
+# name: static
+# condition: (+yas-bolp)
+# uuid: 0ee16a00-ebbd-4db1-ad69-1ec271408e9b
+# --
+static ${1:$$(upcase (or yas-text "NAME"))}: ${2:T} = $0;

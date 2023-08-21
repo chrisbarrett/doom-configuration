@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: require
+# key: req
+# uuid: 03425f9a-a2c0-4df0-af94-12dfb971358d
+# --
+const ${1:Module} = require('${2:${1:$(+yas-js-module-name-for-binding)}}');

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: item-quote
+# key: q
+# condition: (+yas-line-rx-p bol (* space) "-" (* space) "q" (* space) eol)
+# uuid: c4cc9cd4-2d32-433c-8ec0-8014f37c3fe9
+# --
+`(just-one-space)`Quote:
+    #+begin_quote
+      $0
+    #+end_quote

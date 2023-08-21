@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: thread-last
+# key: -
+# uuid: 3e0b7b77-6cd3-4622-9c24-b03bf496ba46
+# --
+(->> $0)

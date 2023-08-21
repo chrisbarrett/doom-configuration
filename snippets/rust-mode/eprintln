@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: eprintln
+# key: ep
+# condition: (+yas-bolp)
+# uuid: 9e6345e0-8a99-4f5f-bbe0-5cfbc2e51cb5
+# --
+eprintln!("$0");

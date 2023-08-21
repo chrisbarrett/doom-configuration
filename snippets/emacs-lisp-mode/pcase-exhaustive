@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: pcase-exhaustive
+# key: pe
+# uuid: c08e48ad-ea9e-4a32-b089-ed0743549c27
+# --
+(pcase-exhaustive ${1:form}
+  ($0))

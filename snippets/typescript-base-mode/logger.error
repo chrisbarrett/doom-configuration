@@ -1,0 +1,6 @@
+# key: err
+# name: logger.error
+# condition: (and (+yas-bolp) (+yas-js-buffer-imports-logger-p))
+# uuid: cfc96b89-d904-4b8b-9f86-c1d1911c0908
+# --
+logger.error({ message: '$0' });

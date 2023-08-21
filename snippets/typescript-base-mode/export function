@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: export function
+# key: ef
+# condition: (+yas-bolp)
+# uuid: d82ad4f0-1ea8-41d2-8f6a-1981a8e2d59e
+# --
+export function ${1:name}($2) {
+  $0
+}

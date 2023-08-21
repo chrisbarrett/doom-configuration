@@ -1,0 +1,9 @@
+# key: el
+# name: src elisp
+# condition: (+yas-bolp)
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))
+# uuid: 4fe75209-2c7c-4d14-99c8-393433543077
+# --
+#+begin_src emacs-lisp
+  $0
+#+end_src

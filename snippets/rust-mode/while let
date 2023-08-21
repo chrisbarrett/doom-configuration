@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: while let
+# key: wl
+# condition: (+yas-bolp)
+# uuid: 8a602146-6b04-497e-b8e2-55635f0bcf16
+# --
+while let ${1:binding} = ${2:value} {
+    $0
+}

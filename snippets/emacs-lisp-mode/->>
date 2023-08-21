@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ->>
+# key: -
+# uuid: 46c542b6-a84e-472c-b629-7a3634d99ed4
+# --
+(->> $0)

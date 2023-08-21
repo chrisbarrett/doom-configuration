@@ -1,0 +1,6 @@
+# key: ras
+# name: require as
+# condition: (+yas-bolp)
+# uuid: df956d2b-42f2-4d7e-812e-219144b64349
+# --
+(require '[${1:name} :as :${2:alias}])

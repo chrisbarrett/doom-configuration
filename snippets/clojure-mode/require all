@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: require all
+# key: ra
+# uuid: 9bc30eee-a479-45d0-b90a-9b6f2c999539
+# --
+(require '[$0 :refer :all])

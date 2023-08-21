@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Event
+# key: ev
+# condition: (+yas-bolp)
+# uuid: 60b8f22a-b084-4942-a0a7-194ee190d98c
+# --
+* [[id:BBA271F7-56AA-4A88-B48A-DB2A7A979263][Event]] (${1:date}) - ${2:title}
+:PROPERTIES:
+:ID:       `(org-id-uuid)`
+:END:

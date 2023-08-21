@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: autoload
+# key: al
+# binding: direct-keybinding
+# condition: (and (+yas-bolp) (not (+yas-emacs-lisp-at-line-above-decl-p)))
+# uuid: dc4c8ad7-c75e-4e9f-9d42-05f5c90eee39
+# --
+(autoload '${1:ident} "${1:$(+yas-emacs-lisp-autoload-file yas-text)}")

@@ -1,0 +1,8 @@
+# key: sh
+# name: src sh
+# condition: (+yas-bolp)
+# uuid: c90e47de-05d2-4054-adc8-0ec7f49e882b
+# --
+#+begin_src sh
+  $0
+#+end_src

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: backlinks
+# key: bl
+# condition: (+yas-bolp)
+# uuid: e7a952bf-1e5c-4609-86b7-9bfd25bd2e4d
+# --
+#+BEGIN: backlinks :only-missing t
+#+END:

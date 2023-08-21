@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: function
+# key: f
+# condition: (+yas-bolp)
+# uuid: e63e09c9-e2b8-46ec-a5f8-c3ab983c7655
+# --
+${1:TReturn} ${2:Name}(${3:args...}) => $0;

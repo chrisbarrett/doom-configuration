@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: try-catch
+# key: try
+# condition: (+yas-bolp)
+# uuid: 2c234cd2-47a4-4aba-aab9-9a9740d163fa
+# --
+try {
+  $0
+}
+catch(e) {
+
+}

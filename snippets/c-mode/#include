@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: #include
+# key: in
+# condition: (+yas-bolp)
+# uuid: ff71e941-50d7-4791-9233-fefd976d9ce9
+# --
+#include $0

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: case
+# key: ca
+# uuid: 355209f2-e1bb-4929-bb28-d5d7c938557d
+# --
+case ${1:pat}: {
+  return $0
+}

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: let
+# key: l
+# condition: (+yas-bolp)
+# uuid: dce9f228-f381-4d7b-b571-502f6d0588cc
+# --
+let $1 = $0;

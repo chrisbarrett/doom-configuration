@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: for
+# key: for
+# uuid: 8084e64c-bda3-45df-bcc2-77cb19e3ff28
+# --
+for ${1:name} in ${2:value} {
+  $0
+}

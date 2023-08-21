@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: var reference
+# key: v
+# condition: (not (+yas-bolp))
+# uuid: 8fafdc79-030c-4db0-9bcc-999a95b04e23
+# --
+var.$0

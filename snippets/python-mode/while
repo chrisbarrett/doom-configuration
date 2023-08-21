@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: while
+# key: wh
+# condition: (+yas-bolp)
+# uuid: 0821035b-a866-4b55-9e92-40cba42df8f5
+# --
+while ${1:expr}:
+    $0

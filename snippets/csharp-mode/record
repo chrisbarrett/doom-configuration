@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: record
+# key: r
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: f195a1b0-0c96-4145-b7bd-019cc6a9d75b
+# --
+record ${1:Name}($0);

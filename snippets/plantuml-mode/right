@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: right
+# key: r
+# condition: (+yas-bolp)
+# uuid: 569346b9-1511-4a09-af8b-b7466a66bb28
+# --
+${1:left} -right-> ${2:right}: ${3:label}

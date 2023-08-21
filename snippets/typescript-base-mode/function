@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: function
+# key: fu
+# uuid: eb231e5b-41e3-46fa-860d-1f43a5657273
+# --
+function ${1:name}($2) {
+  $0
+}

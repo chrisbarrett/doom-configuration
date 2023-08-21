@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: git root
+# uuid: 24446b49-90b4-49d1-b6d1-788f9c41af35
+# --
+GIT_ROOT=$(git rev-parse --show-toplevel)

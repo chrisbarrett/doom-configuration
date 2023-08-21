@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: class
+# key: cl
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: 1f13cde4-b6ee-4916-8bb8-bd8558f6ac58
+# --
+class ${1:Name}
+{
+  public $1($2)
+  {
+      $0
+  }
+}

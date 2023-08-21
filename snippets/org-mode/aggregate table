@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: aggregate table
+# key: agg
+# condition: (+yas-bolp)
+# uuid: 9dba0b92-878d-4255-990b-a57e292fd29f
+# --
+#+BEGIN: aggregate :table "${1:ref}" :cols "$0"
+#+END:

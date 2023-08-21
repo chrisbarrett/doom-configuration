@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: for-await
+# key: fa
+# condition: (+yas-bolp)
+# uuid: fb51bdea-316f-4e4f-b869-735aca12dd27
+# --
+for await (const ${1:x} of ${2:xs}) {
+  $0
+}

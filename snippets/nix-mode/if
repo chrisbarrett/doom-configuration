@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: if
+# key: i
+# uuid: d2adf165-79cb-40df-88ab-2cf5406edfaa
+# --
+if ${1:pred} then ${2:expr} else ${3:expr}

@@ -1,0 +1,8 @@
+# key: f
+# name: function
+# condition: (+yas-bolp)
+# uuid: f4d76772-8f17-45e5-aadb-ca467703626e
+# --
+${1:fname}() {
+    $0
+}

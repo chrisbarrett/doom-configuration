@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: progn
+# key: p
+# uuid: 982fda1c-9071-47d0-b46e-585ce5b19b1d
+# --
+(progn
+ $0)

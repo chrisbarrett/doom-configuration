@@ -1,0 +1,6 @@
+# key: yr
+# name: yield return
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: d98cdcfa-29ee-41e7-84d5-49a62bf19355
+# --
+yield return $0;

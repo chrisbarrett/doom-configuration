@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: enum
+# key: e
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: 760d4551-ed7b-4226-84fe-0e28349126c1
+# --
+enum ${1:Name} {
+    case $0
+}

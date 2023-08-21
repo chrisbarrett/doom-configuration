@@ -1,0 +1,8 @@
+# key: ie
+# name: if...else
+# condition: (+yas-bolp)
+# uuid: f5b1a76a-5f42-480d-8318-63895aebb07c
+# --
+if ${1:expr}:
+    $0
+else:

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: search-backward
+# key: sb
+# uuid: e3e57cc8-6de1-4d61-a6d2-d6e0a0136a33
+# --
+(search-backward $0)

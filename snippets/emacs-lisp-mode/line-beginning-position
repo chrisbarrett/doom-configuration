@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: line-beginning-position
+# key: lbp
+# uuid: 3f314e17-0bca-4335-8a18-055edbda2dc9
+# --
+(line-beginning-position)

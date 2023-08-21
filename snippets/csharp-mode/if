@@ -1,0 +1,9 @@
+# key: i
+# name: if
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: eda6f935-5740-4225-a0b3-cca17b23de9d
+# --
+if ($1)
+{
+    $0
+}

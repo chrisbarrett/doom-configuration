@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: type
+# key: t
+# condition: (+yas-bolp)
+# uuid: c98870fa-88fc-4399-bc7f-fc1fa13371ca
+# --
+type ${1:Name} {
+  $0
+}

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: provisioner (remote)
+# key: pr
+# condition: (+yas-bolp)
+# uuid: 6ffc819f-d9a0-438e-82ab-d2590f3ffc92
+# --
+provisioner "remote-exec" {
+  inline = [
+    "$0"
+  ]
+}

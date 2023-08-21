@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Idea
+# key: id
+# condition: (+yas-bolp)
+# uuid: cdffec46-6f0d-41e0-9a0b-1d75a5087417
+# --
+* [[id:B4E4309B-F427-40CE-A177-E571CF79BBE7][Idea]] - ${2:title}
+:PROPERTIES:
+:ID:       `(org-id-uuid)`
+:END:

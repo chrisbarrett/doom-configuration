@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: export type
+# key: et
+# uuid: e5bf1628-bdd7-4542-92b6-50a6ee749504
+# --
+export type ${TyId} = $0;

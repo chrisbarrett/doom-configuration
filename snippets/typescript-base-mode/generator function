@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: generator function
+# key: f*
+# uuid: 57b922d9-7da4-412c-a4f2-602e54d68716
+# --
+function* ${1:name}($2) {
+  $0
+}

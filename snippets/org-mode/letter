@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: letter
+# key: letter
+# uuid: 7147ca9e-bd86-455b-b2a3-c3a98cb801b9
+# --
+#+title: ${1:Untitled Letter}
+#+latex_class: koma-letter
+#+lco: CBLetter CBAddress UScommercial9
+#+date: `(format-time-string "%B %-d, %Y")`
+
+#+to_address: ${2:Name}\\\\
+#+to_address: ${3:Street}\\\\
+#+to_address: ${4:Town}
+
+#+opening: ${5:To whom it may concern},
+
+$0
+
+#+closing: Sincerely,

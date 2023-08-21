@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: try-catch
+# key: try
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: cfc3b20e-96bc-4b46-8afa-2acc7d5c3a62
+# --
+try
+{
+    $0
+}
+catch (Exception ex)
+{
+}

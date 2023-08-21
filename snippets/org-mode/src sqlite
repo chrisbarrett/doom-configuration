@@ -1,0 +1,9 @@
+# key: sqlite
+# name: src sqlite
+# condition: (+yas-bolp)
+# uuid: c112ad55-ae14-4b1a-baaa-b8a9cc3f45b2
+# --
+#+header: :db ${1:name} :header :csv :nullvalue NULL
+#+begin_src sqlite
+  $0
+#+end_src

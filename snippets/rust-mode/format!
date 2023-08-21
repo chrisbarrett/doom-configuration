@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: format!
+# key: fm
+# uuid: 74e6176e-80ee-4d42-9554-288498701954
+# --
+format!("$0");

@@ -1,0 +1,8 @@
+# key: i
+# name: if
+# condition: (+yas-bolp)
+# uuid: 1ce0ec6f-3e9f-4671-b740-d39ac302e5c2
+# --
+if ${1:pred} {
+  $0
+}

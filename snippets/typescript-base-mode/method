@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: method
+# key: m
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))
+# uuid: 7d007152-4767-4fe4-9e42-aaf322962a93
+# --
+${1:fname} = (${2:params}) => {
+  $0
+};

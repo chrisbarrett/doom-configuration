@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: provide
+# key: prov
+# uuid: 9fe73c00-1993-4f37-90fa-6cce1163ad5a
+# --
+(provide '`(file-name-sans-extension (file-name-nondirectory buffer-file-name))`)

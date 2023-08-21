@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: derive attribute
+# key: der
+# condition: (+yas-bolp)
+# uuid: dcff691b-c4e1-4a4c-9d86-bb74008a488e
+# --
+#[derive($1)]

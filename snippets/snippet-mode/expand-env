@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expand-env
+# key: ee
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: de471f9b-7388-413e-9a32-d2726aab09b3
+# --
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))

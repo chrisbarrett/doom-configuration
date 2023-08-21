@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: class
+# key: cl
+# condition: (+yas-bolp)
+# uuid: 6fc7432c-2bd9-4f40-99c0-479920d3ddc9
+# --
+class ${1:Name} {
+  $0
+}

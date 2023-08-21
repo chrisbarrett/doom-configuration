@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: import
+# key: im
+# uuid: 5a7b35ea-b744-4835-bbd4-f21c5475d566
+# --
+import ${1:Module} from '${2:${1:$(+yas-js-module-name-for-binding)}}';

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: beforeAll
+# key: ba
+# condition: (and (+yas-bolp) (+yas-js-inside-describe-p))
+# uuid: 732d74d8-0a1d-4a31-beff-c7bb9584c17e
+# --
+beforeAll(async () => {
+  $0
+});

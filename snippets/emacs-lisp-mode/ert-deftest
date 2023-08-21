@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ert-deftest
+# key: ert
+# condition: (+yas-bolp)
+# uuid: 77d1dc22-d61d-4091-9e69-33d09ded6bef
+# --
+(ert-deftest `(+yas-emacs-lisp-package-prefix)`${1:feature} ()
+  (should (equal $0)))

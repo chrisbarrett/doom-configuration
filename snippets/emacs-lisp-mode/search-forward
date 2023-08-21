@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: search-forward
+# key: sf
+# uuid: c67c5017-192c-4714-8b3c-43f6e7207fd8
+# --
+(search-forward $0)

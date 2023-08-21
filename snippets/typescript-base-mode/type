@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: type
+# key: t
+# uuid: bd1aa8b6-228b-4951-a831-5fd099307ff5
+# --
+type ${TyId} = $0;

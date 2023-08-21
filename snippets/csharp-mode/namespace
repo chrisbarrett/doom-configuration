@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: namespace
+# key: ns
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: 5557c6d3-e72f-4cda-89b4-ed252b36320b
+# --
+namespace $0;

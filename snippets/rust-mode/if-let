@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: if-let
+# key: il
+# condition: (+yas-bolp)
+# uuid: 28b7c4cf-f3cb-4e07-a452-d95e0d564fb8
+# --
+if let ${1:pat} = ${2:value} {
+  $0
+} else {
+}

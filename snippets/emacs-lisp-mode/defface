@@ -1,0 +1,10 @@
+# key: df
+# name: defface
+# condition: (+yas-bolp)
+# uuid: 5fafab0e-9f57-4525-a012-b6e221e171a9
+# --
+(defface $1
+  '((t
+     ($0)))
+  "Face for $3"
+  :group '${4:`(+yas-emacs-lisp-custom-group)`})

@@ -1,0 +1,6 @@
+# key: r
+# name: require
+# condition: (+yas-bolp)
+# uuid: 0c9feb32-7873-4061-84a0-9bebac1f52d3
+# --
+(require '$0)

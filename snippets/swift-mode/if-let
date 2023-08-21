@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: if-let
+# key: il
+# condition: (+yas-bolp)
+# uuid: 7c399c19-a3a9-4330-9ca7-c8ed16ed24ed
+# --
+if let ${1:ident} = ${2:value} {
+    $0
+}

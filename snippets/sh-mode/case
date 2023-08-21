@@ -1,0 +1,16 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: case
+# key: case
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: 9ad3c447-c273-45d3-a3c0-ab64c00b5fdf
+# --
+case ${1:expr} in
+
+   ${2:matcher})
+     $0
+     ;;
+
+   *)
+     ;;
+esac

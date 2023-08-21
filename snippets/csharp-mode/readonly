@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: readonly
+# key: ro
+# type: command
+# uuid: ebd24503-72b8-4480-aad0-74154ed03da7
+# --
+(when (thing-at-point-looking-at (rx bol (* space) (+ nonl) "ro"))
+  (just-one-space))
+(insert "readonly")
+(just-one-space)

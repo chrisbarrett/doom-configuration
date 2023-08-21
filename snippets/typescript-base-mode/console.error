@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: console.error
+# key: err
+# condition: (and (+yas-bolp) (not (+yas-js-buffer-imports-logger-p)))
+# uuid: c03eab0a-1a89-4550-b4aa-f853ad0f7102
+# --
+console.error($0)

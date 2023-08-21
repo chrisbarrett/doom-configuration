@@ -1,0 +1,10 @@
+# key: zo
+# name: zod object
+# condition: (+yas-bolp)
+# uuid: 2322fe70-468c-41f2-a7dd-c868f5d48701
+# --
+export const ${1:name} = z.object({
+  $0
+});
+
+export type $1 = z.infer<typeof $1>;

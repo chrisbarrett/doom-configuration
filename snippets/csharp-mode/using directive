@@ -1,0 +1,6 @@
+# key: u
+# name: using directive
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: 182c6c64-216d-4786-8def-90fd63de1b0a
+# --
+using $0;

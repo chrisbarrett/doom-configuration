@@ -1,0 +1,8 @@
+# key: st
+# name: struct
+# condition: (+yas-bolp)
+# uuid: 6d5bc58a-3b50-40aa-a0a1-07954c169662
+# --
+struct $1 {
+    $0
+}

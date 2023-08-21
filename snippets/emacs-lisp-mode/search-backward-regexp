@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: search-backward-regexp
+# key: sbr
+# uuid: 764926ab-fc9e-4975-a84c-2ad7a8f18aec
+# --
+(search-backward-regexp (rx $0))

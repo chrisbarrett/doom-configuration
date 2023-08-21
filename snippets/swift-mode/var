@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: var
+# key: v
+# condition: (+yas-bolp)
+# uuid: 9344340b-acaf-4076-8de0-220370e046c3
+# --
+var $1 = $0

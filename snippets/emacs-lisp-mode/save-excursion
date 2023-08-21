@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: save-excursion
+# key: se
+# uuid: 5de61a97-4955-4698-a1e5-a489e9054452
+# --
+(save-excursion
+  $0)

@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: eval-when-compile
+# key: ewc
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: e9c78317-3ef4-467c-a2f6-7a3b86b22bfc
+# --
+(eval-when-compile
+  $0)

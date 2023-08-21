@@ -1,0 +1,6 @@
+# key: dec
+# name: decorator
+# condition: (+yas-bolp)
+# uuid: 3c9731cc-5e09-4ab6-b4e0-7249bdc38683
+# --
+@${1:Name}($2)

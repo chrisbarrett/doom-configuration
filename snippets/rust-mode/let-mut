@@ -1,0 +1,6 @@
+# key: lm
+# name: let-mut
+# condition: (+yas-bolp)
+# uuid: 4c092a5c-a9ea-4712-9b42-a6b354ca4ac3
+# --
+let mut ${1:name} = $2;

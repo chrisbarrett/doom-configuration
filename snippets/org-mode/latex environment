@@ -1,0 +1,7 @@
+# key: \b
+# name: latex environment
+# uuid: d5c7d974-7fce-48c1-9098-ec87b162b49d
+# --
+\begin{$1}
+$0
+\end{$1}

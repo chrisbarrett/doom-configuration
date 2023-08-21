@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: export enum
+# key: ee
+# condition: (+yas-bolp)
+# uuid: dc9b6fc9-5be7-4ca3-a832-3d43424bb9fa
+# --
+export enum ${1:Name} {
+  $0
+}

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: it
+# key: it
+# condition: (and (+yas-bolp) (+yas-emacs-lisp-buttercup-file-p))
+# uuid: 2ffb4fa2-efac-46a1-b19b-4225f3074c36
+# --
+(it "$0"
+  (expect t :to-equal nil))

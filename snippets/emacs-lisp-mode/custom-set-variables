@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: custom-set-variables
+# key: csv
+# binding: direct-keybinding
+# condition: (+yas-bolp)
+# uuid: f44549b2-4243-4793-a1a2-7ccd3ecaf685
+# --
+(custom-set-variables
+  '($0))

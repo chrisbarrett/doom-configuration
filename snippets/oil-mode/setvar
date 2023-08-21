@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: setvar
+# key: s
+# condition: (+yas-bolp)
+# uuid: f3718fdd-eda3-4296-a16b-77c2c4b024e2
+# --
+setvar ${1:name} = $0

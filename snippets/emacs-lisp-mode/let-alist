@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: let-alist
+# key: la
+# binding: direct-keybinding
+# uuid: 2cad14ce-6745-49d6-a715-983bc3e44820
+# --
+(let-alist ${1:binding}
+  $0)

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: impl
+# key: im
+# condition: (+yas-bolp)
+# uuid: 6145433a-a358-47bf-839b-4eb3094bdd2b
+# --
+impl ${1:Type} {
+    $0
+}

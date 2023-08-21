@@ -1,0 +1,7 @@
+# key: up
+# name: use-package!
+# expand-env: ((yas-indent-line (quote fixed)) (yas-wrap-around-region (quote t)))
+# condition: (+yas-bolp)
+# uuid: 13d8deee-7d49-47f3-b292-1ba0220a0fbc
+# --
+(use-package! $0)

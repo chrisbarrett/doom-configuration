@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: while
+# key: wh
+# uuid: ffb3bc2b-f34e-4fda-87b9-8ade388c8c04
+# --
+while ${1:pred} {
+    $0
+}

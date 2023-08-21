@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: begin_example
+# key: ex
+# condition: (+yas-bolp)
+# uuid: 4e34303b-11d1-4b51-9670-f049f372dec1
+# --
+#+begin_example $0
+
+#+end_example

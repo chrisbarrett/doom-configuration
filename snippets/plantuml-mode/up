@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: up
+# key: u
+# uuid: 17b40f98-0369-4362-aa07-8895d3cf439a
+# --
+${1:bottom} -up-> ${2:top}: ${3:label}

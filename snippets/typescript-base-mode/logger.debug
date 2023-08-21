@@ -1,0 +1,6 @@
+# key: log
+# name: logger.debug
+# condition: (and (+yas-bolp) (+yas-js-buffer-imports-logger-p))
+# uuid: c229c761-608b-4d47-bc8a-30f61567a03f
+# --
+logger.debug({ message: '$0' });

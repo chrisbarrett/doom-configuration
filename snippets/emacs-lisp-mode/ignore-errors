@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ignore-errors
+# key: ie
+# uuid: cf5c5dcc-7186-48be-9c5e-c3d950f84b60
+# --
+(ignore-errors $0)

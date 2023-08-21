@@ -1,0 +1,8 @@
+# key: wh
+# name: while
+# condition: (+yas-bolp)
+# uuid: 905aeb90-bf3c-48b3-ae16-6bcc6b2c8fcb
+# --
+while ${1:pred} {
+  $0
+}

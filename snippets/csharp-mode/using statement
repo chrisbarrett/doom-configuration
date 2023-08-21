@@ -1,0 +1,9 @@
+# key: u
+# name: using statement
+# condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))
+# uuid: aa2ede9f-31f0-43b1-ad4a-95ec88319d3f
+# --
+using ($1)
+{
+  $0
+}

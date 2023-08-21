@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: down
+# key: d
+# condition: (+yas-bolp)
+# uuid: 77174c7a-b5f2-4aa1-851d-c80ae7c331b1
+# --
+${1:top} -down-> ${2:bottom}: ${3:label}

@@ -1,0 +1,9 @@
+# key: calc
+# name: src calc
+# condition: (+yas-bolp)
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))
+# uuid: 04e0b419-711d-4200-9349-c161f00d3eb5
+# --
+#+begin_src calc
+  $0
+#+end_src

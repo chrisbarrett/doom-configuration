@@ -1,0 +1,8 @@
+# key: b
+# name: begin...
+# condition: (+yas-bolp)
+# uuid: 8616a3c1-efd4-436d-8b70-073d4bf5a2c1
+# --
+#+begin_${1:type}
+  $0
+#+end_$1

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: constructor
+# key: ctor
+# condition: (+yas-bolp)
+# uuid: 03474da4-ea1c-437b-83e3-96b29fd97833
+# --
+constructor($1) {
+  $0
+}

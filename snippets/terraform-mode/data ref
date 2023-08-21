@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: data ref
+# key: d
+# condition: (not (+yas-bolp))
+# uuid: 415c242b-f117-4397-8c51-99da54ccb1d4
+# --
+data.${1:type}.$0

@@ -1,0 +1,8 @@
+# key: for
+# name: for
+# condition: (+yas-bolp)
+# uuid: 124c69ad-28a5-41b0-8690-ed9ccb90cb96
+# --
+for $1 in $2 {
+    $0
+}

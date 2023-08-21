@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: console.log
+# key: log
+# condition: (and (+yas-bolp) (not (+yas-js-buffer-imports-logger-p)))
+# uuid: e110ada9-b386-4c62-8b3d-a32a6c9b6f77
+# --
+console.log(${1:JSON.stringify($0, null, 2)})

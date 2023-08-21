@@ -1,0 +1,6 @@
+# key: err
+# name: echo to stderr
+# condition: (+yas-bolp)
+# uuid: 6813e251-2677-42d4-97d6-f71af4e3cced
+# --
+>&2 echo "$0"

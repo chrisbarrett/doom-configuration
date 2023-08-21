@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: type
+# key: t
+# condition: (+yas-bolp)
+# uuid: cc618c4a-05e3-4097-89d2-5f090b57b04f
+# --
+type $1 = $0;

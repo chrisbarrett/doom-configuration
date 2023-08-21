@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: struct
+# key: st
+# condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))
+# uuid: a76f3fb8-9d1f-4f48-84d8-da53148b6640
+# --
+struct ${1:Name}
+{
+  $0
+}

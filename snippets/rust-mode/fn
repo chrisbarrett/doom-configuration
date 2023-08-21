@@ -1,0 +1,8 @@
+# key: f
+# name: fn
+# condition: (+yas-bolp)
+# uuid: 5903d03f-06f9-4bbc-9bd3-170dde17ce8b
+# --
+fn ${1:name}(${2:params...}) ${3:-> ${4:T} }{
+  $0
+}

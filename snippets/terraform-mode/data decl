@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: data decl
+# key: d
+# condition: (+yas-bolp)
+# uuid: 7a0e08df-374e-4870-9f86-d451d1c52a6f
+# --
+data "${1:source}" "${2:name}" {
+  $0
+}

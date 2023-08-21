@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: define-key
+# key: dk
+# uuid: 13165d16-d89e-486a-829e-707fe710c5da
+# --
+(define-key ${1:keymap} (kbd "${2:key}") #'${3:cmd})

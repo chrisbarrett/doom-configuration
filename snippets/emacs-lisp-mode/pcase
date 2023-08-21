@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: pcase
+# key: pc
+# uuid: df7f7e6f-fd2b-43ef-9ff2-f9df44a2de69
+# --
+(pcase ${1:form}
+  ($0))

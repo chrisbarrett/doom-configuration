@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: export async function
+# key: eaf
+# condition: (+yas-bolp)
+# uuid: 5855950e-c9b8-4f7b-9a2f-5d4765d79226
+# --
+export async function ${1:name}($2) {
+  $0
+}

@@ -1,0 +1,5 @@
+# key: #
+# name: keyword
+# uuid: bfe497e7-15b9-4768-b163-9a29ff4ea829
+# --
+#+${1:$$(s-downcase yas-text)}: $0

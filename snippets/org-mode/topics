@@ -1,0 +1,7 @@
+# key: topic
+# name: topics
+# condition: (+yas-bolp)
+# uuid: 72cdb82d-17df-48e5-856d-e335b7c1a2b5
+# --
+#+BEGIN: notes :match (rx bol "${1:`(or (-some->> (org-roam-node-at-point) (org-roam-node-title)) "Topic")`}: " (group (+ nonl))) :only-missing t
+#+END:

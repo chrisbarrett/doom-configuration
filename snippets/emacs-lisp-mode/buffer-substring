@@ -1,0 +1,5 @@
+# key: bs
+# name: buffer-substring
+# uuid: 38af748a-3bb0-4807-a47b-aea83d7caa0b
+# --
+(buffer-substring ${1:beg} ${2:end})$0

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: assert_eq
+# key: ae
+# condition: (+yas-bolp)
+# uuid: 55465230-c4d8-4a3a-aa72-c5cf59e019e6
+# --
+assert_eq!($1, $2);

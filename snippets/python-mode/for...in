@@ -1,0 +1,7 @@
+# key: f
+# name: for...in
+# condition: (+yas-bolp)
+# uuid: b67014f7-cab9-4991-b78b-3e47bb8ef517
+# --
+for ${1:name} in ${2:coll}:
+    $0

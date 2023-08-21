@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: println!
+# key: p
+# condition: (+yas-bolp)
+# uuid: b206c275-bc07-488b-a17b-98cfa543b979
+# --
+println!("$0");

@@ -1,0 +1,7 @@
+# -*- mode: snle
+# key: mod
+# uuid: 15935e58-58bf-468b-b1b2-2fff00057f9b
+# --
+mod ${1:name} {
+    $0
+}

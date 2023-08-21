@@ -1,0 +1,8 @@
+# key: p
+# name: package
+# condition: (+yas-bolp)
+# uuid: 110d0f03-7eea-480a-99d4-98364718e81c
+# --
+package "${1:name}" {
+  $0
+}

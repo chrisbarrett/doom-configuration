@@ -1,0 +1,7 @@
+# key: d
+# name: defun
+# condition: (+yas-bolp)
+# uuid: 874af58f-6d95-4caa-8b44-8e7a153bf82a
+# --
+(defun `(+yas-emacs-lisp-package-prefix)`${1:name} ($2)
+  $0)

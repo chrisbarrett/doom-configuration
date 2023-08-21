@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: setq-local
+# key: sl
+# binding: direct-keybinding
+# uuid: 1f54e84f-150c-443a-9f04-f9dead946a3a
+# --
+(setq-local ${1:var} ${2:value})$0

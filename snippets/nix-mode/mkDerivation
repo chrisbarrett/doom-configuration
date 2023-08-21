@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: mkDerivation
+# key: d
+# condition: (+yas-bolp)
+# uuid: 2f2f505f-52bc-4bf4-b79f-f4ac3cd10cb3
+# --
+{ stdenv }:
+
+stdenv.mkDerivation rec {
+  name = "$0-\${version}";
+  version = "";
+}
