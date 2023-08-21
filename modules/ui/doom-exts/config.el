@@ -24,10 +24,12 @@
   :config
   (setq paren-face-regexp (rx (any "{}();,")))
 
-  (pushnew! paren-face-modes 'csharp-mode 'js-base-mode 'lisp-data-mode 'typescript-ts-base-mode 'yaml-ts-mode)
+  (pushnew! paren-face-modes 'csharp-mode 'js-base-mode 'lisp-data-mode 'typescript-ts-base-mode 'yaml-ts-mode 'zig-mode)
 
   (font-lock-add-keywords 'js-base-mode `((,(rx (any ":")) 0 'parenthesis)))
-  (font-lock-add-keywords 'typescript-ts-base-mode `((,(rx (any ":")) 0 'parenthesis))))
+  (font-lock-add-keywords 'typescript-ts-base-mode `((,(rx (any ":")) 0 'parenthesis)))
+  (font-lock-add-keywords 'zig-mode `((,(rx (any ":")) 0 'parenthesis)))
+  )
 
 ;; Prevent display-buffer from creating new frames
 
