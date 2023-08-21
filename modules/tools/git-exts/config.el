@@ -24,6 +24,8 @@
 ;; KLUDGE: Avoid errors in repos where the primary branch is called 'main'
 ;; rather than 'master'.
 ;;
+;; TODO: Use upstream solution when available.
+;;
 ;; Related:
 ;;   https://github.com/alphapapa/magit-todos/issues/151
 (after! magit-todos
