@@ -3,8 +3,9 @@
 ;;; Set PATH correctly on Darwin
 
 ;; macOS prevents PATH being modified for graphical apps, so the wrapper set up
-;; with Nix won't work. Use another environment variable to pass through the
-;; desired value.
+;; with Nix won't work. I use another environment variable to pass through the
+;; desired value using `makeWrapper' with Nix, which bypasses this annoying
+;; behaviour.
 
 (when-let* ((path-extras (and IS-MAC (getenv "NIX_EMACS_DARWIN_PATH_EXTRAS"))))
 
@@ -15,13 +16,15 @@
   (autoload 'string-join "subr-x")
   (setenv "PATH" (string-join exec-path ":")))
 
-;; Use plantuml supplied by Nix
+;; Use plantuml supplied by Nix.
 
 (when-let* ((jar (getenv "NIX_EMACS_PLANTUML_JAR")))
   (after! plantuml
     ;; Gotta do it twice to shut up doom doctor.
     (setq plantuml-jar-path (concat doom-data-dir "plantuml.jar"))
     (setq org-plantuml-jar-path plantuml-jar-path)))
+
+;; Use Tex program provided by Nix.
 
 (when-let* ((program (getenv "NIX_EMACS_TEX_PROGRAM")))
   (after! tex
