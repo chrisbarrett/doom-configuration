@@ -55,7 +55,7 @@
        :completion
        corfu
        defaults
-       (vertico +icons +childframe)
+       (vertico +icons)
        vertico-exts
 
        :checkers
