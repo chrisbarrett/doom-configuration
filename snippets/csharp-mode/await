@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: a
 # name: await
 # condition: (or (+yas-bolp) (+yas-csharp-expression-context-p a))

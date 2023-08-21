@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: df
 # name: defface
 # condition: (+yas-bolp)

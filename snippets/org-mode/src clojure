@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: clj
 # name: src clojure
 # condition: (+yas-bolp)

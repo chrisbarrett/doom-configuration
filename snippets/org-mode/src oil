@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: oil
 # name: src oil
 # condition: (+yas-bolp)

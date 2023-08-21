@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: info
 # name: logger.info
 # condition: (and (+yas-bolp) (+yas-js-buffer-imports-logger-p))

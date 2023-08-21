@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: sw
 # name: switch
 # expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))

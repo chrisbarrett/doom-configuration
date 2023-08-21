@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: cl
 # name: class
 # condition: (+yas-bolp)

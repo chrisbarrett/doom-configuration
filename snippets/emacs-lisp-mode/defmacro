@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: dm
 # name: defmacro
 # condition: (+yas-bolp)

@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: c
 # name: case
 # condition: (and (+yas-bolp) (cl-plusp (syntax-ppss-depth (syntax-ppss))))

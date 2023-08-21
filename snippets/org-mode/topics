@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: topic
 # name: topics
 # condition: (+yas-bolp)

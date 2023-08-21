@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: lm
 # name: let-mut
 # condition: (+yas-bolp)

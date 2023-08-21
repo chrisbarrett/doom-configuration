@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: up
 # name: use-package!
 # expand-env: ((yas-indent-line (quote fixed)) (yas-wrap-around-region (quote t)))

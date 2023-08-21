@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: ras
 # name: require as
 # condition: (+yas-bolp)

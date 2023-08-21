@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: zo
 # name: zod object
 # condition: (+yas-bolp)

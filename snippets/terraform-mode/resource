@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: r
 # name: resource
 # condition: (+yas-bolp)

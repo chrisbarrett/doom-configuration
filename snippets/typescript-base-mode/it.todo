@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: todo
 # name: it.todo
 # condition: (and (+yas-bolp) (+yas-js-inside-describe-p))

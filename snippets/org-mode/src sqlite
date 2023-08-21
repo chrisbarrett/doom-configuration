@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: sqlite
 # name: src sqlite
 # condition: (+yas-bolp)

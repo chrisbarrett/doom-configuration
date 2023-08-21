@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: v
 # name: defvar
 # condition: (+yas-bolp)

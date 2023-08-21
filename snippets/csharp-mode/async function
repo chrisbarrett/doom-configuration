@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: af
 # name: async function
 # condition: (+yas-bolp)

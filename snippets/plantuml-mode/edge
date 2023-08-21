@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: e
 # name: edge
 # condition: (+yas-bolp)

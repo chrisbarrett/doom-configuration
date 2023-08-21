@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: l
 # name: lambda function
 # condition: (or (+yas-bolp) (+yas-csharp-expression-context-p "l"))

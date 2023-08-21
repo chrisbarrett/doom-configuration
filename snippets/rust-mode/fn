@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: f
 # name: fn
 # condition: (+yas-bolp)

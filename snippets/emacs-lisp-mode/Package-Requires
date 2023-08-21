@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: pr
 # name: Package-Requires
 # condition: (+yas-bolp)

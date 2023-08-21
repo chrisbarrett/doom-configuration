@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: s
 # name: static
 # condition: (+yas-bolp)

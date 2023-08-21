@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: e
 # name: enum case
 # condition: (and (+yas-bolp) (save-excursion (sp-backward-up-sexp) (string-match-p "enum" (buffer-substring (line-beginning-position) (line-end-position)))))

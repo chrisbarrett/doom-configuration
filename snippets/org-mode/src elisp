@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: el
 # name: src elisp
 # condition: (+yas-bolp)

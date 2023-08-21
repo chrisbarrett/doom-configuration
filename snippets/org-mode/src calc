@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: calc
 # name: src calc
 # condition: (+yas-bolp)

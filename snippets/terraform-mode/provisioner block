@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: pr
 # name: provisioner (local)
 # condition: (+yas-bolp)

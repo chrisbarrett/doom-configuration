@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: verr
 # name: VError subclass
 # condition: (+yas-bolp)

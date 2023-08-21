@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: wh
 # name: while
 # condition: (+yas-bolp)

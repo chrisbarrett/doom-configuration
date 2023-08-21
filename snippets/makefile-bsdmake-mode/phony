@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: p
 # name: .PHONY
 # expand-env: ((yas/indent-line (quote fixed)))

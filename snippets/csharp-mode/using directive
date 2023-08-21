@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: u
 # name: using directive
 # condition: (and (+yas-bolp) (zerop (syntax-ppss-depth (syntax-ppss))))

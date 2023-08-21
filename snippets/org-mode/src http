@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: http
 # name: src http
 # condition: (+yas-bolp)

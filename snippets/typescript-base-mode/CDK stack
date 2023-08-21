@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: st
 # name: CDK stack
 # condition: (+yas-bolp)

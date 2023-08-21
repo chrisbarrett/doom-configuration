@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: st
 # name: struct
 # condition: (+yas-bolp)

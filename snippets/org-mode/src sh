@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: sh
 # name: src sh
 # condition: (+yas-bolp)

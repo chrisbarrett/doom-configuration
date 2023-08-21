@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: err
 # name: echo to stderr
 # condition: (+yas-bolp)

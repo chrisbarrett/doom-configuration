@@ -1,3 +1,4 @@
+;;; -*- mode: snippet; -*-
 # key: cw
 # name: Console.WriteLine
 # condition: (or (+yas-bolp) (+yas-csharp-expression-context-p "cw"))
