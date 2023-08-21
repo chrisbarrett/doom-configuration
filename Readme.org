@@ -1,0 +1,7 @@
+#+title: Doom Configuration
+
+This is my personal Emacs configuration, written as a set of Doom modules. I use
+a mix of the modules provided by Doom and my own.
+
+In cases where my settings diverge from Doom's defaults, I will typically use
+the module provided by Doom and write another module to override the defaults.
