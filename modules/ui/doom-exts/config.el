@@ -18,13 +18,6 @@
 ;; trying to remove them all, just make calling the function a no-op.
 (defalias 'rainbow-delimiters-mode #'ignore)
 
-(remove-hook! (prog-mode text-mode conf-mode) 'highlight-indent-guides-mode)
-(add-hook! (yaml-mode nxml-mode python-ts-mode) 'highlight-indent-guides-mode)
-
-(after! highlight-indent-guides
-  (setq highlight-indent-guides-method 'fill)
-  (setq highlight-indent-guides-responsive t))
-
 (use-package! paren-face
   :defines (paren-face-modes)
   :hook (doom-first-input . global-paren-face-mode)

@@ -124,6 +124,7 @@
        emoji-exts
        hl-todo
        indent-guides
+       indent-guides-exts
        leader
        (ligatures +fira)
        modeline
