@@ -53,6 +53,9 @@
   (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
   (remove-hook 'compilation-filter-hook #'doom-apply-ansi-color-to-compilation-buffer-h))
 
+(after! doom-modeline
+  (setq doom-modeline-modal-icon nil))
+
 
 
 (defconst +theme-settings
