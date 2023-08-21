@@ -18,6 +18,10 @@ The rest of the line must be blank."
 ;;;###autoload
 (define-advice +snippet--completing-read-uuid (:override (prompt all-snippets &rest args) fix-text-property-access)
   ;; TODO: Remove this advice once fixed upstream.
+  ;;
+  ;; Related:
+  ;;   https://github.com/doomemacs/doomemacs/pull/7359
+  ;;   https://github.com/doomemacs/doomemacs/issues/4127
   (let* ((choices
           (cl-loop for (_ . tpl) in (mapcan #'yas--table-templates (if all-snippets
                                                                        (hash-table-values yas--tables)
