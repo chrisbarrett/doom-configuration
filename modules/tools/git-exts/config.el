@@ -20,3 +20,11 @@
 (map! :after (:and magit evil-collection)
       :map magit-mode-map
       :n "z" nil)
+
+;; KLUDGE: Avoid errors in repos where the primary branch is called 'main'
+;; rather than 'master'.
+;;
+;; Related:
+;;   https://github.com/alphapapa/magit-todos/issues/151
+(after! magit-todos
+  (setq magit-todos-branch-list-merge-base-ref "main"))
