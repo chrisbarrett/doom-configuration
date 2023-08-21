@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: pub fn
+# uuid: a54a4394-e87e-4a69-9b2f-78ba5aeb0c07
+# key: pf
+# condition: (+yas-bolp)
+# --
+pub fn ${1:name}(${2:args...}) ${3:ret} {
+    $0
+}

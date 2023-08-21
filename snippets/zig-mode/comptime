@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: comptime
+# uuid: 1fff6006-14a7-4ef0-89fe-b9a8066dfcf3
+# key: ct
+# condition: (+yas-bolp)
+# --
+comptime {
+    $0
+}
