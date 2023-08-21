@@ -7,6 +7,7 @@
 
 (package! company-sourcekit :disable t)
 (package! flycheck-plantuml :disable t)
+(package! flymake-popon :disable t)
 (package! lsp-mode :disable t)
 (package! lsp-sourcekit :disable t)
 (package! smartparens-python :disable t)
