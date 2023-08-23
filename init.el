@@ -98,6 +98,7 @@
        (latex +lsp +fold)
        nix
 
+       (ocaml +lsp)
        (org +dragndrop +roam2)
        (org-exts
         +citations
