@@ -9,7 +9,8 @@
                                  help-mode
                                  special-mode)))
 
-(map! "C-c SPC" 'emojify-insert-emoji)
+(map! "C-c SPC" 'emojify-insert-emoji
+      "C-x SPC" 'insert-char)
 
 (when IS-MAC
   (load! "+macos"))
