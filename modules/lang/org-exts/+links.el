@@ -13,3 +13,15 @@
 (after! ol
   ;; Open links in the current window
   (setf (alist-get 'file org-link-frame-setup) 'find-file))
+
+;;; Add indicators to fontified URL links
+
+(after! ol
+  (org-link-set-parameters
+   "github"
+   :activate-func (+link--prepend-custom-icon "" "github:")
+   :follow (lambda (link &rest _)
+             (browse-url (format "https://github.com/%s" (string-remove-prefix "github:" link)))))
+
+  (dolist (type '("http" "https"))
+    (org-link-set-parameters type :activate-func (+link--prepend-custom-icon "↗"))))
