@@ -20,7 +20,8 @@
 (+declare-custom-org-link-type https :icon "↗")
 
 (+declare-custom-org-link-type github
-  :icon ""
+  :icon (all-the-icons-alltheicon "git")
+  :face-properties (:height 1)
   :follow (lambda (link &rest _)
             (let ((path (string-remove-prefix "github:" link)))
               (browse-url (format "https://github.com/%s" path)))))

@@ -108,7 +108,7 @@
 
 
 
-(defun +ol--apply-custom-icon (start icon &optional prefix)
+(defun +ol--apply-custom-icon (start icon &optional prefix face-properties)
   (when prefix
     (add-text-properties start (+ start (length prefix)) '(invisible t)))
   (add-text-properties
@@ -117,18 +117,21 @@
          (concat
           (propertize icon
                       'face
-                      '(:weight light
+                      `(,@(text-properties-at 0 icon)
+                        ,@face-properties
                         :height 0.8
-                        :ascent 0.1
                         :inherit success))
           (propertize " " 'face '(:height 0.5))))))
 
 ;;;###autoload
-(cl-defmacro +declare-custom-org-link-type (type &key icon (prefix nil) (follow nil))
+(cl-defmacro +declare-custom-org-link-type (type &key icon (prefix nil) (follow nil) (face-properties nil))
   (declare (indent 1))
-  (let ((name (symbol-name type)))
+  (let* ((name (symbol-name type))
+         (icon (eval icon))
+         (prefix (or (eval prefix) (format "%s:" name)))
+         (follow (eval follow)))
     `(org-link-set-parameters
       ,name
       :activate-func (lambda (start &rest _)
-                       (+ol--apply-custom-icon start ,icon ,(or prefix (format "%s:" name))))
+                       (+ol--apply-custom-icon start ,icon ,prefix ',face-properties))
       ,@(when follow (list :follow follow)))))
