@@ -1,4 +1,4 @@
-;;; tools/git-exts/config.el -*- lexical-binding: t; -*-
+;;; tools/magit-exts/config.el -*- lexical-binding: t; -*-
 
 (after! git-auto-commit-mode
   (setq gac-debounce-interval 10)

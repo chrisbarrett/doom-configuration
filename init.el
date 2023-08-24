@@ -73,12 +73,12 @@
        direnv
        editorconfig
        (eval +overlay)
-       git-exts
        lookup
        (lsp +eglot)
        lsp-exts
        nix
        magit
+       magit-exts
        make
        search
        strings
