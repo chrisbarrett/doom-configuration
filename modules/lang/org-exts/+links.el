@@ -16,12 +16,11 @@
 
 ;;; Add indicators to fontified URL links
 
-(after! ol
-  (org-link-set-parameters
-   "github"
-   :activate-func (+link--prepend-custom-icon "" "github:")
-   :follow (lambda (link &rest _)
-             (browse-url (format "https://github.com/%s" (string-remove-prefix "github:" link)))))
+(+declare-custom-org-link-type http :icon "↗")
+(+declare-custom-org-link-type https :icon "↗")
 
-  (dolist (type '("http" "https"))
-    (org-link-set-parameters type :activate-func (+link--prepend-custom-icon "↗"))))
+(+declare-custom-org-link-type github
+  :icon ""
+  :follow (lambda (link &rest _)
+            (let ((path (string-remove-prefix "github:" link)))
+              (browse-url (format "https://github.com/%s" path)))))

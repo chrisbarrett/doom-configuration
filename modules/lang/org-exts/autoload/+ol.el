@@ -25,7 +25,8 @@
        (extract "GitHub"
                 (rx-to-string `(and bol "https://github.com/"
                                     (group (+? nonl) (or "/issues/" "/pull/") (+ digit))
-                                    ,query eol)))
+                                    ,query eol))
+                t)
 
        ;; (+ol-simplified-title-for-url "https://linear.app/COMPANY/issue/KEY-0000/the-quick-brown-fox")
        (-some->> (extract "Linear"
@@ -51,14 +52,18 @@
                 (rx bol "https://github.com/"
                     (group (+? nonl) "/" (+ nonl))
                     "/blob/" (+? nonl) "/"
-                    (group (+ nonl))))
+                    (group (+ nonl)))
+                t)
 
 
        ;; (+ol-simplified-title-for-url "https://github.com/org/repo")
-       (extract "GitHub" (rx bol "https://github.com/" (group (+ nonl))))
+       (extract "GitHub" (rx bol "https://github.com/" (group (+ nonl)))
+                t)
 
        (when (string-match-p (rx bol "https://" (+? any) ".slack.com/") url)
          "Slack link")))))
+
+
 
 (defun +ol--postprocess-retrieved-title (url title)
   (string-trim (cond
@@ -82,14 +87,48 @@
                                                  (org-cliplink-retrieve-title-synchronously url))))))
     (org-cliplink-elide-string title org-cliplink-max-length)))
 
+(defun +ol-format-as-some-link (url)
+  (let ((parsed (url-generic-parse-url url)))
+    (pcase (url-host parsed)
+      ("github.com" (concat "github:" (string-remove-prefix "/" (url-filename parsed))))
+      (_
+       (org-link-make-string
+        url
+        (+ol-guess-or-retrieve-title url) (read-string "Title: "))))))
+
 ;;;###autoload
 (defun +ol-insert-link (url)
   "Insert an orgmode link at point for URL."
   (interactive (list (+read-url)))
   (save-match-data
-    (let ((title (or (+ol-guess-or-retrieve-title url)
-                     (read-string "Title: "))))
-      (unless (thing-at-point-looking-at (rx bol (* space)))
-        (just-one-space))
-      (insert (org-link-make-string url title))
-      (just-one-space))))
+    (unless (thing-at-point-looking-at (rx bol (* space)))
+      (just-one-space))
+    (insert (+ol-format-as-some-link url))
+    (just-one-space)))
+
+
+
+(defun +ol--apply-custom-icon (start icon &optional prefix)
+  (when prefix
+    (add-text-properties start (+ start (length prefix)) '(invisible t)))
+  (add-text-properties
+   start (1+ start)
+   (list 'display
+         (concat
+          (propertize icon
+                      'face
+                      '(:weight light
+                        :height 0.8
+                        :ascent 0.1
+                        :inherit success))
+          (propertize " " 'face '(:height 0.5))))))
+
+;;;###autoload
+(cl-defmacro +declare-custom-org-link-type (type &key icon (prefix nil) (follow nil))
+  (declare (indent 1))
+  (let ((name (symbol-name type)))
+    `(org-link-set-parameters
+      ,name
+      :activate-func (lambda (start &rest _)
+                       (+ol--apply-custom-icon start ,icon ,(or prefix (format "%s:" name))))
+      ,@(when follow (list :follow follow)))))
