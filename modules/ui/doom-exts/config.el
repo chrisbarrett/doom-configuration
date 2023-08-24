@@ -10,7 +10,8 @@
                                  special-mode)))
 
 (map! "C-c SPC" 'emojify-insert-emoji
-      "C-x SPC" 'insert-char)
+      "C-x SPC" 'insert-char
+      :map (global-map) [remap make-frame] #'ignore)
 
 (when IS-MAC
   (load! "+macos"))
