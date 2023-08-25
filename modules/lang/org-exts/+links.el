@@ -14,14 +14,18 @@
   ;; Open links in the current window
   (setf (alist-get 'file org-link-frame-setup) 'find-file))
 
-;;; Add indicators to fontified URL links
+;;; Define link types with pretty icons
 
 (+declare-custom-org-link-type http :icon "↗")
 (+declare-custom-org-link-type https :icon "↗")
 
+(+declare-custom-org-link-type man
+  :icon (all-the-icons-faicon "book")
+  :follow (lambda (query &rest _)
+            (man query)))
+
 (+declare-custom-org-link-type github
   :icon (all-the-icons-alltheicon "git")
-  :face-properties (:height 1)
   :follow (lambda (link &rest _)
             (let ((path (string-remove-prefix "github:" link)))
               (browse-url (format "https://github.com/%s" path)))))
