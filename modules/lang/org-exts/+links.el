@@ -16,8 +16,13 @@
 
 ;;; Define link types with pretty icons
 
-(+declare-custom-org-link-type http :icon "↗")
-(+declare-custom-org-link-type https :icon "↗")
+(+declare-custom-org-link-type http
+  :icon "↗"
+  :face-properties (:v-adjust 0.05))
+
+(+declare-custom-org-link-type https
+  :icon "↗"
+  :face-properties (:v-adjust 0.05))
 
 (+declare-custom-org-link-type man
   :icon (all-the-icons-faicon "book" :height 0.9 :v-adjust -0.05)

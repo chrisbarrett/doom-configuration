@@ -126,7 +126,6 @@
 (cl-defmacro +declare-custom-org-link-type (type &key icon (prefix nil) (follow nil) (face-properties nil))
   (declare (indent 1))
   (let* ((name (symbol-name type))
-         (icon (eval icon))
          (prefix (or (eval prefix) (format "%s:" name)))
          (follow (eval follow)))
     `(org-link-set-parameters
