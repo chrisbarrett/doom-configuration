@@ -123,13 +123,19 @@
           (propertize " " 'face '(:height 0.5))))))
 
 ;;;###autoload
-(cl-defmacro +declare-custom-org-link-type (type &key icon (prefix nil) (follow nil) (face-properties nil))
+(cl-defmacro +declare-custom-org-link-type (type
+                                            &key
+                                            icon
+                                            (prefix nil)
+                                            (follow nil)
+                                            (face-properties nil)
+                                            (complete nil))
   (declare (indent 1))
   (let* ((name (symbol-name type))
-         (prefix (or (eval prefix) (format "%s:" name)))
-         (follow (eval follow)))
+         (prefix (or (eval prefix) (format "%s:" name))))
     `(org-link-set-parameters
       ,name
       :activate-func (lambda (start &rest _)
                        (+ol--apply-custom-icon start ,icon ,prefix ',face-properties))
+      ,@(when complete (list :complete complete))
       ,@(when follow (list :follow follow)))))
