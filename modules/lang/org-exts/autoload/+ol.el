@@ -92,9 +92,8 @@
     (pcase (url-host parsed)
       ("github.com" (concat "github:" (string-remove-prefix "/" (url-filename parsed))))
       (_
-       (org-link-make-string
-        url
-        (+ol-guess-or-retrieve-title url) (read-string "Title: "))))))
+       (org-link-make-string url
+                             (or (+ol-guess-or-retrieve-title url) (read-string "Title: ")))))))
 
 ;;;###autoload
 (defun +ol-insert-link (url)
