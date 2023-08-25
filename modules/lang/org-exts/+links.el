@@ -20,7 +20,7 @@
 (+declare-custom-org-link-type https :icon "↗")
 
 (+declare-custom-org-link-type man
-  :icon (all-the-icons-faicon "book")
+  :icon (all-the-icons-faicon "book" :height 0.9 :v-adjust -0.05)
   :follow (lambda (query &rest _)
             (man query)))
 
