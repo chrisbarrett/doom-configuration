@@ -118,3 +118,8 @@
                 " ${icon:3} "
                 " ${formatted-title:*} "
                 "${tags:*}")))
+
+(after! org-roam
+  (define-advice org-roam-db-node-p (:around (fn &rest args) ignore-errors)
+    (ignore-errors
+      (apply fn args))))
