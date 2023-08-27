@@ -147,6 +147,13 @@
 (after! evil
   (setq evil-org-key-theme '(todo navigation insert textobjects additional calendar)))
 
+;; Prefer inserting headings with M-RET
+
+(after! org
+  (add-hook! 'org-metareturn-hook
+    (when (org-in-item-p)
+      (org-insert-heading current-prefix-arg))))
+
 ;; Automatically enter insert state when inserting new headings, logbook notes
 ;; or when using `org-capture'.
 
