@@ -31,6 +31,18 @@
 
 (+declare-custom-org-link-type github
   :icon (all-the-icons-alltheicon "git")
-  :follow (lambda (link &rest _)
-            (let ((path (string-remove-prefix "github:" link)))
-              (browse-url (format "https://github.com/%s" path)))))
+  :follow (+ol-links-make-browse "github:" "https://github.com/%s")
+  :format
+  (lambda (url)
+    (when (equal "github.com" (url-domain url))
+      (concat link-prefix (string-remove-prefix "/" (url-filename url))))))
+
+(+declare-custom-org-link-type stackoverflow
+  :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
+  :follow (+ol-links-make-browse "stackoverflow:" "https://stackoverflow.com/%s")
+  :format (lambda (url)
+            (when (equal "stackoverflow.com" (url-domain url))
+              (let ((title (+ol-guess-or-retrieve-title url 'no-elide)))
+                (org-link-make-string (concat "stackoverflow:" (url-filename url))
+                                      (cadr (s-match (rx bol (group (+? nonl)) (* space) "-" (* space) "Stack Overflow")
+                                                     title)))))))
