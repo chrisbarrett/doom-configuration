@@ -22,6 +22,7 @@
        (extract "Jira"
                 (rx-to-string `(and ".atlassian.net/browse/" (group (+? nonl)) ,query eol)))
 
+       ;; (+ol-simplified-title-for-url "https://github.com/org/repo/pulls/33")
        (extract "GitHub"
                 (rx-to-string `(and bol "https://github.com/"
                                     (group (+? nonl) (or "/issues/" "/pull/") (+ digit))
@@ -79,21 +80,30 @@
 (defvar org-cliplink-max-length)
 
 ;;;###autoload
-(defun +ol-guess-or-retrieve-title (url)
-  (let ((title
-         (or (+ol-simplified-title-for-url url)
-             (+ol--postprocess-retrieved-title url
-                                               (let ((org-cliplink-max-length 1024))
-                                                 (org-cliplink-retrieve-title-synchronously url))))))
-    (org-cliplink-elide-string title org-cliplink-max-length)))
+(defun +ol-guess-or-retrieve-title (url &optional no-elide)
+  (let* ((url (if (stringp url) url (url-recreate-url url)))
+         (title
+          (or (+ol-simplified-title-for-url url)
+              (+ol--postprocess-retrieved-title url
+                                                (let ((org-cliplink-max-length 1024))
+                                                  (org-cliplink-retrieve-title-synchronously url))))))
+    (if no-elide
+        title
+      (org-cliplink-elide-string title org-cliplink-max-length))))
+
+(defvar +ol-custom-format-functions-alist nil
+  "Alist of link TYPE to format function.")
 
 (defun +ol-format-as-some-link (url)
-  (let ((parsed (url-generic-parse-url url)))
-    (pcase (url-host parsed)
-      ("github.com" (concat "github:" (string-remove-prefix "/" (url-filename parsed))))
-      (_
-       (org-link-make-string url
-                             (or (+ol-guess-or-retrieve-title url) (read-string "Title: ")))))))
+  (let ((parsed (url-generic-parse-url url))
+        (functions (seq-keep #'cdr +ol-custom-format-functions-alist)))
+    (or (seq-reduce (lambda (acc fn)
+                      (if acc
+                          acc
+                        (funcall fn parsed)))
+                    functions nil)
+        (org-link-make-string url
+                              (or (+ol-guess-or-retrieve-title url) (read-string "Title: "))))))
 
 ;;;###autoload
 (defun +ol-insert-link (url)
@@ -126,6 +136,7 @@
 (cl-defmacro +declare-custom-org-link-type (type
                                             &key
                                             icon
+                                            (format nil)
                                             (prefix nil)
                                             (follow nil)
                                             (face-properties nil)
@@ -133,9 +144,24 @@
   (declare (indent 1))
   (let* ((name (symbol-name type))
          (prefix (or (eval prefix) (format "%s:" name))))
-    `(org-link-set-parameters
-      ,name
-      :activate-func (lambda (start &rest _)
-                       (+ol--apply-custom-icon start ,icon ,prefix ',face-properties))
-      ,@(when complete (list :complete complete))
-      ,@(when follow (list :follow follow)))))
+    `(progn
+       (org-link-set-parameters
+        ,name
+        :activate-func (lambda (start &rest _)
+                         (+ol--apply-custom-icon start ,icon ,prefix ',face-properties))
+        ,@(when complete (list :complete complete))
+        ,@(when follow (list :follow follow)))
+
+       (setf (alist-get ,name +ol-custom-format-functions-alist) ,format))))
+
+;;;###autoload
+(defun +ol-links-make-browse (link-prefix domain)
+  (lambda (link &rest _)
+    (let ((path (string-remove-prefix link-prefix link)))
+      (browse-url (format domain path)))))
+
+;;;###autoload
+(defun +ol-links-make-format (domain link-prefix)
+  (lambda (url)
+    (when (equal domain (url-domain url))
+      (concat link-prefix (string-remove-prefix "/" (url-filename url))))))
