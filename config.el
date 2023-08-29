@@ -29,3 +29,8 @@
 
 (after! format-all
   (setq format-all-show-errors 'never))
+
+(after! projectile
+  (setq projectile-auto-discover t)
+  (add-to-list 'projectile-project-search-path (cons "~/src" 1))
+  (add-to-list 'projectile-project-search-path "~/.config"))
