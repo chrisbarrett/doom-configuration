@@ -81,6 +81,7 @@
 
 ;;;###autoload
 (defun +ol-guess-or-retrieve-title (url &optional no-elide)
+  (require 'org-cliplink)
   (let* ((url (if (stringp url) url (url-recreate-url url)))
          (title
           (or (+ol-simplified-title-for-url url)
