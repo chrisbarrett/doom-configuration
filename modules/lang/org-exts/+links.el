@@ -46,3 +46,18 @@
                 (org-link-make-string (concat "stackoverflow:" (url-filename url))
                                       (cadr (s-match (rx bol (group (+? nonl)) (* space) "-" (* space) "Stack Overflow")
                                                      title)))))))
+
+(+declare-custom-org-link-type slack
+  :icon (all-the-icons-faicon "slack" :height 0.9 :v-adjust 0.05)
+  :follow
+  (lambda (link &rest _)
+    (-let*  (((subdomain . path) (split-string (string-remove-prefix "slack:" link)
+                                                   "/"))
+             (prefix (format "https://%s.slack.com" subdomain)))
+      (browse-url (string-join (cons prefix path) "/"))))
+  :format (lambda (url)
+            (when (string-match-p (rx ".slack.com" eos) (url-domain url))
+              (-let* (((subdomain) (split-string (url-domain url) "."))
+                      (url-str (url-recreate-url url)))
+                (org-link-make-string (concat "slack:")
+                                      (read-string "Link Description: "))))))
