@@ -30,7 +30,7 @@
             (man query)))
 
 (+declare-custom-org-link-type github
-  :icon (all-the-icons-alltheicon "git")
+  :icon (all-the-icons-alltheicon "git" :height 0.9 :v-adjust 0.05)
   :follow (+ol-links-make-browse "github:" "https://github.com/%s")
   :format
   (lambda (url)
