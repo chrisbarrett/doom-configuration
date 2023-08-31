@@ -35,7 +35,7 @@
   :format
   (lambda (url)
     (when (equal "github.com" (url-domain url))
-      (concat link-prefix (string-remove-prefix "/" (url-filename url))))))
+      (concat "github:" (string-remove-prefix "/" (url-filename url))))))
 
 (+declare-custom-org-link-type stackoverflow
   :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
