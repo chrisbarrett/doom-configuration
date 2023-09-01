@@ -4,18 +4,15 @@
 
 (defun +nix--guess-prefetch-command-for-url (str)
   (let* ((url (url-generic-parse-url str))
-         (path (split-string (url-filename url) "/" t))
-         (args
-          (cond
-           ((equal (url-host url) "github.com")
-            (pcase-exhaustive path
-              (`(,owner ,repo ,(or "commit" "tree") ,rev)
-               (list "fetchFromGitHub" "--owner" owner "--repo" repo "--rev" rev))
-              (`(,owner ,repo)
-               (list "fetchFromGitHub" "--owner" owner "--repo" repo "--rev" "HEAD"))))
-           (t
-            (user-error "Unsupported URL: %s" str)))))
-    (cons "nix-prefetch" args)))
+         (path (split-string (url-filename url) "/" t)))
+    (or
+     (when (equal (url-host url) "github.com")
+       (pcase path
+         (`(,owner ,repo ,(or "commit" "tree") ,rev)
+          (list "nix-prefetch" "fetchFromGitHub" "--owner" owner "--repo" repo "--rev" rev))
+         (`(,owner ,repo)
+          (list "nix-prefetch""fetchFromGitHub" "--owner" owner "--repo" repo "--rev" "HEAD"))))
+     (list "nix-prefetch" str))))
 
 ;;;###autoload
 (defun +nix-copy-sha (input)
