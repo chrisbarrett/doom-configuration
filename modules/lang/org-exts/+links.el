@@ -37,6 +37,29 @@
     (when (equal "github.com" (url-domain url))
       (concat "github:" (string-remove-prefix "/" (url-filename url))))))
 
+(+declare-custom-org-link-type docs.rs
+  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
+  :follow (+ol-links-make-browse "docs.rs:" "https://docs.rs/%s")
+  :format
+  (lambda (url)
+    (when (equal "docs.rs" (url-domain url))
+      (let* ((parts
+              (->> (url-filename url)
+                   (file-name-split)
+                   (seq-drop-while #'seq-empty-p)
+                   (seq-take-while (-not #'seq-empty-p))))
+             (updated
+              (pcase parts
+                ((and `(,package ,version ,entry . ,rest)
+                      (guard (equal package entry)))
+                 (string-join (if (equal version "latest")
+                                  `(,package ,@rest)
+                                `(,package ,version ,entry ,@rest))
+                              "/"))
+                (_
+                 (string-join parts "/")))))
+        (concat "docs.rs:" updated)))))
+
 (+declare-custom-org-link-type stackoverflow
   :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
   :follow (+ol-links-make-browse "stackoverflow:" "https://stackoverflow.com/%s")
