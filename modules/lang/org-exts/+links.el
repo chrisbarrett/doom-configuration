@@ -52,7 +52,7 @@
   :follow
   (lambda (link &rest _)
     (-let*  (((subdomain . path) (split-string (string-remove-prefix "slack:" link)
-                                                   "/"))
+                                               "/"))
              (prefix (format "https://%s.slack.com" subdomain)))
       (browse-url (string-join (cons prefix path) "/"))))
   :format (lambda (url)
