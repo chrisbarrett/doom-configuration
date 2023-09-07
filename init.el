@@ -130,7 +130,6 @@
        (ligatures +fira)
        modeline
        ophints
-       (popup +defaults +all)
        (vc-gutter +pretty)
        vi-tilde-fringe
        window-management
