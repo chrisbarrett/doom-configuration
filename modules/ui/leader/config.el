@@ -19,7 +19,7 @@
         :desc "Toggle last popup"     "~"    #'+popup/toggle)
 
       :desc "Shell command"         "!"    #'async-shell-command
-      :desc "Search for symbol in project" "*" #'+default/search-project-for-symbol-at-point
+      :desc "Search for symbol in project" "*" #'+search-project-for-symbol-at-point
       :desc "Search project"               "/" #'+vertico/project-search
       :desc "rg (deadgrep)"         "S"    #'deadgrep
       :desc "Kill ring"             "R"    #'consult-yank-pop

@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 ;;;###autoload
-(defun +default/search-project-for-symbol-at-point (symbol dir)
+(defun +search-project-for-symbol-at-point (symbol dir)
   "Search current project for symbol at point.
 If prefix ARG is set, prompt for a known project to search from."
   (interactive
