@@ -8,6 +8,7 @@
       :ni "S-<return>" (general-predicate-dispatch #'+roam-follow-link-other-window
                          (org-at-table-p) 'org-table-copy-down)
 
+      :nm :desc "Backlinks (dedicated)" "<backtab>" #'+roam-backlinks-dedicated
 
       ;; Prevent C-c C-TAB from toggling table column on roam link insertion
       ;;
@@ -19,10 +20,6 @@
       ;; active while in a table.
       :v "C-c C-I" (general-predicate-dispatch 'org-roam-node-insert
                      (and (org-at-table-p) (not (region-active-p))) 'org-ctrl-c-tab))
-
-(map! :map org-roam-mode-map
-      :nm :desc "Hide" "<tab>" #'quit-window
-      :nm :desc "Backlinks (dedicated)" "<backtab>" #'+roam-backlinks-dedicated)
 
 (map! :localleader :map org-mode-map
       :after org-roam
