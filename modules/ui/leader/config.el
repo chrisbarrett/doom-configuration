@@ -197,8 +197,8 @@
        :desc "Worktree popup..."      "W"  #'magit-worktree)
 
       (:prefix-map ("h" . "help")
-       :desc "Info"                 "i" #'info
-       :desc "Manpage"              "m" #'woman
+       :desc "Info"                 "i"  #'info
+       :desc "Manpage"              "m"  #'+default/man-or-woman
        :desc "Face..."              "c"  #'describe-face
        :desc "Command..."           "C"  #'helpful-command
        :desc "Function..."          "f"  #'helpful-callable
