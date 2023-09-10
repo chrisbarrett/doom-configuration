@@ -8,8 +8,6 @@
       :ni "S-<return>" (general-predicate-dispatch #'+roam-follow-link-other-window
                          (org-at-table-p) 'org-table-copy-down)
 
-      :nm :desc "Backlinks (dedicated)" "<backtab>" #'+roam-backlinks-dedicated
-
       ;; Prevent C-c C-TAB from toggling table column on roam link insertion
       ;;
       ;; Emacs thinks C-c C-TAB and C-c C-i are the same key code. In org
@@ -28,6 +26,7 @@
               (with-current-buffer buf
                 (org-roam-buffer-refresh)))
             (org-roam-buffer-toggle))
+      :desc "Backlinks (dedicated)" "<backtab>" #'+roam-backlinks-dedicated
 
       :desc "Extract subtree" "E" #'org-roam-rewrite-extract
       :desc "Rename" "r" #'org-roam-rewrite-rename
