@@ -60,6 +60,17 @@
                  (string-join parts "/")))))
         (concat "docs.rs:" updated)))))
 
+(+declare-custom-org-link-type rust-docs
+  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
+  :prefix "rust-docs:"
+  :follow (+ol-links-make-browse "Rust Docs:" "https://doc.rust-lang.org/%s")
+  :format
+  (lambda (url)
+    (when (equal "doc.rust-lang.org" (url-host url))
+      (let* ((title (+ol-guess-or-retrieve-title url)))
+        (org-link-make-string (concat "rust-docs:" (string-remove-prefix "/" (url-filename url)))
+                              title)))))
+
 (+declare-custom-org-link-type stackoverflow
   :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
   :follow (+ol-links-make-browse "stackoverflow:" "https://stackoverflow.com/%s")
