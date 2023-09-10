@@ -56,7 +56,6 @@
                     (group (+ nonl)))
                 t)
 
-
        ;; (+ol-simplified-title-for-url "https://github.com/org/repo")
        (extract "GitHub" (rx bol "https://github.com/" (group (+ nonl)))
                 t)
