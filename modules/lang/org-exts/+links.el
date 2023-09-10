@@ -67,8 +67,7 @@
             (when (equal "stackoverflow.com" (url-domain url))
               (let ((title (+ol-guess-or-retrieve-title url 'no-elide)))
                 (org-link-make-string (concat "stackoverflow:" (url-filename url))
-                                      (cadr (s-match (rx bol (group (+? nonl)) (* space) "-" (* space) "Stack Overflow")
-                                                     title)))))))
+                                      (string-remove-suffix " - Stack Overflow" title))))))
 
 (+declare-custom-org-link-type slack
   :icon (all-the-icons-faicon "slack" :height 0.9 :v-adjust 0.05)
