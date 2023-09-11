@@ -115,8 +115,3 @@
                 " ${formatted-title:*} "
                 "${tags:*}")))
 
-;;; Suppress errors that cause warnings on save
-
-(after! org-roam
-  (define-advice org-roam-db-autosync--try-update-on-save-h (:around (fn &rest args) ignore-errors)
-    (ignore-errors (apply fn args))))
