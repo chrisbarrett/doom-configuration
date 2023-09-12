@@ -96,17 +96,19 @@
   (add-hook 'before-save-hook #'+roam-default-headings-populate nil t))
 
 (after! (:and org-roam org-roam-review)
-  (cl-defmethod org-roam-node-formatted-title ((node org-roam-node))
-    (-let [(result &as &plist :title :subject) (+roam-node-topic-parse node)]
-      (if subject
-          (concat (propertize (concat "/" subject) 'face 'org-property-value) " " title)
-        title)))
+  (eval `(progn
 
-  (cl-defmethod org-roam-node-icon ((node org-roam-node))
-    (condition-case nil
-        (when-let* ((maturity (car (seq-intersection org-roam-review-maturity-values (org-roam-node-tags node)))))
-          (alist-get maturity org-roam-review-maturity-emoji-alist nil nil #'string=))
-      (error "")))
+           (cl-defmethod org-roam-node-formatted-title ((node org-roam-node))
+             (-let [(result &as &plist :title :subject) (+roam-node-topic-parse node)]
+               (if subject
+                   (concat (propertize (concat "/" subject) 'face 'org-property-value) " " title)
+                 title)))
+
+           (cl-defmethod org-roam-node-icon ((node org-roam-node))
+             (condition-case nil
+                 (when-let* ((maturity (car (seq-intersection org-roam-review-maturity-values (org-roam-node-tags node)))))
+                   (alist-get maturity org-roam-review-maturity-emoji-alist nil nil #'string=))
+               (error "")))))
 
   ;; Customise completion UI
   (setq org-roam-node-display-template
