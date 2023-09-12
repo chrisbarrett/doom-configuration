@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: tests module
+# uuid: 1af574ad-5e79-4d04-a579-d2c53d8fa3f9
+# key: tests
+# condition: (+yas-bolp)
+# --
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_$1() {
+        assert_eq!(true, false);
+    }
+}
