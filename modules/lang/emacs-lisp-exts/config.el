@@ -2,11 +2,19 @@
 
 (map! "C-c e e" #'toggle-debug-on-error)
 
+(map! :after ert
+      :map 'ert-results-mode-map
+      :m "gr" (cmd! (ert (car ert--selector-history))))
+
 (after! elisp-mode
   (map! :map emacs-lisp-mode-map
         "C-c C-c" #'eval-defun
         "C-c C-m" #'pp-macroexpand-last-sexp
         [remap +format/region-or-buffer] #'+elisp-indent-dwim)
+
+  (map! :localleader
+        :map emacs-lisp-mode-map
+        "t" 'ert)
 
   (defface +emacs-triple-semi-comment-text
     '((t
