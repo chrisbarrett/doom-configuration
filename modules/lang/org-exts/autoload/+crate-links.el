@@ -66,7 +66,13 @@
                           (if (equal 1 (length split))
                               (string-join (list crate version ns "index.html")
                                            "/")
-                            (let ((parts (append (list crate version) split)))
+                            (let* ((last-item (car (last split)))
+                                   (module-doc-p (string-match-p (rx bol (or "fn" "trait" "impl" "struct" "enum" "type" "macro") "." (+ nonl))
+                                                                 last-item))
+                                   (parts (append (list crate version)
+                                                  split
+                                                  (unless module-doc-p
+                                                    '("index")))))
                               (concat (string-join parts "/") ".html")))))))
 
     (pcase (string-split title "/")
@@ -99,3 +105,9 @@
   (should (equal "https://docs.rs/f-o-o/latest/f_o_o/bar/fn.baz.html"
                  (+crate-links--docs.rs-title-to-url
                   "f_o_o::bar::fn.baz"))))
+
+(ert-deftest test/+crate-links--round-trip--futures ()
+  (let ((url "https://docs.rs/futures/latest/futures/future/index.html"))
+    (should (equal url
+                   (+crate-links--docs.rs-title-to-url
+                    (+crate-links-docs.rs-title-parse url))))))
