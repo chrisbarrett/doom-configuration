@@ -49,13 +49,14 @@
          (string-replace "-" " "))
 
        ;; (+ol-simplified-title-for-url "https://doc.rust-lang.org/std/ops/trait.Fn.html")
-       (-some->> (extract "docs.rust-lang.org"
-                          (rx bol "https://doc.rust-lang.org/" (group (+? nonl)) (? ".html") eos)
+       (extract "docs.rust-lang.org"
+                (rx bol "https://doc.rust-lang.org/" (group (+? nonl)) (? ".html") eos)
+                'no-host)
+
+       (-some->> (extract "docs.rs"
+                          (rx bol "https://docs.rs/" (group (+? nonl)) (? ".html") eos)
                           'no-host)
-         (string-replace "/trait." "::")
-         (string-replace "/enum." "::")
-         (string-replace "/struct." "::")
-         (string-replace "/" "::"))
+         (+crate-links-docs.rs-title))
 
        ;; (+ol-simplified-title-for-url "https://github.com/org/repo/blob/master/path/file.md")
        (extract "GitHub"

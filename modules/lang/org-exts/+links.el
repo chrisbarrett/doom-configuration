@@ -41,31 +41,12 @@
   :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
   :follow
   (lambda (link &rest _)
-    (-let* (((crate-ref rest) (string-split link ":"))
-            ((crate . version) (split-string crate-ref "@"))
-            (version (or (car version) "latest"))
-            (url-components (list "https://docs.rs" crate version crate rest)))
-      (browse-url (string-join (seq-keep #'identity url-components)
-                               "/"))))
+    (browse-url (+crate-links--docs.rs-title-to-url link)))
   :format
   (lambda (url)
     (when (equal "docs.rs" (url-domain url))
-      (let* ((parts
-              (->> (url-filename url)
-                   (string-remove-suffix "index.html")
-                   (file-name-split)
-                   (seq-drop-while #'seq-empty-p)
-                   (seq-take-while (-not #'seq-empty-p))))
-             (updated
-              (pcase parts
-                ((and `(,package ,version ,entry . ,rest)
-                      (guard (equal package entry)))
-                 (if (equal version "latest")
-                     (concat package ":" (string-join rest "/"))
-                   (concat package "@" version ":" (string-join (cons entry rest) "/"))))
-                (_
-                 (string-join parts "/")))))
-        (concat "docs.rs:" updated)))))
+      (let ((title (+crate-links-docs.rs-title-parse (url-recreate-url url))))
+        (concat "docs.rs:" title)))))
 
 (+declare-custom-org-link-type rust-docs
   :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
