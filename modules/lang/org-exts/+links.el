@@ -37,27 +37,32 @@
     (when (equal "github.com" (url-domain url))
       (concat "github:" (string-remove-prefix "/" (url-filename url))))))
 
+(+declare-custom-org-link-type rust
+  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
+  :follow
+  (lambda (link &rest _)
+    (browse-url (+crate-links-title-to-url link)))
+  :format
+  (lambda (url)
+    (when (member  (url-domain url) ("doc.rust-lang.org" "docs.rs"))
+      (let ((title (+crate-links-url-to-title (url-recreate-url url))))
+        (concat "rust:" title)))))
+
+;; deprecated
+(+declare-custom-org-link-type rust-docs
+  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
+  :follow
+  (lambda (link &rest _)
+    (browse-url (+crate-links-title-to-url link)))
+  :format (-const nil))
+
+;; deprecated
 (+declare-custom-org-link-type docs.rs
   :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
   :follow
   (lambda (link &rest _)
-    (browse-url (+crate-links--docs.rs-title-to-url link)))
-  :format
-  (lambda (url)
-    (when (equal "docs.rs" (url-domain url))
-      (let ((title (+crate-links-docs.rs-title-parse (url-recreate-url url))))
-        (concat "docs.rs:" title)))))
-
-(+declare-custom-org-link-type rust-docs
-  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
-  :prefix "rust-docs:"
-  :follow (+ol-links-make-browse "Rust Docs:" "https://doc.rust-lang.org/%s")
-  :format
-  (lambda (url)
-    (when (equal "doc.rust-lang.org" (url-host url))
-      (let* ((title (+ol-guess-or-retrieve-title url)))
-        (org-link-make-string (concat "rust-docs:" (string-remove-prefix "/" (url-filename url)))
-                              title)))))
+    (browse-url (+crate-links-title-to-url link)))
+  :format (-const nil))
 
 (+declare-custom-org-link-type stackoverflow
   :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
