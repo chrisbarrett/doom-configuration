@@ -44,7 +44,7 @@
     (browse-url (+crate-links-title-to-url link)))
   :format
   (lambda (url)
-    (when (member  (url-domain url) ("doc.rust-lang.org" "docs.rs"))
+    (when (member  (url-domain url) '("doc.rust-lang.org" "docs.rs"))
       (let ((title (+crate-links-url-to-title (url-recreate-url url))))
         (concat "rust:" title)))))
 
