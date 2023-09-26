@@ -8,7 +8,7 @@
 
 (when (modulep! +modern)
   (add-hook 'org-mode-hook #'org-modern-mode)
-  (after! 'org
+  (after! org
     (setq org-modern-list nil)
     (setq org-auto-align-tags nil)
     (setq org-tags-column nil)
