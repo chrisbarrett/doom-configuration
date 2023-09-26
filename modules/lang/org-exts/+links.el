@@ -48,22 +48,6 @@
       (let ((title (+crate-links-url-to-title (url-recreate-url url))))
         (concat "rust:" title)))))
 
-;; deprecated
-(+declare-custom-org-link-type rust-docs
-  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
-  :follow
-  (lambda (link &rest _)
-    (browse-url (+crate-links-title-to-url link)))
-  :format (-const nil))
-
-;; deprecated
-(+declare-custom-org-link-type docs.rs
-  :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
-  :follow
-  (lambda (link &rest _)
-    (browse-url (+crate-links-title-to-url link)))
-  :format (-const nil))
-
 (+declare-custom-org-link-type stackoverflow
   :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
   :follow (+ol-links-make-browse "stackoverflow:" "https://stackoverflow.com/%s")
