@@ -110,6 +110,13 @@
          (:foreground "#a9a1e1" :weight semibold :extend t))
         (((background light))
          (:foreground "#6c71c4" :weight semibold :extend t))))
+      (magit-tag
+       ;; Inversion of normal colours for themes
+       ((((background dark))
+         (:underline "#b58900"))
+        (((background light))
+         (:underline "#ECBE7B"))))
+
       (org-document-info-keyword ((t :italic nil)) t)
       (org-meta-line ((t :inherit font-lock-comment-face :italic nil :foreground unspecified)) t)
       (org-link ((t :weight unspecified :underline nil)) t)
