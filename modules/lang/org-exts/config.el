@@ -35,7 +35,9 @@
       :ni "C-c RET" (general-predicate-dispatch 'org-insert-todo-heading
                       (org-at-table-p) 'org-table-hline-and-move)
       :i "<tab>" (general-predicate-dispatch 'org-cycle
-                   (and (modulep! :editor snippets) (yas--templates-for-key-at-point)) #'yas-expand)
+                   (and (modulep! :editor snippets)
+                        (featurep 'yasnippet)
+                        (yas--templates-for-key-at-point)) #'yas-expand)
 
       :n "<backtab>" 'org-global-cycle
       :n "<tab>" 'org-cycle
