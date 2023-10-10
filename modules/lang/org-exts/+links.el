@@ -3,6 +3,8 @@
 (setq org-link-elisp-confirm-function 'y-or-n-p)
 (setq org-return-follows-link t)
 
+(autoload 'all-the-icons-faicon "all-the-icons")
+
 (after! evil
   (define-advice org-return (:around (fn &rest args) inhibit-follow-in-insert-state)
     (let ((org-return-follows-link (if (evil-insert-state-p)
