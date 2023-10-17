@@ -25,6 +25,10 @@
 
 (map! "C-c a" 'org-agenda)
 
+(after! org
+  (add-to-list 'warning-suppress-types 'org-element-cache)
+  (add-to-list 'warning-suppress-log-types 'org-element-cache))
+
 (map! :after org
       :map org-mode-map
       :ni "C-c l" #'+ol-insert-link
