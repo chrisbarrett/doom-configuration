@@ -37,14 +37,7 @@
 
   (setq org-roam-review-ignored-tags '("dailies" "litnotes"))
   (setq org-roam-review-tags-ignored-for-review-buffer '("dailies" "litnotes"))
-  (setq org-roam-review-show-instructions-p nil)
-  (setq org-roam-review-title-formatter (lambda (node)
-                                          (-let* (((&plist :title :subject) (+roam-node-topic-parse node))
-                                                  (title (propertize title 'font-lock-face 'magit-section-secondary-heading))
-                                                  (subject (when subject
-                                                             (propertize (concat subject ": ") 'font-lock-face
-                                                                         'font-lock-doc-face))))
-                                            (concat subject title)))))
+  (setq org-roam-review-show-instructions-p nil))
 
 ;;; org-roam-rewrite
 

@@ -78,12 +78,6 @@
       (add-text-properties (match-beginning 1) (match-end 1)
                            '(font-lock-fontified t face +roam-node-topic)))))
 
-(after! org-roam
-  ;; Insert nodes without the topic prefix if present
-  (setq org-roam-node-formatter
-        (lambda (node)
-          (plist-get (+roam-node-topic-parse node) :title))))
-
 ;;; Index with slipbox as tag
 
 (after! org-roam
@@ -95,25 +89,35 @@
 (add-hook! 'org-mode-hook
   (add-hook 'before-save-hook #'+roam-default-headings-populate nil t))
 
-(after! (:and org-roam org-roam-review)
+(add-hook! (org-roam-rewrite-node-renamed
+            org-roam-rewrite-node-extracted)
+  (run-with-idle-timer 3 nil #'+roam-node-file-cache-rebuild))
+
+(after! org-roam
   (eval `(progn
 
            (cl-defmethod org-roam-node-formatted-title ((node org-roam-node))
-             (-let [(result &as &plist :title :subject) (+roam-node-topic-parse node)]
-               (if subject
-                   (concat (propertize (concat "/" subject) 'face 'org-property-value) " " title)
-                 title)))
+             (pcase-let ((`(,title . ,rest) (nreverse (+roam-node-title-hierarchy node))))
+               (let ((prefix (seq-map (fn! (propertize % 'face 'org-property-value)) (nreverse rest)))
+                     (title (propertize title 'face 'org-roam-title)))
+
+                 (string-join (append prefix (list title))
+                              (propertize ": " 'face 'org-property-value)))))
 
            (cl-defmethod org-roam-node-icon ((node org-roam-node))
+             (require 'org-roam-review)
              (condition-case nil
                  (when-let* ((maturity (car (seq-intersection org-roam-review-maturity-values (org-roam-node-tags node)))))
                    (alist-get maturity org-roam-review-maturity-emoji-alist nil nil #'string=))
                (error "")))))
 
+  (setq org-roam-node-formatter #'org-roam-node-formatted-title)
+  (setq org-roam-review-title-formatter #'org-roam-node-formatted-title)
+
   ;; Customise completion UI
   (setq org-roam-node-display-template
-        (concat (propertize "@${slipbox:9}" 'face 'org-tag)
-                " ${icon:3} "
-                " ${formatted-title:*} "
-                "${tags:*}")))
-
+        (concat
+         "${formatted-title:*} "
+         " ${icon:3} "
+         (propertize "@${slipbox:9}" 'face 'org-tag)
+         "${tags:*}")))
