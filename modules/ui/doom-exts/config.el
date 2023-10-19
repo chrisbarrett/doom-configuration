@@ -134,8 +134,6 @@
       (edebug-enabled-breakpoint ((t :bold t :inherit error)))
       (edebug-disabled-breakpoint ((t :bold t :inherit font-lock-builtin-face)))
 
-      (+roam-node-topic ((t :height 1.5 :slant italic :weight normal :inherit font-lock-constant-face)))
-
       (outline-1 ,outline-heading)
       (outline-2 ,outline-heading)
       (outline-3 ,outline-heading)

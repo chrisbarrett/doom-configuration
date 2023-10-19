@@ -69,15 +69,6 @@
                  (org-roam-db-query "SELECT id, file FROM nodes"))
     (org-id-add-location id file)))
 
-;;; Topic handling & fontification
-
-(define-advice org-fontify-meta-lines-and-blocks-1 (:after (&rest _) fontify-subject)
-  (save-excursion
-    (goto-char (point-min))
-    (when (search-forward-regexp (rx bol "#+title:" (+ space) (group (+? nonl) ":") (+ nonl)) nil t)
-      (add-text-properties (match-beginning 1) (match-end 1)
-                           '(font-lock-fontified t face +roam-node-topic)))))
-
 ;;; Index with slipbox as tag
 
 (after! org-roam

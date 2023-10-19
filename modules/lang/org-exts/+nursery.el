@@ -67,17 +67,18 @@
   ;; Ignore possibly-missing topic prefix when checking which backlinks were
   ;; customised
 
-  (defun +org-roam-normalise-node-title (node-or-title)
-    (-let [(&plist :title) (+roam-node-topic-parse node-or-title)]
-      (replace-regexp-in-string (rx (+ (any space "\n"))) "" (downcase title))))
+  (defun +org-roam-node-normalised-title (node-or-title)
+    (let* ((title-str (if (stringp node-or-title) node-or-title (org-roam-node-title node)))
+           (last-part (last (string-split title-str ":" t (rx space)))))
+      (replace-regexp-in-string (rx (+ (any space "\n"))) "" (downcase last-part))))
 
   (setq org-roam-rewrite-backlink-transformer
         (-lambda ((&plist :prev-node :new-id :new-desc :prev-desc))
-          (let* ((norm-titles (cons (+org-roam-normalise-node-title (org-roam-node-title prev-node))
-                                    (seq-map #'+org-roam-normalise-node-title
+          (let* ((norm-titles (cons (+org-roam-node-normalised-title prev-node)
+                                    (seq-map #'+org-roam-node-normalised-title
                                              (org-roam-node-aliases prev-node))))
                  (desc-customised-p
-                  (not (seq-contains-p norm-titles (+org-roam-normalise-node-title prev-desc)))))
+                  (not (seq-contains-p norm-titles (+org-roam-node-normalised-title prev-desc)))))
             (list :id new-id :desc (if desc-customised-p prev-desc new-desc))))))
 
 (defun +org-roam-ad-format-buffer (fn &rest args)
