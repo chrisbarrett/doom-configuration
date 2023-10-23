@@ -68,8 +68,10 @@
   ;; customised
 
   (defun +org-roam-node-normalised-title (node-or-title)
-    (let* ((title-str (if (stringp node-or-title) node-or-title (org-roam-node-title node)))
-           (last-part (last (string-split title-str ":" t (rx space)))))
+    (let* ((title-str (if (stringp node-or-title)
+                          node-or-title
+                        (org-roam-node-title node-or-title)))
+           (last-part (-last-item (string-split title-str ":" t (rx space)))))
       (replace-regexp-in-string (rx (+ (any space "\n"))) "" (downcase last-part))))
 
   (setq org-roam-rewrite-backlink-transformer
