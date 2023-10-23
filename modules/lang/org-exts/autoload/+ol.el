@@ -128,6 +128,7 @@
 
 
 (defun +ol--apply-custom-icon (start icon &optional prefix face-properties)
+  (skip-chars-forward "[")
   (when prefix
     (add-text-properties start (+ start (length prefix)) '(invisible t)))
   (add-text-properties
