@@ -3,6 +3,7 @@
 (after! emojify
   (setq emojify-download-emojis-p t)
   (setq emojify-point-entered-behaviour 'uncover)
+  (setq emojify-display-style 'unicode)
   (delq! 'string emojify-program-contexts)
 
   (add-hook! 'emojify-mode-hook
