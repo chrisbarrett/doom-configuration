@@ -74,7 +74,6 @@
                  (+crate-links-url-to-title
                   "https://docs.rs/foo/latest/foo/index.html"))))
 
-
 (ert-deftest test/+crate-links--parsing-std--top-nightly ()
   (should (equal "nightly/std"
                  (+crate-links-url-to-title "https://doc.rust-lang.org/nightly/std"))))
@@ -96,7 +95,7 @@
               (to-ns (crate)
                 (string-replace "-" "_" crate))
               (module-doc-p (split-path)
-                (string-match-p (rx bol (or "fn" "trait" "impl" "struct" "enum" "type" "macro") "." (+ nonl))
+                (string-match-p (rx bol (or "fn" "trait" "impl" "struct" "enum" "type" "macro" "primitive") "." (+ nonl))
                                 (-last-item split-path))))
 
     (let* ((split (split-string path ":" t))
