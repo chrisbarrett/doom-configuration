@@ -99,7 +99,6 @@
          (:background ,(doom-blend dark-bg "#51afef" 0.5) :extend t))
         (((background light))
          (:background ,(doom-blend light-bg "#268bd2" 0.4) :extend t))))
-      (org-superstar-header-bullet ,bullet)
       (org-agenda-clocking
        ((((background dark))
          (:foreground ,dark-fg :extend t))
