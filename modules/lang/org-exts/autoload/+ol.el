@@ -127,43 +127,38 @@
 
 
 
-(defun +ol--apply-custom-icon (start icon &optional prefix face-properties)
+(defun +ol--apply-custom-icon (start icon &optional prefix)
   (skip-chars-forward "[")
   (when prefix
     (add-text-properties start (+ start (length prefix)) '(invisible t)))
-  (add-text-properties
-   start (1+ start)
-   (list 'display
-         (concat
-          (propertize icon
-                      'face
-                      `(,@(text-properties-at 0 icon)
-                        ,@face-properties
-                        :height 0.8
-                        :inherit success))
-          (propertize " " 'face '(:height 0.5))))))
+  (let* ((icon-props
+          `(face (:height 0.8 :inherit success)
+            ,@(text-properties-at 0 icon)))
+         (display-string
+          (concat (apply 'propertize icon icon-props)
+                  (propertize " " 'face '(:height 0.5)))))
+    (add-text-properties start (1+ start) (list 'display display-string))))
 
 ;;;###autoload
-(cl-defmacro +declare-custom-org-link-type (type
-                                            &key
-                                            icon
-                                            (format nil)
-                                            (prefix nil)
-                                            (follow nil)
-                                            (face-properties nil)
-                                            (complete nil))
+(cl-defun +declare-custom-org-link-type (type
+                                         &key
+                                         icon
+                                         (format nil)
+                                         (prefix nil)
+                                         (follow nil)
+                                         (complete nil))
   (declare (indent 1))
-  (let* ((name (symbol-name type))
-         (prefix (or (eval prefix) (format "%s:" name))))
-    `(progn
-       (org-link-set-parameters
-        ,name
-        :activate-func (lambda (start &rest _)
-                         (+ol--apply-custom-icon start ,icon ,prefix ',face-properties))
-        ,@(when complete (list :complete complete))
-        ,@(when follow (list :follow follow)))
+  (after! org
+    (let ((prefix (or prefix (format "%s:" type))))
+      (apply #'org-link-set-parameters
+             (symbol-name type)
+             :activate-func (lambda (start &rest _)
+                              (+ol--apply-custom-icon start icon prefix))
+             `(list
+               ,@(when complete (list :complete complete))
+               ,@(when follow (list :follow follow))))
 
-       (setf (alist-get ,name +ol-custom-format-functions-alist) ,format))))
+      (setf (alist-get type +ol-custom-format-functions-alist) format))))
 
 ;;;###autoload
 (defun +ol-links-make-browse (link-prefix domain)

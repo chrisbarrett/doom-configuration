@@ -18,20 +18,18 @@
 
 ;;; Define link types with pretty icons
 
-(+declare-custom-org-link-type http
-  :icon "↗"
-  :face-properties (:v-adjust 0.05))
+(+declare-custom-org-link-type 'http
+  :icon (propertize "↗" 'face '(:v-adjust 0.05)))
 
-(+declare-custom-org-link-type https
-  :icon "↗"
-  :face-properties (:v-adjust 0.05))
+(+declare-custom-org-link-type 'https
+  :icon (propertize "↗" 'face '(:v-adjust 0.05)))
 
-(+declare-custom-org-link-type man
+(+declare-custom-org-link-type 'man
   :icon (all-the-icons-faicon "book" :height 0.9 :v-adjust -0.05)
   :follow (lambda (query &rest _)
             (man query)))
 
-(+declare-custom-org-link-type github
+(+declare-custom-org-link-type 'github
   :icon (all-the-icons-alltheicon "git" :height 0.9 :v-adjust 0.05)
   :follow (+ol-links-make-browse "github:" "https://github.com/%s")
   :format
@@ -39,7 +37,7 @@
     (when (equal "github.com" (url-domain url))
       (concat "github:" (string-remove-prefix "/" (url-filename url))))))
 
-(+declare-custom-org-link-type rust
+(+declare-custom-org-link-type 'rust
   :icon (concat (all-the-icons-alltheicon "rust" :v-adjust 0.05))
   :follow
   (lambda (link &rest _)
@@ -50,7 +48,7 @@
       (let ((title (+crate-links-url-to-title (url-recreate-url url))))
         (concat "rust:" title)))))
 
-(+declare-custom-org-link-type stackoverflow
+(+declare-custom-org-link-type 'stackoverflow
   :icon (all-the-icons-faicon "stack-overflow" :height 0.9 :v-adjust 0.05)
   :follow (+ol-links-make-browse "stackoverflow:" "https://stackoverflow.com/%s")
   :format (lambda (url)
@@ -59,7 +57,7 @@
                 (org-link-make-string (concat "stackoverflow:" (url-filename url))
                                       (string-remove-suffix " - Stack Overflow" title))))))
 
-(+declare-custom-org-link-type slack
+(+declare-custom-org-link-type 'slack
   :icon (all-the-icons-faicon "slack" :height 0.9 :v-adjust 0.05)
   :follow
   (lambda (link &rest _)
