@@ -127,32 +127,30 @@
 
 
 
-(defun +ol--apply-custom-icon (start icon &optional prefix)
-  (skip-chars-forward "[")
-  (when prefix
-    (add-text-properties start (+ start (length prefix)) '(invisible t)))
-  (let* ((icon-props
-          `(face (:height 0.8 :inherit success)
-            ,@(text-properties-at 0 icon)))
-         (display-string
-          (concat (apply 'propertize icon icon-props)
-                  (propertize " " 'face '(:height 0.5)))))
-    (add-text-properties start (1+ start) (list 'display display-string))))
+(defun +ol--apply-custom-icon (start end icon)
+  (let ((icon-string (apply 'propertize icon `(face (:height 0.8 :inherit success)
+                                               ,@(text-properties-at 0 icon))))
+        (space-string (propertize " " 'face '(:height 0.5)))
+        (link (buffer-substring start end)))
+
+    ;; TODO: Prevent icon from eating into protocol for bare links.
+
+    (add-text-properties start
+                         (+ start (1+ (s-index-of ":" link)))
+                         (list 'display (concat icon-string space-string)))))
 
 ;;;###autoload
 (cl-defun +declare-custom-org-link-type (type
                                          &key
                                          icon
                                          (format nil)
-                                         (prefix nil)
                                          (follow nil)
                                          (complete nil))
   (declare (indent 1))
   (after! org
-    (let ((prefix (or prefix (format "%s:" type)))
-          (args (list
-                 :activate-func (lambda (start &rest _)
-                                  (+ol--apply-custom-icon start icon prefix)))))
+    (let ((args (list
+                 :activate-func (lambda (start end _path _bracketed-p)
+                                  (+ol--apply-custom-icon start end icon)))))
       (when complete
         (appendq! args (list :complete complete)))
       (when follow
