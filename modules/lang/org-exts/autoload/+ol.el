@@ -149,14 +149,16 @@
                                          (complete nil))
   (declare (indent 1))
   (after! org
-    (let ((prefix (or prefix (format "%s:" type))))
-      (apply #'org-link-set-parameters
-             (symbol-name type)
-             :activate-func (lambda (start &rest _)
-                              (+ol--apply-custom-icon start icon prefix))
-             `(list
-               ,@(when complete (list :complete complete))
-               ,@(when follow (list :follow follow))))
+    (let ((prefix (or prefix (format "%s:" type)))
+          (args (list
+                 :activate-func (lambda (start &rest _)
+                                  (+ol--apply-custom-icon start icon prefix)))))
+      (when complete
+        (appendq! args (list :complete complete)))
+      (when follow
+        (appendq! args (list :follow follow)))
+
+      (apply #'org-link-set-parameters (symbol-name type) args)
 
       (setf (alist-get type +ol-custom-format-functions-alist) format))))
 
