@@ -207,3 +207,8 @@
 
 (when (modulep! +slack)
   (load! "+slack"))
+
+(define-advice org-reveal (:around (fn &rest args) org-buffers-only)
+  "Work around Doom errors attempting to use org-reveal in scratch buffer."
+  (when (derived-mode-p 'org-mode)
+    (apply fn args)))
