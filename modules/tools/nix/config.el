@@ -1,6 +1,6 @@
 ;;; tools/nix/config.el -*- lexical-binding: t; -*-
 
-(defvar +nix-config-directory "~/.config/nixpkgs"
+(defvar +nix-config-directory "~/.config/nix-configuration"
   "Directory containing the user's nix configuration.")
 
 (after! format-all
