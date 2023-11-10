@@ -123,6 +123,7 @@
        doom-exts
        (emoji +github +unicode)
        emoji-exts
+       harpoon
        hl-todo
        indent-guides
        indent-guides-exts
