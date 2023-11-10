@@ -49,7 +49,7 @@ window."
 (defun +roam-node-title-for-file (file)
   (when (hash-table-empty-p +roam--file-to-node-title-lookup)
     (+roam-node-file-cache-rebuild)
-    (run-with-idle-timer 1 'garbage-collect))
+    (run-with-idle-timer 1 nil 'garbage-collect))
   (gethash file +roam--file-to-node-title-lookup))
 
 ;;;###autoload
