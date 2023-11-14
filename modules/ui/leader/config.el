@@ -270,12 +270,15 @@
        :desc "Shell command..." "!"  #'projectile-run-async-shell-command-in-root
        :desc "Invalidate project cache" "i" #'projectile-invalidate-cache
        :desc "Compile..."       "c"  #'projectile-compile-project
+       :desc "Switch... (dired)" "j" (cmd!
+                                      (let ((projects (projectile-relevant-known-projects)))
+                                        (dired (completing-read "Dired: " projects nil t))))
        :desc "Test..."          "t" #'projectile-test-project
        :desc "Switch..."        "p"  #'projectile-switch-project
        :desc "Find other file"  "TAB" #'projectile-find-other-file
        :desc "Find file..."     "f"  #'projectile-find-file
-       :desc "Find dir..."      "d"  #'projectile-dired
-       :desc "Find dir..."      "D"  #'projectile-dired-other-window
+       :desc "Find dir..."      "d"  #'projectile-find-dir
+       :desc "Find dir..."      "D"  #'projectile-find-dir-other-window
        :desc "Switch buffer..." "b"  #'projectile-switch-to-buffer
        :desc "Search (rg)"      "/"  #'consult-ripgrep
        :desc "Run..."           "R" #'projectile-run-project
