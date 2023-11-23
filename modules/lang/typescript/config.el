@@ -11,6 +11,9 @@
 (add-to-list 'auto-mode-alist (cons (rx "." (? (any "m" "c")) "ts" (? "x") eos)
                                     'typescript-ts-mode))
 
+(add-to-list 'auto-mode-alist (cons (rx "." (? (any "m" "c")) "js" (? "x") eos)
+                                    'js-ts-mode))
+
 (setq-hook! 'typescript-ts-base-mode-hook +evil-want-o/O-to-continue-comments nil)
 
 (when (getenv "EMACS_IN_NIX")
