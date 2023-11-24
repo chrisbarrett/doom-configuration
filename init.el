@@ -67,6 +67,7 @@
        :term
        eshell
        eshell-exts
+       oil
 
        :tools
        (docker +lsp)
