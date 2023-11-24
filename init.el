@@ -97,7 +97,7 @@
        (graphql +lsp)
        (json +lsp)
        (latex +lsp +fold)
-       nix
+       (nix +lsp)
 
        (ocaml +lsp)
        (org +dragndrop +roam2)
