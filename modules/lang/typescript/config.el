@@ -14,6 +14,8 @@
 (add-to-list 'auto-mode-alist (cons (rx "." (? (any "m" "c")) "js" (? "x") eos)
                                     'js-ts-mode))
 
+(add-to-list 'auto-mode-alist (cons (rx ".json"  eos) 'json-ts-mode))
+
 (setq-hook! 'typescript-ts-base-mode-hook +evil-want-o/O-to-continue-comments nil)
 
 (when (getenv "EMACS_IN_NIX")
