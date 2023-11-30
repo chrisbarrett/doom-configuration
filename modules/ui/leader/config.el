@@ -192,6 +192,7 @@
        :desc "Remote: browse"         "r"  #'browse-at-remote
        :desc "Git time machine"       "t"   #'git-timemachine-toggle
        :desc "Remote: copy"           "y"  #'browse-at-remote-kill
+       :desc "Open link at pt"        "o"  #'link-hint-open-link-at-point
        :desc "Log"                    "l"  #'magit-log-buffer-file
        :desc "Worktree..."            "w"  #'magit-worktree-status
        :desc "Worktree popup..."      "W"  #'magit-worktree)
