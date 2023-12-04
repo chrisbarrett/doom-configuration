@@ -6,6 +6,7 @@
 (package! orgtbl-aggregate)
 (package! page-break-lines)
 (package! poporg)
+(package! gnuplot)
 
 (when (modulep! +citations)
   (package! citar)
