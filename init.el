@@ -78,7 +78,7 @@
        (lsp +eglot)
        lsp-exts
        nix
-       magit
+       (magit +forge)
        magit-exts
        make
        search
