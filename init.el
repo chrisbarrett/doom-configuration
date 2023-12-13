@@ -132,6 +132,7 @@
        (ligatures +fira)
        modeline
        ophints
+       (popup +all)
        (vc-gutter +pretty)
        vi-tilde-fringe
        window-management
