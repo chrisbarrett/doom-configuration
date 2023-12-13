@@ -4,8 +4,10 @@
   (evil-set-initial-state 'chatgpt-shell-mode 'insert)
   (setq chatgpt-display-function #'display-buffer)
   (setq chatgpt-shell-openai-key
-        (lambda ()
-          (auth-source-pick-first-password :host "api.openai.com")))
+        (let ((cached))
+          (lambda ()
+            (setq cached (or cached
+                             (string-trim (shell-command-to-string "op read 'op://Private/OpenAI API Key/token'")))))))
 
   (let ((gpt-latest "gpt-4-1106-preview" ))
     (setq chatgpt-shell-model-version gpt-latest)
