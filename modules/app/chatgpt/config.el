@@ -1,6 +1,7 @@
 ;;; app/chatgpt/config.el -*- lexical-binding: t; -*-
 
 (after! chatgpt-shell
+  (evil-set-initial-state 'chatgpt-shell-mode 'insert)
   (setq chatgpt-display-function #'display-buffer)
   (setq chatgpt-shell-openai-key
         (lambda ()
