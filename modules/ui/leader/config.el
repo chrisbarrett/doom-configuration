@@ -24,7 +24,7 @@
       :desc "rg (deadgrep)"         "S"    #'+search/deadgrep
       :desc "Kill ring"             "R"    #'consult-yank-pop
       :desc "Rotate window layout"  "|"    #'rotate-layout
-      :desc "Toggle side windows"   "-"    #'window-toggle-side-windows
+      :desc "Toggle side windows"   "-"    #'+popup/toggle
       :desc "Delete window"         "q"    #'delete-window
 
       :desc "Prev buffer"           "TAB"  #'+swap-buffers
