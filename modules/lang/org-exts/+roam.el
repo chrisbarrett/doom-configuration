@@ -50,6 +50,11 @@
   ;; Keep the DB in sync.
   (org-roam-db-autosync-enable))
 
+(use-package! org-roam-gc
+  :after org-roam
+  :demand t
+  :hook (org-mode . org-roam-gc-automatically))
+
 ;; Apply a CREATED timestamp property to new nodes
 (add-hook! 'org-roam-capture-new-node-hook
   (org-with-wide-buffer
