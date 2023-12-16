@@ -248,6 +248,14 @@
        :desc "Search..."          "s"  #'org-roam-search
        :desc "Roam file..."       "f"  #'+roam-node-find
 
+       (:when (or (modulep! :lang org +roam2)
+                  (modulep! :lang org-exts +roam))
+         :desc "Daily Note"        "n"  #'org-roam-dailies-goto-today
+         (:prefix-map ("d" . "Dailies")
+          :desc "today"         "t"  #'org-roam-dailies-goto-today
+          :desc "yesterday"     "y"  #'org-roam-dailies-goto-yesterday
+          :desc "goto date..."  "d"  #'org-roam-dailies-goto-date))
+
        (:prefix-map ("c" . "clock")
         :desc "Punch in"          "i"  #'timekeep-start
         :desc "Punch out"         "o"  #'timekeep-stop
