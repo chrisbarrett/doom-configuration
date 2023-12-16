@@ -134,7 +134,7 @@
   (unless (and +org--agenda-update-process (process-live-p +org--agenda-update-process))
     (let ((default-directory org-directory))
       (setq +org--agenda-update-process
-            (start-process-shell-command "update-org-agenda-files" nil "rg --follow --files-with-matches '^(CLOCK:|[*]+ +(TODO|WAIT))' roam -g '!attach' -g '!dailies' > org-agenda-files")))))
+            (start-process-shell-command "update-org-agenda-files" nil "rg --follow --files-with-matches '^(CLOCK:|[*]+ +(TODO|WAIT))' roam -g '!attach' -g '!daily' > org-agenda-files")))))
 
 (add-hook! after-save-hook
   (when (derived-mode-p 'org-mode)

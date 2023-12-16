@@ -35,8 +35,8 @@
 (after! org-roam-review
   (add-hook 'org-roam-review-next-node-selected-hook 'org-roam-buffer--redisplay-h 91)
 
-  (setq org-roam-review-ignored-tags '("dailies" "litnotes"))
-  (setq org-roam-review-tags-ignored-for-review-buffer '("dailies" "litnotes"))
+  (setq org-roam-review-ignored-tags '("daily" "litnotes"))
+  (setq org-roam-review-tags-ignored-for-review-buffer '("daily" "litnotes"))
   (setq org-roam-review-show-instructions-p nil))
 
 ;;; org-roam-rewrite
