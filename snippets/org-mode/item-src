@@ -7,4 +7,4 @@
 `(just-one-space)`Source:
     #+begin_src ${1:lang}
       $0
-    #+end_quote
+    #+end_src

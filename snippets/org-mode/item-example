@@ -7,4 +7,4 @@
 `(just-one-space)`${1:Example}:
     #+begin_example ${2:lang}
       $0
-    #+end_quote
+    #+end_example
