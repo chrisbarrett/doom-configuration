@@ -110,7 +110,8 @@
         :vn ")" #'end-of-defun)
 
   (map! :map evil-surround-mode-map
-        :v "s" #'evil-surround-region))
+        :v "s" #'evil-surround-region)
+  (global-evil-surround-mode +1))
 
 (after! evil-surround
   (add-hook! magit-mode (evil-surround-mode -1))
