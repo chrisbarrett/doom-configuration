@@ -97,7 +97,14 @@
 (advice-add 'org-roam-preview-visit :around #'+org-roam-ad-format-buffer)
 (advice-add 'org-link-open :around #'+org-roam-ad-format-buffer)
 
-(add-hook 'org-mode-hook #'org-format-on-save-mode)
+(after! apheleia
+  (add-to-list 'apheleia-formatters '(org-format . +org-format-buffer-apheleia-adapter)))
+
+(when (modulep! :editor format)
+  (add-hook! 'org-mode-hook
+    (when (ignore-errors
+            (f-descendant-of-p (buffer-file-name) org-directory))
+      (setq-local apheleia-formatter 'org-format))))
 
 ;;; org-roam-search
 
