@@ -6,8 +6,11 @@
   (setq chatgpt-shell-openai-key
         (let ((cached))
           (lambda ()
-            (setq cached (or cached
-                             (string-trim (shell-command-to-string "op read 'op://Private/OpenAI API Key/token'")))))))
+            (let ((result (or cached
+                              (string-trim (shell-command-to-string "op read 'op://Private/OpenAI API Key/token'")))))
+              (when (string-match-p (rx bol "[ERROR]") result)
+                (error "Error caching OpenAI API key: %s" result))
+              (setq cached result)))))
 
   (let ((gpt-latest "gpt-4-1106-preview" ))
     (setq chatgpt-shell-model-version gpt-latest)
