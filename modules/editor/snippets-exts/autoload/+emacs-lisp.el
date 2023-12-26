@@ -43,7 +43,14 @@ Fall back to the file name sans extension."
 
 ;;;###autoload
 (defun +yas-emacs-lisp-buttercup-file-p ()
-  (string-match-p "^test-" (file-name-nondirectory (buffer-file-name))))
+  (when (derived-mode-p 'emacs-lisp-mode)
+    (let ((result (or
+                   (string-match-p (rx bol (* space) "(" (or "describe" "it") symbol-end)
+                                   (buffer-string))
+                   (when-let* ((filename (buffer-file-name)))
+                     (string-match-p "^test-" (file-name-nondirectory filename))))))
+
+      (numberp result))))
 
 ;;;###autoload
 (defun +yas-emacs-lisp-doom-file-p ()
