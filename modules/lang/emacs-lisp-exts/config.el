@@ -14,7 +14,8 @@
 
   (map! :localleader
         :map emacs-lisp-mode-map
-        "t" 'ert)
+        "t" (general-predicate-dispatch (cmd! (funcall 'ert t))
+              (+yas-emacs-lisp-buttercup-file-p) #'buttercup-run-at-point))
 
   (defface +emacs-triple-semi-comment-text
     '((t
