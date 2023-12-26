@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: it-lambda
 # key: it
+# condition: (not (+yas-emacs-lisp-buttercup-file-p))
 # uuid: b4ef9aac-1a1e-4742-b394-7dafbe6f34fd
 # --
 (lambda (it) $0)
