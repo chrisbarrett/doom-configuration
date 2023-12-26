@@ -25,6 +25,8 @@ Fall back to the file name sans extension."
     (back-to-indentation)
     (thing-at-point-looking-at (rx (* space) "("
                                    (or "cl-defun" "defun" "defvar" "defconst"
+                                       "defmacro"
+                                       "cl-defmacro"
                                        "define-minor-mode"
                                        "define-globalized-minor-mode"
                                        "define-derived-mode")))))
