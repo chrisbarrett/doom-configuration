@@ -71,14 +71,3 @@ window."
     ;; Fall back gracefully to normal title if looking up the title failed.
     (list
      (org-roam-node-title node))))
-
-;;;###autoload
-(cl-defun +org-format-buffer-apheleia-adapter (&key buffer callback &allow-other-keys)
-  (let ((org-inhibit-startup t)
-        change-major-mode-after-body-hook
-        text-mode-hook
-        outline-mode-hook
-        org-mode-hook)
-    (org-mode))
-  (org-format-buffer)
-  (funcall callback))
