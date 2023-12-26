@@ -81,6 +81,10 @@
                  (concat title " (Investopedia)"))
                 ((string-suffix-p "| Microsoft Docs" title)
                  (string-remove-suffix "| Microsoft Docs" title))
+                ((string-suffix-p "| MDN" title)
+                 (concat (cadr (s-match (rx (group (+? nonl)) (? " - " (+? nonl)) " | MDN" eol)
+                                        title))
+                         " (MDN)"))
                 ((string-prefix-p "https://developer.apple.com/library/archive/documentation/" url)
                  (concat title " (Apple Developer Archive)"))
                 (t
