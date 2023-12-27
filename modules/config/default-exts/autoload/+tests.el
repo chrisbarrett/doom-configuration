@@ -6,7 +6,8 @@
 
 (require 'cl-lib)
 
-(cl-eval-when (compile)
+;;;###autoload
+(cl-eval-when (compile load)
   (defvar +describe--stack nil
     "Dynamic variable used to store describe descriptions.
 
@@ -22,7 +23,7 @@ manually."))
 DESC is a string. BODY is a sequence of instructions, mainly
 calls to `+describe' and `+it'."
   (declare (indent 1) (debug (&define sexp def-body)))
-  (cl-assert (stringp desc))
+  (cl-assert (or (stringp desc) (symbolp desc)))
   (let ((+describe--stack (cons desc +describe--stack)))
     (eval `(cl-eval-when (eval)
              ,@body))))
@@ -40,7 +41,10 @@ interpreted within the context of an ERT test run.
 Use `should', `should-not' and `should-error' to write
 assertions."
   (declare (indent 1) (debug (&define sexp def-body)))
-  (let* ((descs (seq-reverse (cons desc +describe--stack)))
+  (cl-assert (or (stringp desc) (symbolp desc)))
+  (let* ((descs (seq-reverse
+                 (seq-map (lambda (it) (format "%s" it))
+                          (cons desc +describe--stack))))
          (test-name (intern
                      (string-replace " " "-" (string-join descs "--")))))
     `(progn
