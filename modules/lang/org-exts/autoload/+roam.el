@@ -1,4 +1,5 @@
 ;;; lang/org-exts/autoload/+roam.el -*- lexical-binding: t; -*-
+
 ;;;###autoload
 (defun +roam-node-find (&optional other-window)
   "Find an org-roam node. See `org-roam-node-find'.
@@ -34,40 +35,47 @@ window."
                        (org-roam-node-at-point 'assert))))
   (org-roam-buffer-display-dedicated node))
 
-(defvar +roam--file-to-node-title-lookup (make-hash-table :test 'equal)
-  "Dynamic variable used for caching in `org-roam-node-find'.")
-
-;;;###autoload
-(defun +roam-node-file-cache-rebuild ()
-  (clrhash +roam--file-to-node-title-lookup)
-  (pcase-dolist (`(,file ,title)
-                 (org-roam-db-query [:select [file title]
-                                     :from nodes
-                                     :where (= 0 level)]))
-    (puthash file title +roam--file-to-node-title-lookup)))
-
-(defun +roam-node-title-for-file (file)
-  (when (hash-table-empty-p +roam--file-to-node-title-lookup)
-    (+roam-node-file-cache-rebuild)
-    (run-with-idle-timer 1 nil 'garbage-collect))
-  (gethash file +roam--file-to-node-title-lookup))
-
 ;;;###autoload
 (defun +roam-node-title-hierarchy (node)
-  (if-let* ((file-title (+roam-node-title-for-file (org-roam-node-file node)))
-            (path-components
-             (seq-mapcat (fn! (string-split % ":" t (rx space)))
-                         (cons file-title
-                               (unless (zerop (org-roam-node-level node))
-                                 `(,@(org-roam-node-olp node)
-                                   ,(org-roam-node-title node)))))))
-      (pcase path-components
-        (`(,_)
-         path-components)
-        (`(,title . ,rest)
-         (cons title (seq-map (fn! (string-trim (string-remove-prefix title %)))
-                              rest))))
+  (thread-last
+    (append (list (org-roam-node-file-title node))
+            (org-roam-node-olp node)
+            (list (org-roam-node-title node)))
+    (seq-filter #'stringp)
+    (seq-mapcat (fn! (split-string % ":")))
+    (seq-map #'string-trim)
+    (seq-uniq)))
 
-    ;; Fall back gracefully to normal title if looking up the title failed.
-    (list
-     (org-roam-node-title node))))
+(+describe +roam-node-title-hierarchy
+
+  (+describe "node represents the file itself"
+    (+it "returns document title"
+      (let ((node (org-roam-node-create :file-title "file-title")))
+        (should (equal (+roam-node-title-hierarchy node)
+                       '("file-title"))))))
+
+  (+describe "node is a root-level heading"
+    (+it "returns file title joined with node title"
+      (let ((node (org-roam-node-create :file-title "file-title" :title "title")))
+        (should (equal (+roam-node-title-hierarchy node)
+                       '("file-title" "title"))))))
+
+  (+describe "node is nested under another heading"
+    (+it "returns file title, olp and title joined"
+      (let ((node (org-roam-node-create :file-title "file-title" :olp '("parent") :title "title")))
+        (should (equal (+roam-node-title-hierarchy node)
+                       '("file-title" "parent" "title"))))))
+
+  (+describe "topic and title post-processing"
+
+    (+describe "node contains duplicated parts"
+      (+it "removes duplicates"
+        (let ((node (org-roam-node-create :file-title "a" :olp '("a" "b" "a") :title "title")))
+          (should (equal (+roam-node-title-hierarchy node)
+                         '("a" "b" "title"))))))
+
+    (+describe "colon-delimited prefixes in any titles"
+      (+it "splits those parts"
+        (let ((node (org-roam-node-create :file-title "a: file-title" :olp '("b" "c: d: e") :title "f: title")))
+          (should (equal (+roam-node-title-hierarchy node)
+                         '("a" "file-title" "b" "c" "d" "e" "f" "title"))))))))
