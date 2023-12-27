@@ -57,3 +57,13 @@ Fall back to the file name sans extension."
   (or (seq-find (fn! (f-descendant-of-p default-directory %))
                 doom-modules-dirs)
       (equal default-directory doom-user-dir)))
+
+;;;###autoload
+(defun +yas-emacs-lisp-in-describe-p ()
+  (save-excursion
+    (let ((found (thing-at-point-looking-at (rx "(+describe" (+ space))))
+          (at-top (zerop (syntax-ppss-depth (syntax-ppss)))))
+      (if (or found at-top)
+          found
+        (backward-up-list)
+        (+yas-emacs-lisp-in-describe-p)))))

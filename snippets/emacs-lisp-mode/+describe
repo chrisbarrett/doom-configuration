@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: +describe
+# uuid: 337f7154-ab90-4309-897d-493648003030
+# key: ds
+# condition: (and (+yas-bolp) (not (+yas-emacs-lisp-buttercup-file-p)))
+# --
+(+describe "$1"
+  $0)

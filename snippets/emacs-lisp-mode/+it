@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: +it
+# uuid: 34eb4c75-b176-4055-8e99-f71a3141d90a
+# key: it
+# condition: (and (+yas-bolp) (+yas-emacs-lisp-in-describe-p))
+# --
+(+it "$1"
+  (should (equal $0)))
