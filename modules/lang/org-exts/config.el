@@ -185,7 +185,7 @@
   (add-hook 'org-log-buffer-setup-hook #'evil-insert-state))
 
 (after! org-modern
-  (setq org-modern-star (delete "✳" org-modern-star)))
+  (setq org-modern-star '("*")))
 
 (after! org
   (load! "+agenda")
