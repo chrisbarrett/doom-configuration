@@ -74,7 +74,8 @@
 ;;; Visual settings
 
   (setq org-list-indent-offset 1)
-  (setq org-cycle-separator-lines 0)
+  (setq org-cycle-separator-lines 1)
+  (setq org-indent-indentation-per-level 3)
   (setq org-ellipsis " …")
   (setq org-hide-emphasis-markers t)
   (setq org-indent-mode-turns-on-hiding-stars t)
