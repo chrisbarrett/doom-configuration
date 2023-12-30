@@ -97,6 +97,8 @@
 (advice-add 'org-roam-preview-visit :around #'+org-roam-ad-format-buffer)
 (advice-add 'org-link-open :around #'+org-roam-ad-format-buffer)
 
+;;; Auto-format org files on save
+
 (when (modulep! :editor format)
   (after! apheleia
     (cl-defun +org-format-buffer-apheleia-adapter (&key callback &allow-other-keys)
@@ -140,6 +142,8 @@
   (unless (or (string-match-p (rx ".template.org" eos) (buffer-name))
               (derived-mode-p 'snippet-mode))
     (org-roam-dblocks-autoupdate-mode +1)))
+
+;; Update dblocks when visiting a node.
 
 (define-advice org-roam-id-open (:around (fn &rest args) refresh-dblocks-on-id-open)
   (let* ((id (car args))
