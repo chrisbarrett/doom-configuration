@@ -33,7 +33,10 @@
       :desc "Inline" "I" #'org-roam-rewrite-inline
       :desc "Delete & redirect" "D" #'org-roam-rewrite-remove
 
-      (:prefix-map ("l" . "alias")
+      (:prefix-map ("l" . "linked node")
+       :desc "add link" "a" #'+linked-zettel-add)
+
+      (:prefix-map ("L" . "alias")
        :desc "add alias" "a" #'org-roam-alias-add
        :desc "remove alias" "x" #'org-roam-alias-remove)
 
