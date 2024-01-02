@@ -2,5 +2,6 @@
 # name: add-to-list
 # key: atl
 # uuid: 4aa88818-9bcb-4846-8b81-9fe6f67a0d0a
+# condition: (+yas-bolp)
 # --
 (add-to-list '$0)

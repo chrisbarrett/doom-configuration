@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: pcase-let
+# uuid: b0096466-1352-4a5b-ac10-aaf28bf9f8d7
+# key: pl
+# condition: (+yas-bolp)
+# --
+(pcase-let* (($1))
+  $0)

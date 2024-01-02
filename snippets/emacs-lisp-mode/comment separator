@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: comment separator
-# key: cs
-# condition: (+yas-bolp)
-# uuid: c182af04-e751-4c23-ae15-a480add55efe
-# --
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

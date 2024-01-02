@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: newline
-# key: nl
 # uuid: 5a42c5b8-bf79-4e15-8c74-1c6718a7a48e
+# condition: (+yas-bolp)
 # --
 (newline)

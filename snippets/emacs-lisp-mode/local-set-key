@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: local-set-key
-# key: lsk
-# uuid: ac0aa530-de22-45de-b6b1-ab455dd92080
-# --
-(local-set-key (kbd "$1") '$0)

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: list
-# key: ls
-# uuid: b7c2fbaa-b97b-479d-813f-cc07e99cff18
-# --
-(list $0)

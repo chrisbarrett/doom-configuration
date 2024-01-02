@@ -5,4 +5,4 @@
 # uuid: 75093853-b9b1-472f-abbe-babb5235dc96
 # --
 (eval-when-compile
-  (require 'use-package!))
+  (require 'use-package))
