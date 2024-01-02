@@ -13,6 +13,9 @@
                  (when (ppss-comment-depth (syntax-ppss)) ; at a comment?
                    (just-one-space))))
 
+(after! checkdoc
+  (setq checkdoc-force-docstrings-flag nil))
+
 (map! :after ert
       :map 'ert-results-mode-map
       :m "gr" (cmd! (ert (car ert--selector-history))))
