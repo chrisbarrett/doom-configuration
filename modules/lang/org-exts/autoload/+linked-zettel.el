@@ -18,7 +18,7 @@ separated by blank lines."
           (forward-line 1))
          ;; Keep searching forward, but don't count trailing lines as part of the
          ;; span.
-         ((thing-at-point-looking-at (rx bol (any space) eol))
+         ((string-blank-p (org-current-line-string))
           (forward-line 1))
          ;; We've hit something else, ending the search.
          (t
@@ -54,7 +54,7 @@ separated by blank lines."
     (unless (search-forward-regexp (rx bol "#+links:" (group (+ space) (* nonl))) nil t)
       (goto-char (or (+linked-zettel--end-of-keyword-lines)
                      (point-max)))
-      (unless (thing-at-point-looking-at (rx bol (* space) eol))
+      (unless (string-blank-p (org-current-line-string))
         (newline))
       (insert "#+links: "))))
 
