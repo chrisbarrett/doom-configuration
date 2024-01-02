@@ -25,12 +25,6 @@ separated by blank lines."
           (setq stop t))))
       end)))
 
-(defun +linked-zettel--skip-property-drawer ()
-  (when (thing-at-point-looking-at (rx bol ":PROPERTIES:"))
-    (search-forward-regexp (rx bol ":END:"))
-    (forward-line 1)
-    (back-to-indentation))
-  (point))
 
 (defun +linked-zettel--narrow-to-node-keywords (node)
   (widen)
@@ -41,7 +35,11 @@ separated by blank lines."
     (let ((end (save-excursion (org-next-visible-heading 1) (point))))
       (narrow-to-region (point) end)))
 
-  (+linked-zettel--skip-property-drawer)
+  (when (thing-at-point-looking-at (rx bol ":PROPERTIES:"))
+    (search-forward-regexp (rx bol ":END:"))
+    (forward-line 1)
+    (back-to-indentation))
+
   (narrow-to-region (point)
                     (or (+linked-zettel--end-of-keyword-lines)
                         (point-max))))
