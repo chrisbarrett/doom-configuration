@@ -2,6 +2,17 @@
 
 (map! "C-c e e" #'toggle-debug-on-error)
 
+(map! :map emacs-lisp-mode-map
+      :i "RET"  (cmd!
+                 (if (string-match-p (rx bol (* space) (= 3 ";") (* space))
+                                     (buffer-substring (line-beginning-position)
+                                                       (line-end-position)))
+                     (newline)
+                   (newline-and-indent))
+
+                 (when (ppss-comment-depth (syntax-ppss)) ; at a comment?
+                   (just-one-space))))
+
 (map! :after ert
       :map 'ert-results-mode-map
       :m "gr" (cmd! (ert (car ert--selector-history))))
