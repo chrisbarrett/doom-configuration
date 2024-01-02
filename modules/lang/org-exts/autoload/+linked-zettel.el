@@ -27,34 +27,62 @@ separated by blank lines."
 
 
 (defun +linked-zettel--narrow-to-node-keywords (node)
+  "Attempt to narrow to any keywords at the start of NODE.
+
+If a sequence of keyword lines is found at the start of NODE,
+narrow to those lines and return the end position of those lines.
+
+If no keyword lines are matched, leave buffer widened and return
+nil."
   (widen)
   (goto-char (org-roam-node-point node))
+  ;; If the node starts somewhere other than a heading or the file-level, we
+  ;; have no idea how to proceed.
   (cl-assert (or (bobp) (org-at-heading-p)))
+
+  ;; If we're at a heading, pre-narrow to:
+  ;;
+  ;; 1. exclude the heading, and
+  ;;
+  ;; 2. include only the remainder of content at that heading's level.
+
   (when (org-at-heading-p)
     (forward-line 1)
     (let ((end (save-excursion (org-next-visible-heading 1) (point))))
       (narrow-to-region (point) end)))
 
-  (when (thing-at-point-looking-at (rx bol ":PROPERTIES:"))
+  ;; Skip properties drawer if present.
+  (when (search-forward-regexp (rx bol ":PROPERTIES:") nil t)
     (search-forward-regexp (rx bol ":END:"))
     (forward-line 1)
     (back-to-indentation))
 
-  (narrow-to-region (point)
-                    (or (+linked-zettel--end-of-keyword-lines)
-                        (point-max))))
+  (when (org-at-keyword-p)
+    (let ((start (point))
+          (end (+linked-zettel--end-of-keyword-lines)))
+      (narrow-to-region start end)
+      end)))
 
 
 (defun +linked-zettel--goto-create-links-keyword (node)
   (cl-assert (equal (buffer-file-name) (org-roam-node-file node)))
   (save-restriction
-    (+linked-zettel--narrow-to-node-keywords node)
-    (unless (search-forward-regexp (rx bol "#+links:" (group (+ space) (* nonl))) nil t)
-      (goto-char (or (+linked-zettel--end-of-keyword-lines)
-                     (point-max)))
-      (unless (string-blank-p (org-current-line-string))
-        (newline))
-      (insert "#+links: "))))
+    (let ((bound
+           (or (+linked-zettel--narrow-to-node-keywords node)
+               (save-excursion
+                 (org-next-visible-heading 1)
+                 ;; possibly EOB
+                 (point)))))
+
+      (unless (search-forward-regexp (rx bol "#+links:") bound t)
+        (when-let* ((pos (+linked-zettel--end-of-keyword-lines)))
+          (goto-char pos)
+          (newline))
+
+        (insert "#+links: ")
+        (when (org-current-level)
+          (save-excursion
+            (newline 2)))))))
 
 
 
@@ -83,6 +111,7 @@ The link to TO-NODE is added as a #+link keyword for FROM-NODE."
 
   (save-excursion
     (org-roam-with-file (org-roam-node-file from-node) nil
+      (save-buffer)
       (save-restriction
         (widen)
 
