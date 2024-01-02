@@ -34,7 +34,8 @@
       :desc "Delete & redirect" "D" #'org-roam-rewrite-remove
 
       (:prefix-map ("l" . "linked node")
-       :desc "add link" "a" #'+linked-zettel-add)
+       :desc "add link" "a" #'+linked-zettel-add
+       :desc "remove link" "x" #'+linked-zettel-remove)
 
       (:prefix-map ("L" . "alias")
        :desc "add alias" "a" #'org-roam-alias-add
