@@ -327,6 +327,8 @@
        :desc "Next"                    "w"  #'evil-window-next
        :desc "Next"                    "n"  #'evil-window-next
        :desc "Rotate"                  "r"  #'evil-window-rotate-downwards
+       :desc "Jump to register..."     "s"  #'consult-register
+       :desc "Save to register..."     "S"  #'window-configuration-to-register
        :desc "Split (horizontal)"      "/"  #'+split-window-horizontally-dwim
        :desc "Split (vertical)"        "-"  #'+split-window-vertically-dwim
        :desc "Balance"                 "="  #'balance-windows
