@@ -4,6 +4,7 @@
   :hook (doom-first-input . global-page-break-lines-mode)
   :config
   (setq page-break-lines-modes '(prog-mode
+                                 org-mode
                                  org-agenda-mode
                                  latex-mode
                                  help-mode
