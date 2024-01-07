@@ -160,6 +160,13 @@ keys, and should return a list of the same type."
                         prompt)))
 
 ;;;###autoload
+(defun +linked-zettel-node-description (node &optional no-abbreviate)
+  (let ((desc (org-roam-node-formatted node)))
+    (if no-abbreviate
+        desc
+      (car (nreverse (split-string desc ":" t (rx space)))))))
+
+;;;###autoload
 (defun +linked-zettel-add (from-node to-node &optional no-abbreviate)
   "Add a link to another node to this one.
 
@@ -173,13 +180,9 @@ prefix arg NO-ABBREVIATE, the default link description is used."
      (list node (+linked-zettel--read-non-linked-node node "Node to add: ") current-prefix-arg)))
   (+linked-zettel--modify-links from-node
                                 (lambda (links)
-                                  (let* ((id (org-roam-node-id to-node))
-                                         (desc (org-roam-node-formatted to-node))
-                                         (desc (if no-abbreviate
-                                                   desc
-                                                 (car (nreverse (split-string desc ":" t (rx space)))))))
-                                    (seq-uniq (append links `((:id ,id :desc ,desc)))
-                                              (-on #'equal (lambda (it) (plist-get it :id)))))))
+                                  (seq-uniq (append links `((:id ,(org-roam-node-id to-node)
+                                                             :desc ,(+linked-zettel-node-description to-node no-abbreviate))))
+                                            (-on #'equal (lambda (it) (plist-get it :id))))))
   (message "Linked node added"))
 
 

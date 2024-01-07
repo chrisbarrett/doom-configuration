@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: links
+# name: zettel link
 # uuid: 396ac1e7-cf63-4fd7-866b-367cced42308
 # key: l
 # condition: (+yas-bolp)
@@ -7,7 +7,8 @@
 # --
 (let* ((node (org-roam-node-read nil nil nil t))
        (id (org-roam-node-id node))
-       (desc (org-roam-node-formatted node))
+       (desc (+linked-zettel-node-description node))
        (link (org-link-make-string (concat "id:" id) desc)))
   (delete-region (line-beginning-position) (line-end-position))
+  (org-id-get-create)
   (insert (concat "#+links: " link)))
