@@ -6,9 +6,8 @@
 # type: command
 # --
 (let* ((node (org-roam-node-read nil nil nil t))
-       (id (org-roam-node-id node))
-       (desc (+linked-zettel-node-description node))
-       (link (org-link-make-string (concat "id:" id) desc)))
+       (link (org-link-make-string (concat "id:" (org-roam-node-id node))
+                                   (org-roam-node-formatted node))))
   (delete-region (line-beginning-position) (line-end-position))
   (org-id-get-create)
   (insert (concat "#+links: " link)))

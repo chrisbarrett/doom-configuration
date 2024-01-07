@@ -96,7 +96,7 @@
 (after! org-roam
   (eval `(progn
 
-           (cl-defmethod org-roam-node-formatted-title ((node org-roam-node))
+           (cl-defmethod org-roam-node-formatted-olp ((node org-roam-node))
              (pcase-let ((`(,title . ,rest) (nreverse (+roam-node-title-hierarchy node))))
                (let ((prefix (seq-map (fn! (propertize % 'face 'org-property-value)) (nreverse rest)))
                      (title (propertize title 'face 'org-roam-title)))
@@ -111,13 +111,19 @@
                    (alist-get maturity org-roam-review-maturity-emoji-alist nil nil #'string=))
                (error "")))))
 
-  (setq org-roam-node-formatter #'org-roam-node-formatted-title)
-  (setq org-roam-review-title-formatter #'org-roam-node-formatted-title)
+  (defun +roam-node-title-or-olp (node &optional full-olp)
+    (funcall (if (or full-olp current-prefix-arg)
+                 #'org-roam-node-formatted-olp
+               #'org-roam-node-title)
+             node))
+
+  (setq org-roam-node-formatter #'+roam-node-title-or-olp)
+  (setq org-roam-review-title-formatter #'org-roam-node-formatted-olp)
 
   ;; Customise completion UI
   (setq org-roam-node-display-template
         (concat
-         "${formatted-title:*} "
+         "${formatted-olp:*} "
          " ${icon:3} "
          (propertize "@${slipbox:9}" 'face 'org-tag)
          "${tags:*}")))

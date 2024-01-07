@@ -167,21 +167,17 @@ keys, and should return a list of the same type."
       (car (nreverse (split-string desc ":" t (rx space)))))))
 
 ;;;###autoload
-(defun +linked-zettel-add (from-node to-node &optional no-abbreviate)
+(defun +linked-zettel-add (from-node to-node)
   "Add a link to another node to this one.
 
-The link to TO-NODE is added as a #+link keyword for FROM-NODE.
-
-By default, the description of the link will be abbreviated by
-splitting on colons and taking the last item. With optional
-prefix arg NO-ABBREVIATE, the default link description is used."
+The link to TO-NODE is added as a #+link keyword for FROM-NODE."
   (interactive
    (let ((node (org-roam-node-at-point t)))
-     (list node (+linked-zettel--read-non-linked-node node "Node to add: ") current-prefix-arg)))
+     (list node (+linked-zettel--read-non-linked-node node "Node to add: "))))
   (+linked-zettel--modify-links from-node
                                 (lambda (links)
                                   (seq-uniq (append links `((:id ,(org-roam-node-id to-node)
-                                                             :desc ,(+linked-zettel-node-description to-node no-abbreviate))))
+                                                             :desc ,(org-roam-node-formatted to-node))))
                                             (-on #'equal (lambda (it) (plist-get it :id))))))
   (message "Linked node added"))
 
