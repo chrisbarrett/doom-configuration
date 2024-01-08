@@ -187,7 +187,10 @@
 
 (after! org-modern
   (setq org-modern-star
-        '("*" " *" "  *" "   *" "    *" "     *" "      *" "       *" "        *" "         *" "          *")))
+        (if (equal 2 org-indent-indentation-per-level)
+            '("*")
+          ;; KLUDGE: Pad each heading star with leading spaces to align with body.
+          (-iterate (lambda (it) (concat " " it)) "*" 10))))
 
 (after! org
   (load! "+agenda")
