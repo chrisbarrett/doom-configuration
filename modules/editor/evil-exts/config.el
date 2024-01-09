@@ -4,13 +4,13 @@
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
 (after! evil-goggles
-  (setq evil-goggles-duration 0.3))
+  )
 
 (map! :map (evil-ex-completion-map evil-ex-search-keymap)
       :after evil
       "C-a" #'evil-beginning-of-line
       "C-b" #'evil-backward-char
-      "C-f" #'evil-forward-char)
+      )
 
 (define-key! :keymaps +default-minibuffer-maps
   [escape] #'abort-recursive-edit
@@ -19,7 +19,7 @@
   "C-u"    #'evil-delete-back-to-indentation
   "C-v"    #'yank
   "C-w"    #'doom/delete-backward-word
-  "C-z"    (cmd! (ignore-errors (call-interactively #'undo))))
+  )
 
 (after! evil
   (setq evil-v$-excludes-newline t)
@@ -111,7 +111,7 @@
 
   (map! :map evil-surround-mode-map
         :v "s" #'evil-surround-region)
-  (global-evil-surround-mode +1))
+  )
 
 (after! evil-surround
   (add-hook! magit-mode (evil-surround-mode -1))
@@ -122,7 +122,16 @@
                          "`"))))
 
   (setf (alist-get ?\( evil-surround-pairs-alist) (cons "(" ")"))
-  (setf (alist-get ?\[ evil-surround-pairs-alist) (cons "[" "]")))
+  )
+
+;; TODO: Remove once this is in the version used by doom.
+;;
+;; https://github.com/minad/corfu/issues/403#issuecomment-1869008434
+;; https://github.com/emacs-evil/evil-collection/pull/767/files?w=1
+(define-advice evil-collection-corfu (:after (&rest _) corfu-compat)
+  (advice-remove 'corfu--setup #'evil-normalize-keymaps)
+  (advice-remove 'corfu--teardown #'evil-normalize-keymaps)
+  (advice-add 'corfu--setup :after (lambda (&rest _) (evil-normalize-keymaps))))
 
 ;;; Teach evil-ret to open links at point
 
