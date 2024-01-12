@@ -4,13 +4,13 @@
 # condition: (+yas-bolp)
 # uuid: 6113a314-d8c6-4921-8703-94af8c291c6e
 # --
-import { Stack, StackProps } from "aws-cdk-lib";
+import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 
-interface Props extends StackProps {
+type Props = cdk.StackProps & {
 }
 
-export class ${1:name} extends Stack {
+export class ${1:name} extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id, props);
     $0
