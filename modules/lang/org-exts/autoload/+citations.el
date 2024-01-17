@@ -21,6 +21,7 @@ citar."
     (let ((+citations--citekey-for-capture (cons key attrs)))
       (org-capture nil +citations-key-sequence-for-lit-note-capture-template))))
 
+;;;###autoload
 (defun +citation-from-capture-or-read ()
   "Get a citar reference for use in an org capture template.
 
