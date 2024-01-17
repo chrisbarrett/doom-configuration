@@ -100,30 +100,28 @@ close to the starting point from before BODY was executed."
          result))))
 
 (defun +roam-default-headings--sync-buffer (specs)
-  (cl-labels ((ensure-dblock
-               (props)
-               (cl-assert (listp props))
-               (cl-assert (org-at-heading-p))
-               (save-restriction
-                 (org-narrow-to-subtree)
-                 (let ((name (plist-get props :name)))
-                   (unless (search-forward-regexp (rx-to-string `(and bol (* space) "#+BEGIN:" (+ space) ,name)) nil t)
-                     (goto-char (point-max))
-                     (org-create-dblock props)))))
+  (cl-labels ((ensure-dblock (props)
+                (cl-assert (listp props))
+                (cl-assert (org-at-heading-p))
+                (save-restriction
+                  (org-narrow-to-subtree)
+                  (let ((name (plist-get props :name)))
+                    (unless (search-forward-regexp (rx-to-string `(and bol (* space) "#+BEGIN:" (+ space) ,name)) nil t)
+                      (goto-char (point-max))
+                      (org-create-dblock props)))))
 
-              (find-or-create-heading
-               (title)
-               (cl-assert (stringp title))
-               (or (org-find-exact-headline-in-buffer title)
-                   (progn
-                     ;; Create title if it doesn't exist
-                     (goto-char (point-max))
-                     (unless (bolp) (newline))
-                     (let (org-insert-heading-respect-content)
-                       (org-insert-heading nil nil t))
-                     (insert title)
-                     (goto-char (line-beginning-position))
-                     (point-marker)))))
+              (find-or-create-heading (title)
+                (cl-assert (stringp title))
+                (or (org-find-exact-headline-in-buffer title)
+                    (progn
+                      ;; Create title if it doesn't exist
+                      (goto-char (point-max))
+                      (unless (bolp) (newline))
+                      (let (org-insert-heading-respect-content)
+                        (org-insert-heading nil nil t))
+                      (insert title)
+                      (goto-char (line-beginning-position))
+                      (point-marker)))))
 
     (-each specs
       (-lambda ((it &as name &plist :ensure :dblock :tags))
