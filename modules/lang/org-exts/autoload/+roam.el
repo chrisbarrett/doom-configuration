@@ -11,7 +11,7 @@ window."
                       nil
                       (lambda (node)
                         (let* ((tags (org-roam-node-tags node))
-                               (disallowed (flatten-list (list '("daily" "litnotes")
+                               (disallowed (flatten-list (list '("daily")
                                                                (when (and timekeep-mode (org-clocking-p))
                                                                  "private")))))
                           (null (seq-intersection tags disallowed))))))
