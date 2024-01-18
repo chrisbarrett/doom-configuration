@@ -109,20 +109,23 @@
   "Alist of link TYPE to format function.")
 
 ;;;###autoload
-(defun +ol-title-for-url (url)
-  (let ((parsed (url-generic-parse-url url))
-        (functions (seq-keep #'cdr +ol-custom-format-functions-alist)))
-    (or (-some->> (seq-reduce (lambda (acc fn)
-                                (if acc
-                                    acc
-                                  (funcall fn parsed)))
-                              functions
-                              nil)
-          (s-match (rx "[[" (+? nonl) "][" (group (+? nonl)) "]]") )
-          (cadr)
-          (org-link-decode))
-        (+ol-guess-or-retrieve-title url)
-        (read-string "Title: "))))
+(defun +ol-title-for-url (url &optional edit)
+  (let* ((parsed (url-generic-parse-url url))
+         (functions (seq-keep #'cdr +ol-custom-format-functions-alist))
+         (retrieved
+          (or (-some->> (seq-reduce (lambda (acc fn)
+                                      (if acc
+                                          acc
+                                        (funcall fn parsed)))
+                                    functions
+                                    nil)
+                (s-match (rx "[[" (+? nonl) "][" (group (+? nonl)) "]]") )
+                (cadr)
+                (org-link-decode))
+              (+ol-guess-or-retrieve-title url))))
+    (if (or edit (null retrieved))
+        (read-string "Title: " retrieved)
+      retrieved)))
 
 (defun +ol-format-as-some-link (url)
   (org-link-make-string url (+ol-title-for-url url)))
