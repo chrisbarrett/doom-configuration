@@ -192,6 +192,8 @@
           ;; KLUDGE: Pad each heading star with leading spaces to align with body.
           (-iterate (lambda (it) (concat " " it)) "*" 10))))
 
+(autoload 'org-capture-detect "org-capture-detect")
+
 (after! ws-butler
   (define-advice ws-butler-before-save (:around (fn &rest args) inhibit-during-capture)
     (unless (org-capture-detect)
