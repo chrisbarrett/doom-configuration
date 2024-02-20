@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t; -*-
-;
-(require 'map)
-
+                                        ;
 (defconst +treesit-mode-remaps
   '((:orig-mode sh-mode :treesit-mode bash-ts-mode)
     (:orig-mode conf-toml-mode :treesit-mode toml-ts-mode :org-src ("conf-toml" "toml"))
@@ -15,13 +13,14 @@
 
 ;;; Remap major modes to use treesit modes, including in org-mode.
 
-(pcase-dolist ((map :orig-mode :treesit-mode :org-src) +treesit-mode-remaps)
- (after! files
-   (add-to-list 'major-mode-remap-alist (cons orig-mode treesit-mode)))
- (after! org-src
-   (dolist (src-type (-list org-src))
-     (let ((treesit-sans-suffix (intern (string-remove-suffix "-mode" (format "%s" treesit-mode)))))
-       (setf (alist-get src-type org-src-lang-modes) treesit-sans-suffix)))))
+(-each +treesit-mode-remaps
+  (-lambda ((&plist :orig-mode :treesit-mode :org-src))
+    (after! files
+      (add-to-list 'major-mode-remap-alist (cons orig-mode treesit-mode)))
+    (after! org-src
+      (dolist (src-type (-list org-src))
+        (let ((treesit-sans-suffix (intern (string-remove-suffix "-mode" (format "%s" treesit-mode)))))
+          (setf (alist-get src-type org-src-lang-modes) treesit-sans-suffix))))))
 
 (after! files
   ;; The ES modules spec provides for more extensions that are mirrored in
