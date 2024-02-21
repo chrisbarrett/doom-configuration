@@ -1,4 +1,6 @@
 ;; -*- lexical-binding: t; -*-
+
+(require 'dash)
                                         ;
 (defconst +treesit-mode-remaps
   '((:orig-mode sh-mode :treesit-mode bash-ts-mode)
