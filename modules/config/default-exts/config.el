@@ -61,7 +61,7 @@
 (when IS-MAC
   (load! "+macos"))
 
-;; Standardise help buffer keybindings
+;;; Standardise help buffer keybindings
 
 (map!
  (:after help :map help-mode-map
