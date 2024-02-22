@@ -11,6 +11,3 @@
 (package! lsp-mode :disable t)
 (package! lsp-sourcekit :disable t)
 (package! smartparens-python :disable t)
-
-;; Pin until doom updates its version
-(package! magit-todos :pin "d0646dbbf46d75d08e3d7b4c665d7d763a468af1")
