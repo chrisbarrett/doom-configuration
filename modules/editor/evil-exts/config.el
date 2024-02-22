@@ -24,8 +24,6 @@
 (after! evil
   (setq evil-v$-excludes-newline t)
 
-  (setq evil-shift-width 2)
-
   (map!
    (:prefix "g"
     :n "+" #'evil-numbers/inc-at-pt
