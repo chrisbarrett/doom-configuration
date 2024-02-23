@@ -82,3 +82,7 @@
  (:after geiser-doc :map geiser-doc-mode-map
   :n "o"    #'link-hint-open-link)
  )
+
+;;; Set default tab widths
+
+(setq-default tab-width 4)
