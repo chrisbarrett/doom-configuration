@@ -93,23 +93,21 @@
             org-roam-rewrite-node-extracted)
   (run-with-idle-timer 3 nil #'+roam-node-file-cache-rebuild))
 
-(after! org-roam
-  (eval `(progn
+(with-eval-after-load 'org-roam
+  (cl-defmethod org-roam-node-formatted-olp ((node org-roam-node))
+    (pcase-let ((`(,title . ,rest) (nreverse (+roam-node-title-hierarchy node))))
+      (let ((prefix (seq-map (fn! (propertize % 'face 'org-property-value)) (nreverse rest)))
+            (title (propertize title 'face 'org-roam-title)))
 
-           (cl-defmethod org-roam-node-formatted-olp ((node org-roam-node))
-             (pcase-let ((`(,title . ,rest) (nreverse (+roam-node-title-hierarchy node))))
-               (let ((prefix (seq-map (fn! (propertize % 'face 'org-property-value)) (nreverse rest)))
-                     (title (propertize title 'face 'org-roam-title)))
+        (string-join (append prefix (list title))
+                     (propertize ": " 'face 'org-property-value)))))
 
-                 (string-join (append prefix (list title))
-                              (propertize ": " 'face 'org-property-value)))))
-
-           (cl-defmethod org-roam-node-icon ((node org-roam-node))
-             (require 'org-roam-review)
-             (condition-case nil
-                 (when-let* ((maturity (car (seq-intersection org-roam-review-maturity-values (org-roam-node-tags node)))))
-                   (alist-get maturity org-roam-review-maturity-emoji-alist nil nil #'string=))
-               (error "")))))
+  (cl-defmethod org-roam-node-icon ((node org-roam-node))
+    (require 'org-roam-review)
+    (condition-case nil
+        (when-let* ((maturity (car (seq-intersection org-roam-review-maturity-values (org-roam-node-tags node)))))
+          (alist-get maturity org-roam-review-maturity-emoji-alist nil nil #'string=))
+      (error "")))
 
   (defun +roam-node-title-or-olp (node &optional full-olp)
     (funcall (if (or full-olp current-prefix-arg)
