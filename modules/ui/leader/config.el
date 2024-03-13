@@ -286,6 +286,7 @@
        :desc "Switch..."        "p"  #'projectile-switch-project
        :desc "Find other file"  "TAB" #'projectile-find-other-file
        :desc "Find file..."     "f"  #'projectile-find-file
+       :desc "Find file..."     "F"  #'projectile-find-file-other-window
        :desc "Find dir..."      "d"  #'projectile-find-dir
        :desc "Find dir..."      "D"  #'projectile-find-dir-other-window
        :desc "Switch buffer..." "b"  #'projectile-switch-to-buffer
