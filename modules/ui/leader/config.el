@@ -36,8 +36,7 @@
       :desc "Eval expression"       ":"    #'pp-eval-expression
       :desc "Lisp REPL"             ";"    #'ielm
 
-      :desc "Dired"                 "d"    (general-predicate-dispatch 'dired
-                                             (modulep! :emacs dired +dirvish) 'dirvish-dwim)
+      :desc "dired"                 "d"    (cmd! (dired default-directory))
       :desc "dired (other)"         "D"    #'dired-other-window
 
 
