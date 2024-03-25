@@ -53,7 +53,7 @@
        vc-exts
 
        :completion
-       corfu
+       (corfu +icons +orderless)
        defaults
        (vertico +icons)
        vertico-exts
