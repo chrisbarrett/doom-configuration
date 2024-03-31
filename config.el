@@ -22,15 +22,6 @@
 
 (setq +roam-index-node-id "0F0670F7-A280-4DD5-8FAC-1DB3D38CD37F")
 
-(after! ediff
-  (remove-hook 'ediff-before-setup-hook #'doom-ediff-save-wconf-h)
-  (remove-hook 'ediff-quit-hook #'doom-ediff-restore-wconf-h)
-  (remove-hook 'ediff-suspend-hook #'doom-ediff-restore-wconf-h))
-
-(after! format-all
-  (setq format-all-show-errors 'never))
-
 (after! projectile
-  (setq projectile-auto-discover t)
   (add-to-list 'projectile-project-search-path (cons "~/src" 1))
   (add-to-list 'projectile-project-search-path "~/.config"))
