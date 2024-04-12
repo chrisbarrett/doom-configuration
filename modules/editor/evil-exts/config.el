@@ -120,15 +120,6 @@
   (setf (alist-get ?\( evil-surround-pairs-alist) (cons "(" ")"))
   )
 
-;; TODO: Remove once this is in the version used by doom.
-;;
-;; https://github.com/minad/corfu/issues/403#issuecomment-1869008434
-;; https://github.com/emacs-evil/evil-collection/pull/767/files?w=1
-(define-advice evil-collection-corfu-setup (:after (&rest _) corfu-compat)
-  (advice-remove 'corfu--setup #'evil-normalize-keymaps)
-  (advice-remove 'corfu--teardown #'evil-normalize-keymaps)
-  (advice-add 'corfu--setup :after (lambda (&rest _) (evil-normalize-keymaps))))
-
 ;;; Teach evil-ret to open links at point
 
 (add-hook 'prog-mode-hook #'goto-address)
