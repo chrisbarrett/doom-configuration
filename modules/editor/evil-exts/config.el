@@ -3,8 +3,6 @@
 ;; Doom binds `s' to evil-snipe, which is not something I want to use.
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
-(after! evil-goggles
-  )
 
 (map! :map (evil-ex-completion-map evil-ex-search-keymap)
       :after evil
