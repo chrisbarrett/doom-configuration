@@ -1,5 +1,10 @@
 ;;; compat/nix/config.el -*- lexical-binding: t; -*-
 
+(dolist (load-dir (list "/run/current-system/sw/share/emacs/site-lisp"
+                        "~/.nix-profile/share/emacs/site-lisp"))
+  (when (file-directory-p load-dir)
+    (add-to-list 'load-path load-dir)))
+
 ;;; Set PATH correctly on Darwin
 
 ;; macOS prevents PATH being modified for graphical apps, so the wrapper set up

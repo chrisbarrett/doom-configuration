@@ -45,29 +45,22 @@
        (dired +dirvish)
        dired-exts
        (ibuffer +icons)
-       info
        (undo +tree)
        ediff-exts
-       treesit
        vc
        vc-exts
 
        :completion
        (corfu +icons +orderless)
-       defaults
        (vertico +icons)
-       vertico-exts
 
        :checkers
        (spell +aspell +everywhere)
-       spell-exts
        (syntax +flymake)
-       syntax-exts
 
        :term
        eshell
        eshell-exts
-       oil
 
        :tools
        (docker +lsp)
@@ -82,7 +75,6 @@
        magit-exts
        make
        search
-       strings
        terraform
 
        :app
@@ -111,9 +103,7 @@
 
        plantuml
        (rust +lsp)
-       rust-exts
        (sh +lsp)
-       sh-exts
        (swift +lsp)
        (typescript +lsp)
        (yaml +lsp)
@@ -127,7 +117,6 @@
        harpoon
        hl-todo
        indent-guides
-       indent-guides-exts
        leader
        (ligatures +fira)
        modeline
@@ -135,7 +124,6 @@
        (popup +all)
        (vc-gutter +pretty)
        vi-tilde-fringe
-       window-management
 
        :private
        org
