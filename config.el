@@ -156,7 +156,8 @@
 
 ;;; Strings
 
-(map! "M-s" #'string-inflection-all-cycle)
+(map! "M-s" #'string-inflection-all-cycle
+      "M-f" #'unfill-toggle)
 
 ;;; Rust
 
