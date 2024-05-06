@@ -8,13 +8,19 @@
 
 (when (modulep! +modern)
   (add-hook 'org-mode-hook #'org-modern-mode)
-  (after! org
-    (setq org-modern-list nil)
+  (after! org-modern
     (setq org-auto-align-tags nil)
     (setq org-tags-column nil)
     (setq org-agenda-tags-column 0)
-    (setq org-modern-star '("*"))
-    (setq org-modern-todo-faces '(("WAIT" warning :bold t :inverse-video t)))))
+    (setq org-modern-todo-faces '(("WAIT" warning :bold t :inverse-video t)))
+    (setq org-modern-fold-stars (-iterate (pcase-lambda (pr)
+                                            (let ((pad (make-string (length (car pr))
+                                                                    32)))
+                                              (cons (concat pad "▷")
+                                                    (concat pad "▽"))))
+                                          '("▶" . "▼")
+                                          10))
+    (setq org-modern-list nil)))
 
 (add-hook! 'org-mode-hook
   (when (locate-dominating-file default-directory
@@ -75,7 +81,7 @@
 
   (setq org-list-indent-offset 1)
   (setq org-cycle-separator-lines 1)
-  (setq org-indent-indentation-per-level 3)
+  (setq org-indent-indentation-per-level 2)
   (setq org-ellipsis " …")
   (setq org-hide-emphasis-markers t)
   (setq org-indent-mode-turns-on-hiding-stars t)
@@ -184,13 +190,6 @@
       (evil-insert-state)))
 
   (add-hook 'org-log-buffer-setup-hook #'evil-insert-state))
-
-(after! org-modern
-  (setq org-modern-star
-        (if (equal 2 org-indent-indentation-per-level)
-            '("*")
-          ;; KLUDGE: Pad each heading star with leading spaces to align with body.
-          (-iterate (lambda (it) (concat " " it)) "*" 10))))
 
 (autoload 'org-capture-detect "org-capture-detect")
 
