@@ -30,6 +30,7 @@
 
       :desc "Extract subtree" "E" #'org-roam-rewrite-extract
       :desc "Rename" "r" #'org-roam-rewrite-rename
+      :desc "Refile to slipbox..." "R" #'org-roam-slipbox-refile
       :desc "Inline" "I" #'org-roam-rewrite-inline
       :desc "Delete & redirect" "D" #'org-roam-rewrite-remove
 
