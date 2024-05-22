@@ -8,6 +8,8 @@
   (add-to-list 'warning-suppress-types '(yasnippet))
   (add-to-list 'warning-suppress-log-types '(yasnippet)))
 
+(set-file-template! (rx "flake.nix" eos) :trigger "flake")
+
 (map! :map yas-keymap
       :after yasnippet
       "SPC" (general-predicate-dispatch 'self-insert-command
