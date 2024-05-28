@@ -1,0 +1,10 @@
+// Syncthing ignore defaults.
+
+// Usage:
+//
+//    echo -e '#include .stignore.default' > .stignore
+//
+
+.DS_Store
+.envrc
+/.git
