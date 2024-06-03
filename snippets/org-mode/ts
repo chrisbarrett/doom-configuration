@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src typescript
+# uuid: e7303344-d0aa-45a5-8dbe-c47949a3f366
+# key: ts
+# condition: (+yas-bolp)
+# --
+#+begin_src typescript
+  $0
+#+end_src
