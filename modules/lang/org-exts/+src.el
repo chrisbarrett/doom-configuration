@@ -1,6 +1,7 @@
 ;;; lang/org-exts/+src.el -*- lexical-binding: t; -*-
 
 (setq org-src-preserve-indentation nil)
+(setq org-edit-src-content-indentation 0)
 (setq org-src-fontify-natively t)
 (setq org-src-window-setup 'current-window)
 (setq org-confirm-babel-evaluate nil)
