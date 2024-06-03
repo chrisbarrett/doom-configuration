@@ -38,8 +38,9 @@
 (after! drag-stuff
   (setq drag-stuff-modifier 'control))
 
-(add-transient-hook! doom-first-input-hook
-  #'drag-stuff-global-mode)
+(ignore-errors
+  (add-transient-hook! doom-first-input-hook
+    #'drag-stuff-global-mode))
 
 (map! :map drag-stuff-mode-map
       :ni "C-<up>" #'drag-stuff-up
