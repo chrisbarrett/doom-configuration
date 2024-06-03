@@ -102,6 +102,7 @@
         +slack)
 
        plantuml
+       haskell
        (rust +lsp)
        (sh +lsp)
        (swift +lsp)
