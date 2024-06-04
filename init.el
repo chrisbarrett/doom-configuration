@@ -77,9 +77,6 @@
        search
        terraform
 
-       :app
-       chatgpt
-
        :lang
        coq
        (csharp +lsp)
