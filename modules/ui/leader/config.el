@@ -207,14 +207,17 @@
        :desc "Properties at pt"     "p"  #'describe-text-properties
        :desc "Variable..."          "v"  #'helpful-variable
        :desc "Package homepage"     "r"  #'doom/help-package-homepage
-       (:prefix-map ("d" . "definitions/doom")
+       (:prefix-map ("d" . "doom")
         :desc "Autodef"             "a"  #'doom/help-autodefs
+        :desc "Module help"         "m"  #'doom/help-modules
+        :desc "Doom Help"           "h"  #'doom/help
+        :desc "Package..."          "p"  #'doom/help-packages
+        )
+       (:prefix-map ("g" . "goto")
         :desc "Face..."             "c"  #'find-face-definition
         :desc "Function..."         "f"  #'find-function
         :desc "Lisp library..."     "l"  #'find-library
-        :desc "Variable..."         "v"  #'find-variable
-        :desc "Module help"         "m"  #'doom/help-modules
-        :desc "Doom Help"           "h"  #'doom/help)
+        :desc "Variable..."         "v"  #'find-variable)
        (:prefix-map ("s" . "search")
         :desc "Search info"         "i"  #'consult-info
         :desc "Search docs"         "s"  #'doom/help-search
