@@ -87,10 +87,11 @@
   (let* ((result (apply fn args))
          (buf (if (bufferp result) result (current-buffer))))
     (with-current-buffer buf
-      (+roam-default-headings-populate)
-      (let ((save-silently t)
-            (message-log-max))
-        (save-buffer)))
+      (unless buffer-read-only
+        (+roam-default-headings-populate)
+        (let ((save-silently t)
+              (message-log-max))
+          (save-buffer))))
     buf))
 
 (advice-add 'org-roam-node-visit :around #'+org-roam-ad-format-buffer)
