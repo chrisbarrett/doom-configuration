@@ -37,6 +37,9 @@
                    :pre-handlers '(+sp/add-space-before-sexp-insertion)
                    :post-handlers '(+sp/add-space-after-sexp-insertion)))
 
+  (sp-with-modes '(typescript-ts-mode)
+    (sp-local-pair "<" ">" :actions nil))
+
   (sp-with-modes '(org-mode markdown-mode gfm-mode latex-mode)
     ;; Don't pad curly-braces.
     (sp-local-pair "{" "}" :pre-handlers nil))
