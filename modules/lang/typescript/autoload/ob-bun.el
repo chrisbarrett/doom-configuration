@@ -7,6 +7,7 @@
   (require 'ob))
 
 (autoload 'org-babel-js-var-to-js "ob-js")
+(autoload 'org-babel-js-read "ob-js")
 
 (defvar ob-bun-program "bun")
 
