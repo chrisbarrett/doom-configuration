@@ -83,3 +83,12 @@
  (:after geiser-doc :map geiser-doc-mode-map
   :n "o"    #'link-hint-open-link)
  )
+
+;;; Silence warnings when helpful is looking up read-only files.
+
+;; See: https://github.com/Wilfred/helpful/issues/338
+
+(after! helpful
+  (define-advice helpful--open-if-needed (:around (fn &rest args) suppress-warnings)
+    (let ((noninteractive t))
+      (apply fn args))))
