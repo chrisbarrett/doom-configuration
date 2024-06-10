@@ -126,3 +126,10 @@
 (add-hook 'prog-mode-hook #'goto-address)
 
 (map! :after evil :n "RET" #'+evil-ret)
+
+;; HACK: Work around change to calling convention that breaks < & > in
+;; evil-org.
+
+(after! (:all org evil-org)
+  (define-advice org-get-limited-outline-regexp (:filter-args (&rest args) fix-evil-org)
+    nil))
