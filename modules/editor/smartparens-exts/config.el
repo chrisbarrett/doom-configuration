@@ -37,9 +37,6 @@
                    :pre-handlers '(+sp/add-space-before-sexp-insertion)
                    :post-handlers '(+sp/add-space-after-sexp-insertion)))
 
-  (sp-with-modes '(typescript-ts-mode)
-    (sp-local-pair "<" ">" :actions nil))
-
   (sp-with-modes '(org-mode markdown-mode gfm-mode latex-mode)
     ;; Don't pad curly-braces.
     (sp-local-pair "{" "}" :pre-handlers nil))
@@ -48,3 +45,9 @@
     (sp-local-pair "[" "]" :post-handlers '(+sp/format-checkitem)))
 
   (smartparens-global-strict-mode +1))
+
+;; HACK: Undo vendor behaviour for angle brackets until it is made more robust
+;; in `smartparens-strict-mode.'
+(after! smartparens-javascript
+  (sp-with-modes sp--javascript-modes
+    (sp-local-pair "<" ">" :actions nil)))
