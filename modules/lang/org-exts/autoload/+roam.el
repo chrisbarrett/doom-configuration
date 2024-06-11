@@ -1,5 +1,8 @@
 ;;; lang/org-exts/autoload/+roam.el -*- lexical-binding: t; -*-
 
+(eval-when-compile
+  (require 'subr-x))
+
 ;;;###autoload
 (defun +roam-node-find (&optional other-window)
   "Find an org-roam node. See `org-roam-node-find'.
