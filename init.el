@@ -63,6 +63,7 @@
        eshell-exts
 
        :tools
+       debugging
        (docker +lsp)
        direnv
        editorconfig
