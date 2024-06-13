@@ -175,6 +175,12 @@
   (add-to-list 'eglot-server-programs '((rust-mode rust-ts-mode rust-mode) .
                                         ("rust-analyzer" :initializationOptions (:checkOnSave (:command "clippy"))))))
 
+(use-package! eglot
+  :config
+  (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  :hook
+  (nix-mode . eglot-ensure))
+
 ;;; Shell-scripting
 
 (after! sh-script
