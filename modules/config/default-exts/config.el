@@ -8,9 +8,6 @@
 
 (setq save-interprogram-paste-before-kill t)
 
-(after! (:or magit projectile)
-  (setq projectile-switch-project-action #'magit-status))
-
 ;;; Set some handy global keybindings
 
 (map! :g "M-t" #'transpose-words

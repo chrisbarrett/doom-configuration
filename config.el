@@ -40,11 +40,14 @@
       :gvni "C-," #'winner-undo
       :gvni "C-." #'winner-redo)
 
-;;; Projectile
+;;; Projects
 
-(after! projectile
-  (add-to-list 'projectile-project-search-path (cons "~/src" 1))
-  (add-to-list 'projectile-project-search-path "~/.config"))
+(after! project
+  (project-remember-projects-under "~/.config/")
+  (project-remember-projects-under "~/src/")
+  (dolist (dir (seq-difference (directory-files "~/src/") '("." "..")))
+    (when (file-directory-p dir)
+      (project-remember-projects-under dir))))
 
 ;;; Org-Mode
 

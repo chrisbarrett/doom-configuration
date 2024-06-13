@@ -5,4 +5,3 @@
 
 (package! drag-stuff)
 (package! magit)
-(package! projectile)

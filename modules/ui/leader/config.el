@@ -275,27 +275,26 @@
           :desc "Open reference..." "b"  #'citar-open)))
 
       (:prefix-map ("p" . "project")
-       :desc "Add new project"  "a" #'projectile-add-known-project
-       :desc "Remove known project" "x" #'projectile-remove-known-project
-       :desc "Edit .dir-locals" "e" #'projectile-edit-dir-locals
-       :desc "Shell command..." "!"  #'projectile-run-async-shell-command-in-root
-       :desc "Invalidate project cache" "i" #'projectile-invalidate-cache
-       :desc "Compile..."       "c"  #'projectile-compile-project
-       :desc "Switch... (dired)" "j" (cmd!
-                                      (let ((projects (projectile-relevant-known-projects)))
-                                        (dired (completing-read "Dired: " projects nil t))))
-       :desc "Test..."          "t" #'projectile-test-project
-       :desc "Switch..."        "p"  #'projectile-switch-project
-       :desc "Find other file"  "TAB" #'projectile-find-other-file
-       :desc "Find file..."     "f"  #'projectile-find-file
-       :desc "Find file..."     "F"  #'projectile-find-file-other-window
-       :desc "Find dir..."      "d"  #'projectile-find-dir
-       :desc "Find dir..."      "D"  #'projectile-find-dir-other-window
-       :desc "Switch buffer..." "b"  #'projectile-switch-to-buffer
+       :desc "Remove known project" "x" #'project-forget-project
+       :desc "Edit .dir-locals" "e" (cmd!
+                                     (let ((default-directory (project-root)))
+                                       (find-file ".dir-locals.el")))
+       :desc "Shell command..." "!"  #'project-async-shell-command
+       :desc "Compile..."       "c"  #'project-compile
+       :desc "Switch... (dired)" "j" (cmd! (project-switch-project "D"))
+       :desc "Switch..."        "p"  (cmd!
+                                      (let ((project-switch-commands (defun +switch-to-project-default ()
+                                                                       (interactive)
+                                                                       (let ((dir project-current-directory-override))
+                                                                         (if (magit-gitdir dir)
+                                                                             (magit-status dir)
+                                                                           (dired dir))))))
+                                        (call-interactively #'project-switch-project)))
+       :desc "Find file..."     "f"  #'project-find-file
+       :desc "Find dir..."      "d"  #'project-find-dir
+       :desc "Switch buffer..." "b"  #'project-switch-to-buffer
        :desc "Search (rg)"      "/"  #'consult-ripgrep
-       :desc "Run..."           "R" #'projectile-run-project
-       :desc "Replace"          "r"  #'projectile-replace-regexp
-       :desc "Save project files" "s" #'projectile-save-project-buffers)
+       :desc "Replace"          "r"  #'project-query-replace-regexp)
 
       (:prefix-map ("s" . "search")
        :desc "Find defs"               "g"  #'xref-find-definitions

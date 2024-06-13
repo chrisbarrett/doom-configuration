@@ -4,12 +4,7 @@
       :after dired
       :n "M-w" #'dired-copy-filename-as-kill
       :n "," #'dired-hide-details-mode
-      :n "." #'dired-omit-mode
-      [remap projectile-switch-project] (cmd!
-                                         (require 'projectile)
-                                         (projectile-completing-read
-                                          "Go to project: " (projectile-relevant-known-projects)
-                                          :action #'dired)))
+      :n "." #'dired-omit-mode)
 
 (map! :map dirvish-mode-map
       :after dirvish

@@ -6,19 +6,19 @@
 (defun +jump-to-nix-file ()
   (interactive)
   (let ((default-directory +nix-config-directory))
-    (projectile-find-file)))
+    (project-find-file)))
 
 ;;;###autoload
 (defun +jump-to-emacsd-file ()
   (interactive)
   (let ((default-directory user-emacs-directory))
-    (projectile-find-file)))
+    (project-find-file)))
 
 ;;;###autoload
 (defun +jump-to-doomd-file ()
   (interactive)
   (let ((default-directory doom-user-dir))
-    (projectile-find-file)))
+    (project-find-file)))
 
 ;;;###autoload
 (defun +jump-to-init-file ()
