@@ -34,3 +34,5 @@
 (when-let* ((program (getenv "NIX_EMACS_TEX_PROGRAM")))
   (after! tex
     (setq TeX-command program)))
+
+(setq! dape-adapter-dir "~/.nix-profile/share/debug-adapters/")
