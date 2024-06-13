@@ -16,7 +16,7 @@
       :desc "Resume last search"    "r"    #'vertico-repeat
 
       (:when (modulep! :ui popup)
-        :desc "Toggle last popup"     "~"    #'+popup/toggle)
+        :desc "Toggle popups"     "-"    #'+popup/toggle)
 
       :desc "Shell command"         "!"    #'async-shell-command
       :desc "Search for symbol in project" "*" #'+search-project-for-symbol-at-point
@@ -24,7 +24,6 @@
       :desc "rg (deadgrep)"         "S"    #'+search/deadgrep
       :desc "Kill ring"             "R"    #'consult-yank-pop
       :desc "Rotate window layout"  "|"    #'rotate-layout
-      :desc "Toggle side windows"   "-"    #'+popup/toggle
       :desc "Delete window"         "q"    #'delete-window
 
       :desc "Prev buffer"           "TAB"  #'+swap-buffers
@@ -322,9 +321,9 @@
        ;; ---------
        (:when (modulep! :ui popup)
          :desc "Popup-to-normal" "m"   #'+popup/raise
-         :desc "Next (popup)"    "z"   #'+popup/other)
+         :desc "Next (popup)"    "z"   #'+popup/other
+         :desc "Toggle popups"           "SPC" #'+popup/toggle)
        ;; ---------
-       :desc "Toggle popups"           "SPC" #'+popup/toggle
        :desc "Prev"                    "p"  #'evil-window-prev
        :desc "Next"                    "w"  #'evil-window-next
        :desc "Next"                    "n"  #'evil-window-next
