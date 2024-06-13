@@ -25,6 +25,8 @@
 
 ;;; Window management
 
+(map! "C-SPC" #'consult-buffer)
+
 (after! window
   (setq switch-to-buffer-obey-display-actions t)
   (setq switch-to-buffer-in-dedicated-window 'pop))
