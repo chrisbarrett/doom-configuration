@@ -111,7 +111,6 @@
        :ui
        doom
        doom-exts
-       (emoji +unicode)
        harpoon
        hl-todo
        indent-guides
