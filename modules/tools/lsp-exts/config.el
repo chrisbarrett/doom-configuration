@@ -12,3 +12,6 @@
 (add-hook! eglot-managed-mode
   (eglot-inlay-hints-mode -1))
 
+(add-hook 'nix-mode-hook #'eglot-ensure)
+(add-hook 'yaml-ts-mode-hook #'eglot-ensure)
+(add-hook 'json-mode-hook #'eglot-ensure)
