@@ -2,22 +2,24 @@
 
 (autoload 'xref-push-marker-stack "xref")
 
+(defvar project-current-directory-override)
+
 ;;;###autoload
 (defun +jump-to-nix-file ()
   (interactive)
-  (let ((default-directory +nix-config-directory))
+  (let ((project-current-directory-override +nix-config-directory))
     (project-find-file)))
 
 ;;;###autoload
 (defun +jump-to-emacsd-file ()
   (interactive)
-  (let ((default-directory user-emacs-directory))
+  (let ((project-current-directory-override user-emacs-directory))
     (project-find-file)))
 
 ;;;###autoload
 (defun +jump-to-doomd-file ()
   (interactive)
-  (let ((default-directory doom-user-dir))
+  (let ((project-current-directory-override doom-user-dir))
     (project-find-file)))
 
 ;;;###autoload
