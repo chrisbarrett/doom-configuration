@@ -228,3 +228,8 @@
   "Work around Doom errors attempting to use org-reveal in scratch buffer."
   (when (derived-mode-p 'org-mode)
     (apply fn args)))
+
+(define-advice org-align-tags (:around (fn &rest args) ignore-errors)
+  "Fix issue in `org-roam-promote-entire-buffer'."
+  (ignore-errors
+    (apply fn args)))
