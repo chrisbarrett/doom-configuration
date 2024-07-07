@@ -5,5 +5,5 @@
 # uuid: 46127997-53cf-45eb-8279-75d5736d38d2
 # --
 #+begin_src js
-  $0
+$0
 #+end_src

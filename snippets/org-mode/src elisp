@@ -6,5 +6,5 @@
 # uuid: 4fe75209-2c7c-4d14-99c8-393433543077
 # --
 #+begin_src emacs-lisp
-  $0
+$0
 #+end_src

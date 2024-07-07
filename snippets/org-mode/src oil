@@ -6,5 +6,5 @@
 # uuid: 13f8b46a-47dd-46cc-bd06-45b7db1ede11
 # --
 #+begin_src oil
-  $0
+$0
 #+end_src

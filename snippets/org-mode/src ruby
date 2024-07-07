@@ -5,5 +5,5 @@
 # uuid: 28883594-4554-4bea-95c6-de2b134b4014
 # --
 #+begin_src ruby
-  $0
+$0
 #+end_src

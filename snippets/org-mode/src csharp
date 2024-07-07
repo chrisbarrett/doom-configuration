@@ -6,5 +6,5 @@
 # uuid: 8a5bf869-2091-4ead-9f1e-c42a59dbe08d
 # --
 #+begin_src csharp
-  $0
+$0
 #+end_src

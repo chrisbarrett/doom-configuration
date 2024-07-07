@@ -6,5 +6,5 @@
 # uuid: 1bc36ef0-bdea-4e25-8349-56fe6d244174
 # --
 #+begin_src clojure
-  ($0)
+$0
 #+end_src

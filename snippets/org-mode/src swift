@@ -6,5 +6,5 @@
 # uuid: 5557570d-5c8b-46a7-9a16-6b9299017733
 # --
 #+begin_src swift
-  $0
+$0
 #+end_src

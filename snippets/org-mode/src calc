@@ -6,5 +6,5 @@
 # uuid: 04e0b419-711d-4200-9349-c161f00d3eb5
 # --
 #+begin_src calc
-  $0
+$0
 #+end_src

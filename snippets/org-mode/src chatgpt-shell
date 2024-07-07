@@ -1,9 +1,0 @@
-;;; -*- mode: snippet; -*-
-# key: chat
-# name: src chatgpt-shel
-# condition: (+yas-bolp)
-# uuid: eafe7a7b-8af7-4869-b324-64459f91dcfc
-# --
-#+begin_src chatgpt-shell :context t
-  $0
-#+end_src

@@ -5,5 +5,5 @@
 # condition: (+yas-bolp)
 # --
 #+begin_src typescript
-  $0
+$0
 #+end_src

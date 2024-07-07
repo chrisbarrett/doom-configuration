@@ -5,5 +5,5 @@
 # uuid: 267e2119-68b5-498b-be88-16573bd0111e
 # --
 #+begin_src sql
-  $0
+$0
 #+end_src
