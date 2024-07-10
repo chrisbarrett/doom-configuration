@@ -189,3 +189,9 @@
 (add-to-list 'auto-mode-alist (cons (rx "/.envrc") 'bash-ts-mode))
 (add-to-list 'auto-mode-alist (cons (rx "sshd_config" eol) 'conf-unix-mode))
 (add-to-list 'auto-mode-alist (cons (rx "/sshd_config.d/") 'conf-unix-mode))
+
+(after! asm-mode
+  (setq-hook! asm-mode tab-width 8)
+  (add-hook! asm-mode
+    (indent-tabs-mode +1)
+    (keymap-local-unset ";")))
