@@ -190,6 +190,10 @@
 (add-to-list 'auto-mode-alist (cons (rx "sshd_config" eol) 'conf-unix-mode))
 (add-to-list 'auto-mode-alist (cons (rx "/sshd_config.d/") 'conf-unix-mode))
 
+;; Env files
+
+(add-to-list 'auto-mode-alist (cons (rx "/.env" (? "." (+ nonl)) eol) 'conf-unix-mode))
+
 (after! asm-mode
   (setq-hook! asm-mode tab-width 8)
   (add-hook! asm-mode
