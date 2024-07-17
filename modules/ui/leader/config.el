@@ -304,6 +304,8 @@
 
       (:prefix-map ("t" . "toggles")
        :desc "Comment visibility"      "c" #'hide/show-comments-toggle
+       (:when (modulep! :ui treemacs)
+         :desc "file tree"             "t" #'+treemacs/toggle)
        :desc "Fill Column Indicator"   "f" #'global-display-fill-column-indicator-mode
        (:when (modulep! :ui indent-guides)
          :desc "Indent guides"         "i" #'highlight-indent-guides-mode)

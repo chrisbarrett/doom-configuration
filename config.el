@@ -199,3 +199,24 @@
   (add-hook! asm-mode
     (indent-tabs-mode +1)
     (keymap-local-unset ";")))
+
+;;; Treemacs
+
+(after! treemacs
+  (setq treemacs-collapse-dirs 8)
+  ;; (add-hook 'treemacs-mode-hook #'treemacs-hide-gitignored-files-mode)
+  ;; TODO: Reset to t once I have a better window management system.
+  (setq treemacs-is-never-other-window nil)
+
+  (defun config-treemacs--extra-ignore-file-predicate (file abspath)
+
+    (or (seq-contains-p '(".direnv"
+                          ".stfolder"
+                          ".cdk.out"
+                          "target"
+                          "dist"
+                          "out")
+                        file)
+        (string-match-p (rx bol ".stignore") file)))
+
+  (add-to-list 'treemacs-ignored-file-predicates #'config-treemacs--extra-ignore-file-predicate))

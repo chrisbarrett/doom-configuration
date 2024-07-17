@@ -115,6 +115,7 @@
        hl-todo
        indent-guides
        leader
+       treemacs
        (ligatures +fira)
        modeline
        ophints
