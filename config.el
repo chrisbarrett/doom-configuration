@@ -154,7 +154,7 @@
                              mode)))
                auto-mode-alist))
 
-;;; Oils for UNix
+;;; Oils for Unix
 ;;
 ;; I eagerly await a real major mode, if this scripting language takes off.
 
