@@ -200,6 +200,8 @@
     (indent-tabs-mode +1)
     (keymap-local-unset ";")))
 
+(map! :gniv "C-t" 'project-find-file
+      :gniv "C-/" '+vertico/project-search)
 
 
 ;;; Projects
