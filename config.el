@@ -6,11 +6,6 @@
 (after! envrc
   (setq envrc-show-summary-in-minibuffer nil))
 
-;; Global bindings to match what I have in terminals.
-(map! :gniv "C-t" 'project-find-file
-      :gniv "C-/" '+vertico/project-search)
-
-
 ;; KLUDGE: Enable undo-tree manually; no idea why this isn't being applied
 ;; correctly by doom.
 (autoload 'turn-on-undo-tree-mode "undo-tree")
@@ -260,6 +255,7 @@
   (add-hook! asm-mode
     (indent-tabs-mode +1)))
 
+
 ;;; Projects
 
 (after! vc-hooks
@@ -289,3 +285,14 @@
         (string-match-p (rx bol ".stignore") file)))
 
   (add-to-list 'treemacs-ignored-file-predicates #'config-treemacs--extra-ignore-file-predicate))
+
+
+;;; fzf-style bindings
+;; Global bindings to match what I have in terminals.
+
+(map! :gniv "C-t" 'project-find-file
+      :gniv "C-/" '+vertico/project-search)
+
+(map! :after evil-collection-magit
+      :map 'magit-status-mode-map
+      :niv "C-t" nil)
