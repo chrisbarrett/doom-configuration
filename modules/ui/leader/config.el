@@ -279,7 +279,8 @@
                                      (let ((default-directory (project-root)))
                                        (find-file ".dir-locals.el")))
        :desc "Shell command..." "!"  #'project-async-shell-command
-       :desc "Compile..."       "c"  #'project-compile
+       :desc "Compile..."       "c"  #'+project-compile
+       :desc "Test..."          "t"  #'+project-test
        :desc "Switch... (dired)" "j" (cmd! (project-switch-project "D"))
        :desc "Switch..."        "p"  (cmd!
                                       (let ((project-switch-commands (defun +switch-to-project-default ()
