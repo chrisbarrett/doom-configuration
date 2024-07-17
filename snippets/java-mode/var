@@ -4,4 +4,4 @@
 # key: v
 # condition: (+yas-bolp)
 # --
-var ${1:name} = $0
+var ${1:name} = $0;
