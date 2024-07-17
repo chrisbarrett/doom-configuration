@@ -8,8 +8,9 @@
 
 (map! :map dirvish-mode-map
       :after dirvish
-      :n "TAB" #'dirvish-toggle-fullscreen
-      [remap delete-other-windows] #'dirvish-toggle-fullscreen)
+      :n "TAB" #'dirvish-layout-toggle
+      :n "|" #'dirvish-layout-switch
+      [remap delete-other-windows] #'dirvish-layout-toggle)
 
 (map! :map wdired-mode-map
       :after wdired
