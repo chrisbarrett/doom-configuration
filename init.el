@@ -79,17 +79,17 @@
        terraform
 
        :lang
-       coq
-       (csharp +lsp)
+       ;; coq
+       ;; (csharp +lsp)
        data
        emacs-lisp
        emacs-lisp-exts
-       (graphql +lsp)
+       ;; (graphql +lsp)
        (json +lsp)
        (latex +lsp +fold)
        (nix +lsp)
 
-       (ocaml +lsp)
+       ;; (ocaml +lsp)
        (org +dragndrop +roam2)
        (org-exts
         +citations
@@ -100,10 +100,10 @@
         +slack)
 
        plantuml
-       haskell
+       ;; haskell
        (rust +lsp)
        (sh +lsp)
-       (swift +lsp)
+       ;; (swift +lsp)
        (typescript +lsp)
        (yaml +lsp)
        (zig +lsp)
