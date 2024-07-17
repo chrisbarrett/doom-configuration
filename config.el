@@ -200,6 +200,17 @@
     (indent-tabs-mode +1)
     (keymap-local-unset ";")))
 
+
+
+;;; Projects
+
+(after! vc-hooks
+  (add-to-list 'vc-directory-exclusion-list ".direnv")
+  (add-to-list 'vc-directory-exclusion-list "target")
+  (add-to-list 'vc-directory-exclusion-list "cdk.out")
+  (add-to-list 'vc-directory-exclusion-list "node_modules"))
+
+
 ;;; Treemacs
 
 (after! treemacs
