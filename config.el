@@ -3,6 +3,23 @@
 (require 'pcase)
 (require 'map)
 
+(defun +eglot-run-organise-imports ()
+  (when (derived-mode-p 'java-ts-mode)
+    (save-excursion
+      (goto-char (point-min))
+      (call-interactively #'eglot-code-action-organize-imports))))
+
+(defun +configure-eglot-formatting ()
+  (cond
+   ((eglot-managed-p)
+    (add-hook 'before-save-hook #'+eglot-run-organise-imports nil t)
+    (add-hook 'before-save-hook #'eglot-format nil t))
+   (t
+    (remove-hook 'before-save-hook #'+eglot-run-organise-imports t)
+    (remove-hook 'before-save-hook #'eglot-format t))))
+
+(add-hook 'eglot-managed-mode-hook #'+configure-eglot-formatting)
+
 ;; KLUDGE: Enable undo-tree manually; no idea why this isn't being applied
 ;; correctly by doom.
 (autoload 'turn-on-undo-tree-mode "undo-tree")
