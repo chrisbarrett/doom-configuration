@@ -190,6 +190,26 @@
 (add-to-list 'auto-mode-alist (cons (rx "sshd_config" eol) 'conf-unix-mode))
 (add-to-list 'auto-mode-alist (cons (rx "/sshd_config.d/") 'conf-unix-mode))
 
+;;; Java - woe is me
+
+(use-package! eglot
+  :config
+  (setf (alist-get '(java-mode java-ts-mode) eglot-server-programs nil nil #'equal)
+        (cons "jdtls"
+              (seq-map (lambda (s) (concat "--jvm-arg=" s))
+                       (list "-XX:+UseParallelGC"
+                             "-XX:GCTimeRatio=4"
+                             "-XX:AdaptiveSizePolicyWeight=90"
+                             "-Dsun.zip.disableMemoryMapping=true"
+                             "-Dlog.protocol=true"
+                             "-Dlog.level=ALL"
+                             "-Xmx1G"
+                             "-Xms100m"
+                             (concat "-javaagent:" (getenv "NIX_EMACS_LOMBOK_JAR"))))))
+  :hook
+  ((java-ts-mode java-mode) . eglot-ensure))
+
+
 ;;; Env files
 
 (add-to-list 'auto-mode-alist (cons (rx "/.env" (? "." (+ nonl)) eol) 'conf-unix-mode))
