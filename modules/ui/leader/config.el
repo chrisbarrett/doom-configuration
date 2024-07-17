@@ -146,6 +146,7 @@
       (:prefix-map ("e" . "errors & LSP")
        :desc "Next"                 "n"    #'flymake-goto-next-error
        :desc "Prev"                 "p"    #'flymake-goto-prev-error
+       :desc "Goto..."              "e"    #'consult-flymake
        :desc "List (buffer)"        "l"    #'+flymake-toggle-buffer-error-list
        :desc "List (project)"       "L"    #'+flymake-toggle-project-error-list
        :desc "Rename..."            "r"    #'eglot-rename
