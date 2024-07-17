@@ -35,9 +35,7 @@
       :desc "Eval expression"       ":"    #'pp-eval-expression
       :desc "Lisp REPL"             ";"    #'ielm
 
-      :desc "dired"                 "d"    (cmd! (dired default-directory))
-      :desc "dired (other)"         "D"    #'dired-other-window
-
+      :desc "dired"                 "d"    #'dirvish
 
       :desc "Edit indirectly"       "'"    (general-predicate-dispatch #'poporg-dwim
 
@@ -305,6 +303,8 @@
 
       (:prefix-map ("t" . "toggles")
        :desc "Comment visibility"      "c" #'hide/show-comments-toggle
+       (:when (modulep! :emacs dired +dirvish)
+         :desc "dired sidebar"         "d" #'dirvish-side)
        (:when (modulep! :ui treemacs)
          :desc "file tree"             "t" #'+treemacs/toggle)
        :desc "Fill Column Indicator"   "f" #'global-display-fill-column-indicator-mode
