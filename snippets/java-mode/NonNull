@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: @NonNull
+# uuid: cedc640d-4b0f-40f1-93a8-87e184883f53
+# key: nn
+# --
+@NonNull`(just-one-space)`

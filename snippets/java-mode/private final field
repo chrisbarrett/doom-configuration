@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: private final field
+# uuid: 3978d104-3299-4f1a-976e-fd5ed58068da
+# key: pf
+# condition: (+yas-bolp)
+# --
+private final ${Type} ${name};

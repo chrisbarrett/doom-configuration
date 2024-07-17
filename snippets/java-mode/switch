@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: switch
+# uuid: f51e437c-693b-42a5-affc-e71177239f3d
+# key: sw
+# --
+switch (${1:scrutinee}) {
+  case ${1:pat} -> $0;
+}

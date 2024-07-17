@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: @Overrider
+# uuid: 4a6cb4b8-77de-4e83-ac76-d86b8be4471d
+# key: ov
+# condition: (+yas-bolp)
+# --
+@Override
