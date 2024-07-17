@@ -174,8 +174,8 @@
 (use-package! eglot
   :hook ((rust-mode rustic-mode) . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs '((rust-mode rust-ts-mode rust-mode) .
-                                        ("rust-analyzer" :initializationOptions (:checkOnSave (:command "clippy"))))))
+  (setf (alist-get '(rust-mode rust-ts-mode) eglot-server-programs nil nil #'equal)
+        '("rust-analyzer" :initializationOptions (:checkOnSave (:command "clippy")))))
 
 (use-package! eglot
   :hook
