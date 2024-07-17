@@ -3,6 +3,11 @@
 (require 'pcase)
 (require 'map)
 
+;; KLUDGE: Enable undo-tree manually; no idea why this isn't being applied
+;; correctly by doom.
+(autoload 'turn-on-undo-tree-mode "undo-tree")
+(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+
 ;;; Themeing
 
 (setq doom-font (font-spec :family "Fira Code" :size 12))
