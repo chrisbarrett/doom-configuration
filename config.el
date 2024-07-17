@@ -197,8 +197,7 @@
 (after! asm-mode
   (setq-hook! asm-mode tab-width 8)
   (add-hook! asm-mode
-    (indent-tabs-mode +1)
-    (keymap-local-unset ";")))
+    (indent-tabs-mode +1)))
 
 (map! :gniv "C-t" 'project-find-file
       :gniv "C-/" '+vertico/project-search)
