@@ -13,6 +13,8 @@
   (error (warn "Failed to set theme on startup: %s " (error-message-string err))))
 
 (setq display-line-numbers-type 'relative)
+(setq-hook! dired-mode display-line-numbers nil)
+(setq-hook! treemacs-mode display-line-numbers nil)
 
 ;;; Indent-guides
 
