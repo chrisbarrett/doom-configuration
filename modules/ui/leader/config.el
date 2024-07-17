@@ -14,6 +14,7 @@
       :desc "Org Capture"           "X"    #'org-capture
       :desc "Universal argument"    "u"    #'universal-argument
       :desc "Resume last search"    "r"    #'vertico-repeat
+      :desc "Toggle side windows"   "-"    #'window-toggle-side-windows
 
       (:when (modulep! :ui popup)
         :desc "Toggle popups"     "-"    #'+popup/toggle)
