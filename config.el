@@ -16,6 +16,20 @@
 ;;; Eglot (LSP)
 
 (when (modulep! :tools lsp +eglot)
+  (add-hook! (
+              bash-ts-mode
+              docker-ts-mode
+              java-ts-mode
+              json-ts-mode
+              markdown-mode
+              nix-mode
+              rust-ts-mode
+              rustic-mode
+              yaml-ts-mode
+              zig-mode
+              )
+             #'eglot-ensure)
+
   (defun +eglot-run-organise-imports ()
     (when (derived-mode-p 'java-ts-mode)
       (save-excursion
