@@ -3,27 +3,33 @@
 (require 'pcase)
 (require 'map)
 
-(defun +eglot-run-organise-imports ()
-  (when (derived-mode-p 'java-ts-mode)
-    (save-excursion
-      (goto-char (point-min))
-      (call-interactively #'eglot-code-action-organize-imports))))
-
-(defun +configure-eglot-formatting ()
-  (cond
-   ((eglot-managed-p)
-    (add-hook 'before-save-hook #'+eglot-run-organise-imports nil t)
-    (add-hook 'before-save-hook #'eglot-format nil t))
-   (t
-    (remove-hook 'before-save-hook #'+eglot-run-organise-imports t)
-    (remove-hook 'before-save-hook #'eglot-format t))))
-
-(add-hook 'eglot-managed-mode-hook #'+configure-eglot-formatting)
 
 ;; KLUDGE: Enable undo-tree manually; no idea why this isn't being applied
 ;; correctly by doom.
 (autoload 'turn-on-undo-tree-mode "undo-tree")
 (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+
+;;; Eglot (LSP)
+
+(when (modulep! :tools lsp +eglot)
+  (add-hook! (nix-mode bash-ts-mode java-ts-mode rustic-mode rust-ts-mode) #'eglot-ensure)
+
+  (defun +eglot-run-organise-imports ()
+    (when (derived-mode-p 'java-ts-mode)
+      (save-excursion
+        (goto-char (point-min))
+        (call-interactively #'eglot-code-action-organize-imports))))
+
+  (defun +configure-eglot-formatting ()
+    (cond
+     ((eglot-managed-p)
+      (add-hook 'before-save-hook #'+eglot-run-organise-imports nil t)
+      (add-hook 'before-save-hook #'eglot-format nil t))
+     (t
+      (remove-hook 'before-save-hook #'+eglot-run-organise-imports t)
+      (remove-hook 'before-save-hook #'eglot-format t))))
+
+  (add-hook 'eglot-managed-mode-hook #'+configure-eglot-formatting))
 
 ;;; Themeing
 
@@ -199,15 +205,10 @@
 (after! (:and rustic-babel ob)
   (setq rustic-babel-default-toolchain "nightly"))
 
-(use-package! eglot
-  :hook ((rust-mode rustic-mode) . eglot-ensure)
-  :config
+(after! eglot
   (setf (alist-get '(rust-mode rust-ts-mode) eglot-server-programs nil nil #'equal)
         '("rust-analyzer" :initializationOptions (:checkOnSave (:command "clippy")))))
 
-(use-package! eglot
-  :hook
-  (nix-mode . eglot-ensure))
 
 ;;; Shell-scripting
 
@@ -220,8 +221,7 @@
 
 ;;; Java - woe is me
 
-(use-package! eglot
-  :config
+(after! eglot
   (setf (alist-get '(java-mode java-ts-mode) eglot-server-programs nil nil #'equal)
         (cons "jdtls"
               (seq-map (lambda (s) (concat "--jvm-arg=" s))
@@ -233,10 +233,7 @@
                              "-Dlog.level=ALL"
                              "-Xmx1G"
                              "-Xms100m"
-                             (concat "-javaagent:" (getenv "NIX_EMACS_LOMBOK_JAR"))))))
-  :hook
-  ((java-ts-mode java-mode) . eglot-ensure))
-
+                             (concat "-javaagent:" (getenv "NIX_EMACS_LOMBOK_JAR")))))))
 
 ;;; Env files
 
