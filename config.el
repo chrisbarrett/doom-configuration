@@ -16,24 +16,18 @@
 ;;; Eglot (LSP)
 
 (when (modulep! :tools lsp +eglot)
-  (add-hook! (nix-mode bash-ts-mode java-ts-mode rustic-mode rust-ts-mode) #'eglot-ensure)
-
   (defun +eglot-run-organise-imports ()
     (when (derived-mode-p 'java-ts-mode)
       (save-excursion
         (goto-char (point-min))
         (call-interactively #'eglot-code-action-organize-imports))))
 
-  (defun +configure-eglot-formatting ()
-    (cond
-     ((eglot-managed-p)
-      (add-hook 'before-save-hook #'+eglot-run-organise-imports nil t)
-      (add-hook 'before-save-hook #'eglot-format nil t))
-     (t
-      (remove-hook 'before-save-hook #'+eglot-run-organise-imports t)
-      (remove-hook 'before-save-hook #'eglot-format t))))
+  (defun +configure-organise-imports ()
+    (if (eglot-managed-p)
+        (add-hook 'before-save-hook #'+eglot-run-organise-imports nil t)
+      (remove-hook 'before-save-hook #'+eglot-run-organise-imports t)))
 
-  (add-hook 'eglot-managed-mode-hook #'+configure-eglot-formatting))
+  (add-hook 'eglot-managed-mode-hook #'+configure-organise-imports))
 
 ;;; Themeing
 

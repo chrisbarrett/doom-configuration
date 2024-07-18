@@ -15,6 +15,7 @@
 (setq-hook! 'typescript-ts-base-mode-hook +evil-want-o/O-to-continue-comments nil)
 
 (when (modulep! +lsp)
+  (add-hook 'java-ts-mode #'lsp!)
   (add-hook 'typescript-ts-mode-hook #'lsp!))
 
 (after! smartparens

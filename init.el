@@ -31,7 +31,7 @@
        evil-exts
        extra-cmds
        file-templates
-       (format +onsave)
+       (format +onsave +lsp)
        fold
        linewise
        multiple-cursors
@@ -76,7 +76,7 @@
        magit-exts
        make
        search
-       terraform
+       (terraform +lsp)
 
        :lang
        ;; coq
