@@ -11,10 +11,12 @@
 
 (defun +project-test-command (project)
   (alist-get (project-root project) +project-test-commands
-             (+project-default-test-command project)))
+             (+project-default-test-command project)
+             nil
+             #'equal))
 
 (defun +project--update-test-command (project command)
-  (setf (alist-get (project-root project) +project-test-commands)
+  (setf (alist-get (project-root project) +project-test-commands nil #'equal)
         command))
 
 ;;;###autoload
@@ -53,10 +55,12 @@ if one has already been saved."
 
 (defun +project-compile-command (project)
   (alist-get (project-root project) +project-compile-commands
-             (+project-default-compile-command project)))
+             (+project-default-compile-command project)
+             nil
+             #'equal))
 
 (defun +project--update-compile-command (project command)
-  (setf (alist-get (project-root project) +project-compile-commands)
+  (setf (alist-get (project-root project) +project-compile-commands nil #'equal)
         command))
 
 ;;;###autoload
