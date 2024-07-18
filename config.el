@@ -239,6 +239,8 @@
 
 (add-to-list 'auto-mode-alist (cons (rx "/.env" (? "." (+ nonl)) eol) 'conf-unix-mode))
 
+;;; ASM
+
 (after! asm-mode
   (setq-hook! asm-mode tab-width 8)
   (add-hook! asm-mode
