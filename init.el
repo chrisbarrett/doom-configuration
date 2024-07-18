@@ -86,6 +86,7 @@
        emacs-lisp-exts
        ;; (graphql +lsp)
        (json +lsp)
+       (java +lsp)
        (latex +lsp +fold)
        (nix +lsp)
 
