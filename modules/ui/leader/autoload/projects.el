@@ -3,9 +3,19 @@
 (persist-defvar +project-test-commands nil
   "An alist of project roots to compilation commands.")
 
-(cl-defgeneric +project-test-command (project)
+(cl-defgeneric +project-default-test-command (project))
+
+(cl-defmethod +project-default-test-command (_) nil)
+
+(defvar +projects-default-test-command-fallback "make test")
+
+(defun +project-test-command (project)
   (alist-get (project-root project) +project-test-commands
-             "make test"))
+             (+project-default-test-command project)))
+
+(defun +project--update-test-command (project command)
+  (setf (alist-get (project-root project) +project-test-commands)
+        command))
 
 ;;;###autoload
 (defun +project-test (&optional arg)
@@ -13,31 +23,41 @@
 
 With optional prefix argument ARG, re-prompt for the test command
 if one has already been saved."
-  (declare (interactive-only compile))
-  (interactive "p")
+  (declare (interactive-only test))
+  (interactive "P")
   (let* ((project (project-current t))
          (prev-command (+project-test-command project))
          (command (if (or arg (null prev-command))
-                      (read-string "Test command: " prev-command)
+                      (read-string "Test command: "
+                                   (or prev-command
+                                       +projects-default-test-command-fallback))
                     prev-command)))
 
-    ;; Update stored command
-    (setf (alist-get (project-root project)
-                     +project-test-commands)
-          command)
+    (+project--update-test-command project command)
 
     (let ((default-directory (project-root project))
           (compilation-buffer-name-function
-           (or project-compilation-buffer-name-function
-               compilation-buffer-name-function)))
+           (lambda (_) (format "*test*<%s>" (project-name project)))))
       (compile command))))
+
+
 
 (persist-defvar +project-compile-commands nil
   "An alist of project roots to compilation commands.")
 
-(cl-defgeneric +project-compile-command (project)
+(cl-defgeneric +project-default-compile-command (project))
+
+(cl-defmethod +project-default-compile-command (_) nil)
+
+(defvar +projects-default-compile-command-fallback "make -k")
+
+(defun +project-compile-command (project)
   (alist-get (project-root project) +project-compile-commands
-             "make -k"))
+             (+project-default-compile-command project)))
+
+(defun +project--update-compile-command (project command)
+  (setf (alist-get (project-root project) +project-compile-commands)
+        command))
 
 ;;;###autoload
 (defun +project-compile (&optional arg)
@@ -46,20 +66,17 @@ if one has already been saved."
 With optional prefix argument ARG, re-prompt for the compile command
 if one has already been saved."
   (declare (interactive-only compile))
-  (interactive "p")
+  (interactive "P")
   (let* ((project (project-current t))
          (prev-command (+project-compile-command project))
          (command (if (or arg (null prev-command))
-                      (read-string "Compile command: " prev-command)
+                      (read-string "Compile command: " (or prev-command
+                                                           +projects-default-compile-command-fallback))
                     prev-command)))
 
-    ;; Update stored command
-    (setf (alist-get (project-root project)
-                     +project-compile-commands)
-          command)
+    (+project--update-compile-command project command)
 
     (let ((default-directory (project-root project))
           (compilation-buffer-name-function
-           (or project-compilation-buffer-name-function
-               compilation-buffer-name-function)))
+           (lambda (_) (format "*compilation*<%s>" (project-name project)))))
       (compile command))))
