@@ -3,6 +3,10 @@
 (require 'pcase)
 (require 'map)
 
+;; Global bindings to match what I have in terminals.
+(map! :gniv "C-t" 'project-find-file
+      :gniv "C-/" '+vertico/project-search)
+
 
 ;; KLUDGE: Enable undo-tree manually; no idea why this isn't being applied
 ;; correctly by doom.
@@ -244,10 +248,6 @@
   (setq-hook! asm-mode tab-width 8)
   (add-hook! asm-mode
     (indent-tabs-mode +1)))
-
-(map! :gniv "C-t" 'project-find-file
-      :gniv "C-/" '+vertico/project-search)
-
 
 ;;; Projects
 
