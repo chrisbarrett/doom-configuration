@@ -31,7 +31,7 @@
        evil-exts
        extra-cmds
        file-templates
-       (format +onsave +lsp)
+       (format +onsave)
        fold
        linewise
        multiple-cursors

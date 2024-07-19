@@ -3,6 +3,9 @@
 (require 'pcase)
 (require 'map)
 
+(after! envrc
+  (setq envrc-show-summary-in-minibuffer nil))
+
 ;; Global bindings to match what I have in terminals.
 (map! :gniv "C-t" 'project-find-file
       :gniv "C-/" '+vertico/project-search)
