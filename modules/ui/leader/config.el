@@ -184,6 +184,7 @@
        :desc "Doom module"            "m"  #'+jump-to-doom-module
        :desc "Messages"               "?"  (cmd! (display-buffer "*Messages*"))
        :desc "Init file"              "i"  #'+jump-to-init-file
+       :desc "Magit (file actions)..." "f"  #'magit-file-dispatch
        :desc "Magit"                  "g"  #'magit-status
        :desc "Diff of file"           "d"  #'magit-diff-buffer-file
        :desc "Blame"                  "b"  #'magit-blame
