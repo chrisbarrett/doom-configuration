@@ -39,6 +39,13 @@
   (setq org-roam-review-tags-ignored-for-review-buffer '("daily" "litnotes"))
   (setq org-roam-review-show-instructions-p nil))
 
+(use-package org-roam-slipbox
+  :after org-roam
+  :demand t
+  :config
+  (org-roam-slipbox-buffer-identification-mode +1)
+  (org-roam-slipbox-tag-mode +1))
+
 ;;; org-roam-rewrite
 
 (after! org-roam-rewrite
