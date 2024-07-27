@@ -121,6 +121,11 @@
   (setf (alist-get ?\( evil-surround-pairs-alist) (cons "(" ")"))
   )
 
+;; KLUDGE: Doom doesn't correctly load evil surround; do it ourselves when we
+;; enter visual state.
+(define-advice evil-visual-state (:before (&rest _) load-evil-surround)
+  (require 'evil-surround))
+
 ;;; Teach evil-ret to open links at point
 
 (add-hook 'prog-mode-hook #'goto-address)
