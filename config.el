@@ -255,6 +255,14 @@
   (add-hook! asm-mode
     (indent-tabs-mode +1)))
 
+(add-hook! 'c-ts-mode-hook
+  (when (and (buffer-file-name)
+             (string-match-p (rx bos
+                                 "/nix/store/"
+                                 (+ (not (any "/"))) "emacs" (+ (not (any "/")))
+                                 "/share/emacs/29.4/src/")
+                             (buffer-file-name)))
+    (setq-local tab-width 8)))
 
 ;;; Projects
 
