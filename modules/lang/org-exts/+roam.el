@@ -126,3 +126,6 @@
          " ${icon:3} "
          (propertize "@${slipbox:9}" 'face 'org-tag)
          "${tags:*}")))
+
+(after! org-roam-node
+  (setq org-roam-completion-everywhere nil))
