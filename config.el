@@ -304,3 +304,7 @@
 (map! :after evil-collection-magit
       :map 'magit-status-mode-map
       :niv "C-t" nil)
+
+;; Disable prettify-symbols for JS
+
+(setq js--prettify-symbols-alist nil)
