@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: namespace
+# uuid: 93b28928-6a95-40d8-aba1-dda26529f821
+# key: ns
+# condition: (+yas-bolp)
+# --
+namespace $1 {
+  $0
+}

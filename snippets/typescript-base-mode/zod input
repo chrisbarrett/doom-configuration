@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: zod input type
+# uuid: b24aecd8-cf68-4035-a720-f90983cb167f
+# key: zin
+# condition: (+yas-bolp)
+# --
+export type ${1:name} = z.input<typeof ${2:$1}>;
