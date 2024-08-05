@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: argc eval
+# uuid: 6dd822d7-5e55-46ac-b0ae-d55d11d94c96
+# key: argc
+# condition: (+yas-bolp)
+# --
+eval "$(argc --argc-eval "\$0" "\$@")"
