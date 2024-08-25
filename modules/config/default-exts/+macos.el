@@ -9,5 +9,6 @@
 
 ;; Remove some more keybindings I don't need
 (global-unset-key (kbd "s-n"))
+(global-unset-key (kbd "s-m"))
 (global-unset-key (kbd "s-q"))
 (global-unset-key (kbd "s-w"))
