@@ -88,6 +88,7 @@
        (json +lsp)
        (java +lsp)
        (latex +lsp +fold)
+       (lua +lsp)
        (nix +lsp)
 
        ;; (ocaml +lsp)
