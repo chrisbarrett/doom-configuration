@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: local function
+# uuid: 8e275dc0-44a4-4c7a-9c95-b55f9c7b9261
+# key: lf
+# condition: (+yas-bolp)
+# --
+local function ${1:name}($2)
+  $0
+end

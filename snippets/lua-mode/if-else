@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: if-else
+# uuid: c8ec6a67-87ea-460c-9eb8-dfc13c3445a2
+# key: i
+# condition: (+yas-bolp)
+# --
+if $1 then
+  $0
+else
+end

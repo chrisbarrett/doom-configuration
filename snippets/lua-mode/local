@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: local
+# uuid: d411e283-c6b2-4238-a4b2-3ea64365eb7d
+# key: l
+# condition: (+yas-bolp)
+# --
+local ${1:name} = $0

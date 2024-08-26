@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: function
+# uuid: 76b79d30-baf7-413d-bd2a-9b816e8db40e
+# key: f
+# condition: (+yas-bolp)
+# --
+function ${1:name}($2)
+  $0
+end
