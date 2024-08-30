@@ -84,6 +84,7 @@
        data
        emacs-lisp
        emacs-lisp-exts
+       (elixir +lsp)
        ;; (graphql +lsp)
        (json +lsp)
        (java +lsp)

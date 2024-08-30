@@ -304,4 +304,5 @@
 
 ;; Disable prettify-symbols for JS
 
-(setq js--prettify-symbols-alist nil)
+(after! js
+  (setq js--prettify-symbols-alist nil))
