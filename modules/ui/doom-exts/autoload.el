@@ -1,5 +1,24 @@
 ;;; ui/doom-exts/autoload.el -*- lexical-binding: t; -*-
 
+(cl-defgeneric +system-theme-query (system-type))
+
+(cl-defmethod +system-theme-query ((_ (eql 'darwin)))
+  (shell-command-to-string "defaults read -g AppleInterfaceStyle"))
+
+(cl-defmethod +system-theme-query ((_ (eql 'gnu/linux)))
+  (shell-command-to-string "gsettings get org.gnome.desktop.interface gtk-theme"))
+
+(defun +system-theme ()
+  (if (string-match-p "dark" (+system-theme-query system-type))
+      'dark
+    'light))
+
+;;;###autoload
+(defun +theme-for-system-theme ()
+  (pcase (+system-theme)
+    (`dark 'doom-one)
+    (`light 'doom-solarized-light)))
+
 ;;;###autoload
 (defun +theme-update ()
   "Sync the Emacs theme with the system."
@@ -7,31 +26,6 @@
     (dolist (theme custom-enabled-themes)
       (disable-theme theme))
     (load-theme (+theme-for-system-theme) t)))
-
-(defun +gtk-system-theme ()
-  (with-temp-buffer
-    (ignore-errors
-      (call-process "gsettings" nil t nil "get" "org.gnome.desktop.interface" "gtk-theme"))
-    (if (string-match-p "dark" (buffer-string))
-        'dark
-      'light)))
-
-(defun +macos-system-theme ()
-  (with-temp-buffer
-    (ignore-errors
-      (call-process "defaults" nil t nil "read" "-g" "AppleInterfaceStyle"))
-    (if (string-match-p "dark" (buffer-string))
-        'dark
-      'light)))
-
-;;;###autoload
-(defun +theme-for-system-theme ()
-  (when-let* ((change-fn (pcase system-type
-                           (`darwin #'+macos-system-theme)
-                           (`gnu/linux #'+gtk-system-theme))))
-    (pcase (funcall change-fn)
-      (`dark 'doom-one)
-      (`light 'doom-solarized-light))))
 
 ;;;###autoload
 (defun +append-faces (&rest specs)
