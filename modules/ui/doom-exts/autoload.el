@@ -1,20 +1,12 @@
 ;;; ui/doom-exts/autoload.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
-(defun +theme-light ()
-  "Enable light colour theme."
-  (interactive)
-  (dolist (theme custom-enabled-themes)
-    (disable-theme theme))
-  (load-theme 'doom-solarized-light t))
-
-;;;###autoload
-(defun +theme-dark ()
-  "Enable dark colour theme."
-  (interactive)
-  (dolist (theme custom-enabled-themes)
-    (disable-theme theme))
-  (load-theme 'doom-one t))
+(defun +theme-update ()
+  "Sync the Emacs theme with the system."
+  (let ((inhibit-redisplay t))
+    (dolist (theme custom-enabled-themes)
+      (disable-theme theme))
+    (load-theme (+theme-for-system-theme) t)))
 
 (defun +gtk-system-theme ()
   (with-temp-buffer
