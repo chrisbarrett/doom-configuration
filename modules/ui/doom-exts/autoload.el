@@ -22,10 +22,12 @@
 ;;;###autoload
 (defun +theme-update ()
   "Sync the Emacs theme with the system."
-  (let ((inhibit-redisplay t))
-    (dolist (theme custom-enabled-themes)
-      (disable-theme theme))
-    (load-theme (+theme-for-system-theme) t)))
+  (let* ((inhibit-redisplay t)
+         (updated-theme (+theme-for-system-theme)))
+    (unless (member updated-theme custom-enabled-themes)
+      (dolist (theme custom-enabled-themes)
+        (disable-theme theme))
+      (load-theme updated-theme t))))
 
 ;;;###autoload
 (defun +append-faces (&rest specs)
