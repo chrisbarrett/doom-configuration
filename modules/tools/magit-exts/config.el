@@ -8,11 +8,7 @@
   (put 'gac-automatically-push-p 'safe-local-variable 'booleanp))
 
 (after! magit
-  (setq magit-save-repository-buffers 'dontask)
-  (magit-todos-mode +1))
-
-(after! magit-todos
-  (setq magit-todos-ignored-keywords '("NOTE" "DONE" "KLUDGE" "HACK")))
+  (setq magit-save-repository-buffers 'dontask))
 
 (after! browse-at-remote
   (setq browse-at-remote-add-line-number-if-no-region-selected t))
