@@ -302,6 +302,18 @@
       :map 'magit-status-mode-map
       :niv "C-t" nil)
 
+(defconst +git-auto-commit-dirs
+  (list org-directory))
+
+(defun +maybe-enable-git-auto-commit ()
+  (when (and (buffer-file-name)
+             (seq-find (lambda (dir)
+                         (f-descendant-of-p (buffer-file-name) dir))
+                       +git-auto-commit-dirs))
+    (git-auto-commit-mode +1)))
+
+(add-hook 'find-file-hook #'+maybe-enable-git-auto-commit)
+
 ;; Disable prettify-symbols for JS
 
 (after! js
