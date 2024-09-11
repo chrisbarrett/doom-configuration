@@ -9,6 +9,8 @@
 (map! :map universal-argument-map
       :prefix "SPC" "u" #'universal-argument-more)
 
+(defvar project-switch-commands)
+
 (map! :leader
       :desc "M-x"                   "x"    #'execute-extended-command
       :desc "Org Capture"           "X"    #'org-capture
