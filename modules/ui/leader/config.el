@@ -282,7 +282,11 @@
        :desc "Shell command..." "!"  #'project-async-shell-command
        :desc "Compile..."       "c"  #'+project-compile
        :desc "Test..."          "t"  #'+project-test
-       :desc "Switch... (dired)" "j" (cmd! (project-switch-project "D"))
+       :desc "Switch... (dired)" "j" (cmd!
+                                      (let ((project-switch-commands (defun +switch-to-project-default ()
+                                                                       (interactive)
+                                                                       (dired project-current-directory-override))))
+                                        (call-interactively #'project-switch-project)))
        :desc "Switch..."        "p"  (cmd!
                                       (let ((project-switch-commands (defun +switch-to-project-default ()
                                                                        (interactive)
