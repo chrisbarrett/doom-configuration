@@ -57,10 +57,14 @@
 ;;; Indent-guides
 
 (when (modulep! :ui indent-guides)
-  (remove-hook! (prog-mode text-mode conf-mode) 'highlight-indent-guides-mode)
-  (add-hook! (yaml-mode yaml-ts-mode nxml-mode python-ts-mode) 'highlight-indent-guides-mode)
-  (setq highlight-indent-guides-method 'fill)
-  (setq highlight-indent-guides-responsive t))
+  (remove-hook! (prog-mode text-mode conf-mode) '+indent-guides-init-maybe-h)
+  (add-hook! (yaml-mode yaml-ts-mode nxml-mode python-ts-mode) 'indent-bars-mode)
+  (setq
+   indent-bars-pattern "."
+   indent-bars-width-frac 0.5
+   indent-bars-pad-frac 0.25
+   indent-bars-color-by-depth nil
+   indent-bars-highlight-current-depth '(:face default :blend 0.4)))
 
 ;;; Window management
 

@@ -312,7 +312,7 @@
          :desc "file tree"             "t" #'+treemacs/toggle)
        :desc "Fill Column Indicator"   "f" #'global-display-fill-column-indicator-mode
        (:when (modulep! :ui indent-guides)
-         :desc "Indent guides"         "i" #'highlight-indent-guides-mode)
+         :desc "Indent guides"         "i" #'indent-bars-mode)
        :desc "Line numbers"            "l" #'global-display-line-numbers-mode
        :desc "Input method"            "m"  #'toggle-input-method
        :desc "Read-only mode"          "r" #'read-only-mode
