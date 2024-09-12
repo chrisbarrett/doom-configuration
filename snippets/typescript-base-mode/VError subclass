@@ -4,6 +4,7 @@
 # condition: (+yas-bolp)
 # uuid: fe0e6e11-79c8-4001-9941-b984127fd00d
 # --
-export class ${1:Name} extends VError {
-  override readonly name = '$1';
+export class ${1:TypeName} extends VError {
+  static override readonly name = "$2";
+  override readonly name = ${1:TypeName}.name;
 }
