@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
-# name: zod model
+# name: __zod model
 # uuid: 410ad8c4-ce39-48d1-9ea6-5f3704b63977
-# key: zod model
+# key: __zod model
 # --
 import { z } from "zod";
 

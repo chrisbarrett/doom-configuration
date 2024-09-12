@@ -16,7 +16,7 @@
                (not (equal "index"
                            (file-name-sans-extension (file-name-nondirectory file))))))
   :mode 'typescript-base-mode
-  :trigger "zod model")
+  :trigger "__zod model")
 
 (map! :map yas-keymap
       :after yasnippet

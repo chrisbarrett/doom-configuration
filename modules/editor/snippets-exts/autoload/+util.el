@@ -13,5 +13,6 @@ snippet's contents."
         (insert-file-contents file)
         (funcall fn file)))))
 
+;;;###autoload
 (defun +snippet-filename-upper-camel-case ()
   (s-upper-camel-case (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))
