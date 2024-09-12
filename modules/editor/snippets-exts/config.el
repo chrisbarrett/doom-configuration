@@ -8,7 +8,7 @@
   (add-to-list 'warning-suppress-types '(yasnippet))
   (add-to-list 'warning-suppress-log-types '(yasnippet)))
 
-(set-file-template! (rx "flake.nix" eos) :trigger "flake")
+(set-file-template! (rx "flake.nix" eos) :trigger "__flake")
 
 (set-file-template! 'typescript-ts-mode
   :when (lambda (file)
