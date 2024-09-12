@@ -12,3 +12,6 @@ snippet's contents."
       (let ((require-final-newline nil))
         (insert-file-contents file)
         (funcall fn file)))))
+
+(defun +snippet-filename-upper-camel-case ()
+  (s-upper-camel-case (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))

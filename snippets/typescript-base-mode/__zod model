@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: zod model
+# uuid: 410ad8c4-ce39-48d1-9ea6-5f3704b63977
+# key: zod model
+# --
+import { z } from "zod";
+
+const schema = $0;
+
+export const `(+snippet-filename-upper-camel-case)` = schema;
+export type `(+snippet-filename-upper-camel-case)` = z.infer<typeof schema>;
+
+export namespace `(+snippet-filename-upper-camel-case)` {
+  export type In = z.input<typeof schema>;
+}

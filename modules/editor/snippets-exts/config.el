@@ -10,6 +10,14 @@
 
 (set-file-template! (rx "flake.nix" eos) :trigger "flake")
 
+(set-file-template! 'typescript-ts-mode
+  :when (lambda (file)
+          (and (string-suffix-p "/models/" (file-name-directory file))
+               (not (equal "index"
+                           (file-name-sans-extension (file-name-nondirectory file))))))
+  :mode 'typescript-base-mode
+  :trigger "zod model")
+
 (map! :map yas-keymap
       :after yasnippet
       "SPC" (general-predicate-dispatch 'self-insert-command
