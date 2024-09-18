@@ -26,6 +26,14 @@
   :mode 'typescript-base-mode
   :trigger "__cdk stack")
 
+(set-file-template! 'typescript-ts-mode
+  :when (lambda (file)
+          (and (string-suffix-p "/constructs/" (file-name-directory file))
+               (not (equal "index"
+                           (file-name-sans-extension (file-name-nondirectory file))))))
+  :mode 'typescript-base-mode
+  :trigger "__cdk construct")
+
 (map! :map yas-keymap
       :after yasnippet
       "SPC" (general-predicate-dispatch 'self-insert-command

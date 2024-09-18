@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# key: __cdk construct
+# name: CDK Construct
+# uuid: ecc74f7c-6ee4-491b-b88e-31effc8e5ac7
+# --
+import * as cdk from "aws-cdk-lib";
+import { Construct } from "constructs";
+
+type Props = {
+  $0
+};
+
+export class `(+snippet-filename-upper-camel-case)` extends Construct {
+  constructor(scope: Construct, id: string, props: Props) {
+    super(scope, id, props);
+  }
+}
