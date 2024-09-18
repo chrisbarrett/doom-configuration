@@ -18,6 +18,14 @@
   :mode 'typescript-base-mode
   :trigger "__zod model")
 
+(set-file-template! 'typescript-ts-mode
+  :when (lambda (file)
+          (and (string-suffix-p "/stacks/" (file-name-directory file))
+               (not (equal "index"
+                           (file-name-sans-extension (file-name-nondirectory file))))))
+  :mode 'typescript-base-mode
+  :trigger "__cdk stack")
+
 (map! :map yas-keymap
       :after yasnippet
       "SPC" (general-predicate-dispatch 'self-insert-command

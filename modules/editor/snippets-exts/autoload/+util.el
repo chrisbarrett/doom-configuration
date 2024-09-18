@@ -16,3 +16,7 @@ snippet's contents."
 ;;;###autoload
 (defun +snippet-filename-upper-camel-case ()
   (s-upper-camel-case (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))
+
+;;;###autoload
+(defun +snippet-filename-kebab-case ()
+  (s-dashed-words (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))

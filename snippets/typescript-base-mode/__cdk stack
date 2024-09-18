@@ -1,18 +1,20 @@
 ;;; -*- mode: snippet; -*-
-# key: st
-# name: CDK stack
-# condition: (+yas-bolp)
+# key: __cdk stack
+# name: CDK Stack
 # uuid: 6113a314-d8c6-4921-8703-94af8c291c6e
 # --
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 
 type Props = cdk.StackProps & {
-}
+};
 
-export class ${1:name} extends cdk.Stack {
+export class `(+snippet-filename-upper-camel-case)` extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id, props);
     $0
+
+    // cdk.Tags.of(this).add("application", "`(+snippet-filename-kebab-case)`");
+    // cdk.Tags.of(this).add("environment", environment);
   }
 }
