@@ -322,3 +322,6 @@
 
 (after! js
   (setq js--prettify-symbols-alist nil))
+
+(after! eglot
+  (eglot-booster-mode +1))

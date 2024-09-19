@@ -14,4 +14,10 @@
 (package! string-inflection)
 (package! unfill)
 
+(package! eglot-booster
+  :recipe
+  (:type git
+   :host github
+   :repo "jdtsmith/eglot-booster"))
+
 (package! org :built-in t)
