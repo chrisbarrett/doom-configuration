@@ -260,16 +260,19 @@
   (add-hook! asm-mode
     (indent-tabs-mode +1)))
 
+;;; Emacs C srcs
+
+(defun +config-apply-emacs-C-src-file-settings ()
+  (setq-local tab-width 8)
+  (whitespace-mode -1))
+
+(defconst +emacs-C-src-file-regexp
+  (rx "/share/emacs/" (+ digit) "." (+ digit) "/src/"))
+
 (add-hook! 'c-ts-mode-hook
   (when (and (buffer-file-name)
-             (string-match-p (rx bos
-                                 "/nix/store/"
-                                 (+ (not (any "/"))) "emacs" (+ (not (any "/")))
-                                 "/share/emacs/"
-                                 (+ (any digit "."))
-                                 "/src/")
-                             (buffer-file-name)))
-    (setq-local tab-width 8)))
+             (string-match-p +emacs-C-src-file-regexp (buffer-file-name)))
+    (+config-apply-emacs-C-src-file-settings)))
 
 ;;; Projects
 
