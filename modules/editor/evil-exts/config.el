@@ -138,3 +138,8 @@
 (after! (:all org evil-org)
   (define-advice org-get-limited-outline-regexp (:filter-args (&rest args) fix-evil-org)
     nil))
+
+;; KLUDGE: Enable undo-tree manually; no idea why this isn't being applied
+;; correctly by doom.
+(autoload 'turn-on-undo-tree-mode "undo-tree")
+(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)

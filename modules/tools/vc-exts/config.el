@@ -16,3 +16,15 @@
 (map! :after (:and magit evil-collection)
       :map magit-mode-map
       :n "z" nil)
+
+
+;;; Auto-enable git-auto-commit for some dirs
+
+(defconst +git-auto-commit-dirs nil)
+
+(add-hook! 'find-file-hook
+  (when (and (buffer-file-name)
+             (seq-find (lambda (dir)
+                         (f-descendant-of-p (buffer-file-name) dir))
+                       +git-auto-commit-dirs))
+    (git-auto-commit-mode +1)))

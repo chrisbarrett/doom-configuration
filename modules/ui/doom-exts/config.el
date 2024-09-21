@@ -168,3 +168,24 @@
       (markdown-header-face-4 ,(+append-faces outline-heading '((t :underline t)))))))
 
 (apply 'custom-theme-set-faces 'user +theme-settings)
+
+;;; Indent guides
+
+(when (modulep! :ui indent-guides)
+  (setq
+   indent-bars-pattern "."
+   indent-bars-width-frac 0.5
+   indent-bars-pad-frac 0.25
+   indent-bars-color-by-depth nil
+   indent-bars-highlight-current-depth '(:face default :blend 0.4)))
+
+(setq display-line-numbers-type 'relative)
+
+
+;;; Completion
+
+(map! :after vertico
+      :map vertico-map
+      "C-k" #'kill-line
+      "C-<return>" 'vertico-exit-input
+      "M-<return>" 'minibuffer-force-complete-and-exit)

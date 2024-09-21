@@ -73,7 +73,7 @@
        lsp-exts
        nix
        (magit +forge)
-       magit-exts
+       vc-exts
        make
        search
        (terraform +lsp)
