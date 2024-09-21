@@ -51,7 +51,8 @@
 
 (condition-case err
     (setq doom-theme (+theme-for-system-theme))
-  (error (warn "Failed to set theme on startup: %s " (error-message-string err))))
+  (error
+   (warn "Failed to set theme on startup: %s " (error-message-string err))))
 
 (setq display-line-numbers-type 'relative)
 (setq-hook! dired-mode display-line-numbers nil)
