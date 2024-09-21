@@ -89,3 +89,17 @@
   (define-advice helpful--open-if-needed (:around (fn &rest args) suppress-warnings)
     (let ((noninteractive t))
       (apply fn args))))
+
+;;; Deal with inconsistent tabs vs spaces in Emacs C srcs
+
+(defun +config-apply-emacs-C-src-file-settings ()
+  (setq-local tab-width 8)
+  (whitespace-mode -1))
+
+(defconst +emacs-C-src-file-regexp
+  (rx "/share/emacs/" (+ digit) "." (+ digit) "/src/"))
+
+(add-hook! 'c-ts-mode-hook
+  (when (and (buffer-file-name)
+             (string-match-p +emacs-C-src-file-regexp (buffer-file-name)))
+    (+config-apply-emacs-C-src-file-settings)))
