@@ -60,8 +60,10 @@
 (defconst +project-discovery-dirs
   `("~/.config/"
     "~/src/"
+    ;; Discover src dirs with one level of additional nesting.
     ,@(seq-filter #'file-directory-p
-                  (seq-difference (directory-files "~/src/") '("." "..")))))
+                  (seq-difference (directory-files "~/src/" t)
+                                  '("." "..")))))
 
 (dolist (dir +project-discovery-dirs)
   (project-remember-projects-under dir))
