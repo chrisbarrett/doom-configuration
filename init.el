@@ -76,6 +76,7 @@
        (terraform +lsp)
 
        :lang
+       asm
        ;; coq
        ;; (csharp +lsp)
        data

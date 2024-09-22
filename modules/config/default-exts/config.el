@@ -110,12 +110,6 @@
 ;; Perform both indentation & text completion with TAB.
 (setq tab-always-indent 'complete)
 
-;;; ASM
-
-(after! asm-mode
-  (setq-hook! asm-mode tab-width 8)
-  (add-hook! asm-mode
-    (indent-tabs-mode +1)))
 
 ;;; Ispell
 
