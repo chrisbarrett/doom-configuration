@@ -4,3 +4,6 @@
 (package! s)
 
 (package! drag-stuff)
+
+(package! string-inflection)
+(package! unfill)

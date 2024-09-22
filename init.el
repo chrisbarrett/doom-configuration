@@ -29,11 +29,9 @@
        :editor
        (evil +everywhere)
        evil-exts
-       extra-cmds
        file-templates
        (format +onsave)
        fold
-       linewise
        multiple-cursors
        rotate-text
        smartparens-exts

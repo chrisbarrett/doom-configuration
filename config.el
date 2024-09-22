@@ -1,41 +1,33 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;
+;; Settings I may need to tweak from time-to time are set here. This helps me
+;; locate them them easily with a key sequence, rather than having to dig
+;; through Doom modules.
 
-(map! "M-s" #'string-inflection-all-cycle
-      "M-f" #'unfill-toggle
+
+;;; Keybindings
 
-      :n "z SPC" #'ispell-word
+(map!
+ ;; Global bindings to match what I have in terminals.
+ :gniv "C-t"  #'project-find-file
+ :gniv "C-/"  #'+vertico/project-search
 
-      ;; Global bindings to match what I have in terminals.
+ (:after evil-collection-magit
+  :map 'magit-status-mode-map
+  :niv "C-t" nil))
 
-      :gniv "C-t" 'project-find-file
-      :gniv "C-/" '+vertico/project-search
-      (:after evil-collection-magit
-       :map 'magit-status-mode-map
-       :niv "C-t" nil)
-
-      ;; Window-management
-
-      "C-SPC" #'consult-buffer
-
-      (:after winner
-       :n "C-." nil)
-      (:after winner
-       :map winner-mode-map
-       :gvni "C-," #'winner-undo
-       :gvni "C-." #'winner-redo))
 
 
 ;;; org-mode
 
-(setq org-directory "~/org")
-(setq org-roam-directory (file-name-concat org-directory "roam"))
-(setq +bibfiles (list (file-name-concat org-directory "org-roam.bib")))
-(setq +roam-litnotes-paths (list (file-name-concat org-roam-directory "litnotes")))
-(setq +roam-index-node-id "0F0670F7-A280-4DD5-8FAC-1DB3D38CD37F")
-
-(setq +git-auto-commit-dirs (list org-directory))
-
-(setq ispell-dictionary "en_GB")
+(setq
+ org-directory          "~/org"
+ org-roam-directory     (file-name-concat org-directory "roam")
+ +bibfiles              (list (file-name-concat org-directory "org-roam.bib"))
+ +roam-litnotes-paths   (list (file-name-concat org-roam-directory "litnotes"))
+ +roam-index-node-id    "0F0670F7-A280-4DD5-8FAC-1DB3D38CD37F"
+ +git-auto-commit-dirs  (list org-directory)
+ ispell-dictionary      "en_GB")
 
 
 ;;; LSP
@@ -60,54 +52,49 @@
 
 
 ;;; Theme
+;;
+;; See `+theme-settings' for general theme & face settings.
 
-(setq doom-font (font-spec :family "Fira Code" :size 12))
-(setq doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 12))
+(setq
+ doom-font                 (font-spec :family "Fira Code" :size 12)
+ doom-variable-pitch-font  (font-spec :family "Helvetica Neue" :size 12))
 
 (with-demoted-errors "Error enabling theme on startup: %S"
   (+theme-update))
 
+(setq +indent-guides-enabled-modes
+      '(yaml-mode yaml-ts-mode nxml-mode python-ts-mode))
+
 (setq-hook! (dired-mode treemacs-mode)
   display-line-numbers nil)
-
-(defconst +indent-significant-lang-modes
-  '(yaml-mode yaml-ts-mode nxml-mode python-ts-mode))
-
-(add-hook! '+indent-guides-inhibit-functions
-  (not (apply #'derived-mode-p +indent-significant-lang-modes)))
 
 
 ;;; Files & Projects
 
-(defconst +project-discovery-dirs
-  `("~/.config/"
-    "~/src/"
-    ,@(f-directories "~/src")))
+(pushnew! vc-directory-exclusion-list
+          "node_modules"
+          "cdk.out"
+          "target"
+          ".direnv")
+
+(pushnew! completion-ignored-extensions
+          ".DS_Store"
+          ".eln"
+          ".drv"
+          ".direnv/"
+          ".git/")
 
 (after! project
-  (dolist (dir +project-discovery-dirs)
-    (project-remember-projects-under dir)))
-
-(setq vc-directory-exclusion-list
-      '("node_modules"
-        "cdk.out"
-        "target"
-        ".direnv"
-        ".git"))
-
-(defconst +completion-extra-ignored-extensions
-  '(".DS_Store"
-    ".eln"
-    ".drv"
-    ".direnv/"
-    ".git/"))
-
-(dolist (entry +completion-extra-ignored-extensions)
-  (add-to-list 'completion-ignored-extensions entry))
+  (mapc #'project-remember-projects-under
+        `("~/.config/" "~/src/" ,@(f-directories "~/src"))))
 
 
 ;;; Window-management
+;;
+;; At some point I'd like to implement i3-style tiling. In the meantime, this
+;; will do:
 
-(setq switch-to-buffer-obey-display-actions t)
-(setq switch-to-buffer-in-dedicated-window 'pop)
-(setq help-window-select t)
+(setq
+ switch-to-buffer-obey-display-actions  t
+ switch-to-buffer-in-dedicated-window   'pop
+ help-window-select                     t)

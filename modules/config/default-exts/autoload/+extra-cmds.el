@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; config/default-exts/autoload/+extra-cmds.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
 (defun +insert-uuid (&optional upcase-p)

@@ -1,5 +1,7 @@
 ;;; ui/doom-exts/config.el -*- lexical-binding: t; -*-
 
+(setq display-line-numbers-type 'relative)
+
 (use-package! page-break-lines
   :hook (doom-first-input . global-page-break-lines-mode)
   :config
@@ -171,15 +173,19 @@
 
 ;;; Indent guides
 
+(defconst +indent-guides-enabled-modes nil
+  "List of major-modes in which indent-guides will be enabled by default.")
+
 (when (modulep! :ui indent-guides)
   (setq
    indent-bars-pattern "."
    indent-bars-width-frac 0.5
    indent-bars-pad-frac 0.25
    indent-bars-color-by-depth nil
-   indent-bars-highlight-current-depth '(:face default :blend 0.4)))
+   indent-bars-highlight-current-depth '(:face default :blend 0.4))
 
-(setq display-line-numbers-type 'relative)
+  (add-hook! '+indent-guides-inhibit-functions
+    (not (apply #'derived-mode-p +indent-guides-enabled-modes))))
 
 
 ;;; Completion

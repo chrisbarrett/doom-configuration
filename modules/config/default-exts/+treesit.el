@@ -1,5 +1,7 @@
 ;;; config/default-exts/+treesit.el -*- lexical-binding: t; -*-
 
+(require 'map)
+(require 'pcase)
 
 ;;; Tree-sitter
 ;;

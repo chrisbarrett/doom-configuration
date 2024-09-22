@@ -6,9 +6,6 @@
 (when IS-MAC
   (load! "+macos"))
 
-(require 'pcase)
-(require 'map)
-
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
 (after! password-cache
@@ -22,9 +19,23 @@
 
 ;;; Set some handy global keybindings
 
-(map! :g "M-t" #'transpose-words
-      :g "M-SPC" #'cycle-spacing
-      :g "C-x a a" #'align-regexp)
+(map! :g "M-t"     #'transpose-words
+      :g "M-SPC"   #'cycle-spacing
+      :g "C-x a a" #'align-regexp
+      :g "M-s"     #'string-inflection-all-cycle
+      :g "M-f"     #'unfill-toggle
+      :n "z SPC"   #'ispell-word
+
+      ;; Window-management
+
+      "C-SPC"      #'consult-buffer
+
+      (:after winner
+       :n "C-." nil)
+      (:after winner
+       :map 'winner-mode-map
+       :gvni "C-," #'winner-undo
+       :gvni "C-." #'winner-redo))
 
 
 ;;; Enable useful commands that are disabled by default
