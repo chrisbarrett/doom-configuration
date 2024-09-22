@@ -17,6 +17,8 @@
 
 (setq save-interprogram-paste-before-kill t)
 
+(setq envrc-show-summary-in-minibuffer nil)
+
 
 ;;; Set some handy global keybindings
 
@@ -96,9 +98,6 @@
 
 ;; Perform both indentation & text completion with TAB.
 (setq tab-always-indent 'complete)
-
-(dolist (entry '(".DS_Store" ".eln" ".drv" ".direnv/" ".git/"))
-  (add-to-list 'completion-ignored-extensions entry))
 
 ;;; ASM
 
