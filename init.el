@@ -79,6 +79,7 @@
        asm
        ;; coq
        ;; (csharp +lsp)
+       cc
        data
        emacs-lisp
        emacs-lisp-exts
