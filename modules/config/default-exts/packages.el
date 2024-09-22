@@ -4,4 +4,3 @@
 (package! s)
 
 (package! drag-stuff)
-(package! magit)

@@ -1,5 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
+(load! "+treesit")
+(load! "+help")
+
+(when IS-MAC
+  (load! "+macos"))
+
 (require 'pcase)
 (require 'map)
 
@@ -64,60 +70,6 @@
       "M-." (if (modulep! :tools lookup) #'+lookup/definition #'xref-find-definitions)
       "gm" (if (modulep! :tools lookup) #'+lookup/references #'xref-find-references))
 
-(when IS-MAC
-  (load! "+macos"))
-
-
-;;; Standardise help buffer keybindings
-
-(map!
- (:after help :map help-mode-map
-  :n "o"       #'link-hint-open-link)
-
- (:after helpful :map helpful-mode-map
-  :n "o"       #'link-hint-open-link)
-
- (:after info :map Info-mode-map
-  :n "o"       #'link-hint-open-link
-  :n "M-," #'Info-history-back
-  :n "M-." #'Info-history-forward
-  :n "^"   #'Info-up
-  :n "C-n" #'Info-forward-node
-  :n "C-p" #'Info-backward-node
-  :n ">" #'Info-next
-  :n "<" #'Info-prev
-  :n "]" #'Info-next-reference
-  :n "[" #'Info-prev-reference
-  :n "H"   #'Info-top-node
-  :n "~"   #'Info-directory
-  [remap consult-imenu] #'Info-toc)
-
- (:after apropos :map apropos-mode-map
-  :n "o"       #'link-hint-open-link
-  :n "TAB"     #'forward-button
-  :n [tab]     #'forward-button
-  :n [backtab] #'backward-button)
-
- (:after view :map view-mode-map
-         [escape]  #'View-quit-all)
-
- (:after man :map Man-mode-map
-  :n "q"    #'kill-current-buffer)
-
- (:after geiser-doc :map geiser-doc-mode-map
-  :n "o"    #'link-hint-open-link))
-
-
-
-;;; Silence warnings when helpful is looking up read-only files.
-
-;; See: https://github.com/Wilfred/helpful/issues/338
-
-(after! helpful
-  (define-advice helpful--open-if-needed (:around (fn &rest args) suppress-warnings)
-    (let ((noninteractive t))
-      (apply fn args))))
-
 
 ;;; Deal with inconsistent tabs vs spaces in Emacs C srcs
 
@@ -147,47 +99,6 @@
 
 (dolist (entry '(".DS_Store" ".eln" ".drv" ".direnv/" ".git/"))
   (add-to-list 'completion-ignored-extensions entry))
-
-
-;;; Tree-sitter
-;;
-;; Remap major modes to use treesit modes, including in org-mode.
-
-(defconst +treesit-mode-remaps
-  '((:orig-mode c-mode :treesit-mode c-ts-mode :org-src ("C"))
-    (:orig-mode c++-mode :treesit-mode c++-ts-mode :org-src ("cpp" "c++"))
-    (:orig-mode c-or-c++-mode :treesit-mode c-or-c++-ts-mode)
-    (:orig-mode conf-toml-mode :treesit-mode toml-ts-mode :org-src ("conf-toml" "toml"))
-    (:orig-mode csharp-mode :treesit-mode csharp-ts-mode :org-src ("csharp"))
-    (:orig-mode dockerfile-mode :treesit-mode dockerfile-ts-mode :org-src ("dockerfile"))
-    (:orig-mode java-mode :treesit-mode java-ts-mode :org-src ("java"))
-    (:orig-mode js-mode :treesit-mode js-ts-mode :org-src "js")
-    (:orig-mode json-mode :treesit-mode json-ts-mode :org-src "json")
-    (:orig-mode python-mode :treesit-mode python-ts-mode :org-src ("python" "py"))
-    (:orig-mode rust-mode :treesit-mode rust-ts-mode :org-src ("rust"))
-    (:orig-mode sh-mode :treesit-mode bash-ts-mode)
-    (:orig-mode toml-mode :treesit-mode toml-ts-mode :org-src ("toml"))
-    (:orig-mode typescript-mode :treesit-mode typescript-ts-mode :org-src ("ts" "typescript"))
-    (:orig-mode yaml-mode :treesit-mode yaml-ts-mode :org-src ("yml" "yaml"))))
-
-(mapc (pcase-lambda ((map :orig-mode :treesit-mode :org-src))
-        (after! files
-          (add-to-list 'major-mode-remap-alist (cons orig-mode treesit-mode)))
-        (after! org-src
-          (dolist (src-type (-list org-src))
-            (let ((treesit-sans-suffix (intern (string-remove-suffix "-mode" (format "%s" treesit-mode)))))
-              (setf (alist-get src-type org-src-lang-modes) treesit-sans-suffix)))))
-      +treesit-mode-remaps)
-
-;; `bash-ts-mode' falls back to sh-mode, so we don't want to use
-;; major-mode-remap-alist to set it.
-
-(setq auto-mode-alist
-      (seq-map (pcase-lambda (`(,pat . ,mode))
-                 (cons pat (if (equal mode 'sh-mode)
-                               'bash-ts-mode
-                             mode)))
-               auto-mode-alist))
 
 ;;; ASM
 
