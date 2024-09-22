@@ -61,12 +61,15 @@
   `("~/.config/"
     "~/src/"
     ;; Discover src dirs with one level of additional nesting.
-    ,@(seq-filter #'file-directory-p
-                  (seq-difference (directory-files "~/src/" t)
-                                  '("." "..")))))
+    ,@(seq-filter (fn! (and
+                        (not (member (file-name-nondirectory %) '("." "..")))
+                        (file-directory-p %)))
+                  (directory-files "~/src/" t
+                                   (rx bos (or "." "..") eos)))))
 
-(dolist (dir +project-discovery-dirs)
-  (project-remember-projects-under dir))
+(after! project
+  (dolist (dir +project-discovery-dirs)
+    (project-remember-projects-under dir)))
 
 (setq vc-directory-exclusion-list
       '("node_modules"
