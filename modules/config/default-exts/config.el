@@ -113,5 +113,4 @@
 
 ;;; Ispell
 
-(after! ispell
-  (setq ispell-silently-savep t))
+(setq ispell-silently-savep t)
