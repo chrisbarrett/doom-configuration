@@ -23,9 +23,14 @@
     (project-find-file)))
 
 ;;;###autoload
-(defun +jump-to-init-file ()
+(defun +jump-to-doomd-init-file ()
   (interactive)
   (find-file (file-name-concat doom-user-dir "init.el")))
+
+;;;###autoload
+(defun +jump-to-doomd-config-file ()
+  (interactive)
+  (find-file (file-name-concat doom-user-dir "config.el")))
 
 ;;;###autoload
 (defun +jump-to-doom-module (file)

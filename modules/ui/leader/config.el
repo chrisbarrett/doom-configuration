@@ -185,13 +185,14 @@
        :desc "Emacs config file"      "E"  #'+jump-to-emacsd-file
        :desc "Doom module"            "m"  #'+jump-to-doom-module
        :desc "Messages"               "?"  (cmd! (display-buffer "*Messages*"))
-       :desc "Init file"              "i"  #'+jump-to-init-file
+       :desc "Doom init file"         "i"  #'+jump-to-doomd-init-file
+       :desc "Doom config file"       "c"  #'+jump-to-doomd-config-file
        :desc "Magit (file actions)..." "f"  #'magit-file-dispatch
        :desc "Magit"                  "g"  #'magit-status
        :desc "Diff of file"           "d"  #'magit-diff-buffer-file
        :desc "Blame"                  "b"  #'magit-blame
        :desc "Remote: browse"         "r"  #'browse-at-remote
-       :desc "Git time machine"       "t"   #'git-timemachine-toggle
+       :desc "Git time machine"       "t"  #'git-timemachine-toggle
        :desc "Remote: copy"           "y"  #'browse-at-remote-kill
        :desc "Open link at pt"        "o"  #'link-hint-open-link-at-point
        :desc "Log"                    "l"  #'magit-log-buffer-file
