@@ -56,7 +56,6 @@
 
        :checkers
        (spell +aspell +everywhere)
-       (syntax +flymake)
 
        :term
        eshell
