@@ -32,7 +32,8 @@
 
 ;;; LSP
 
-(add-hook! (bash-ts-mode
+(add-hook! (c-ts-base-mode
+            bash-ts-mode
             docker-ts-mode
             java-ts-mode
             json-mode
