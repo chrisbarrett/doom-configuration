@@ -113,7 +113,6 @@
        :ui
        doom
        doom-exts
-       harpoon
        hl-todo
        indent-guides
        leader

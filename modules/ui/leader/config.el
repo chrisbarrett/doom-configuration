@@ -228,6 +228,16 @@
         :desc "Search news"         "n"  #'doom/help-search-news
         :desc "Search loaded files" "f"  #'doom/help-search-loaded-files))
 
+      (:prefix-map ("j" . "Harpoon")
+       :desc "Clear" "c"       #'harpoon-clear
+       :desc "Add file" "s"    #'harpoon-add-file
+       :desc "Toggle file" "f" #'harpoon-toggle-file)
+
+      :desc "Harpoon 1" "1"    #'harpoon-go-to-1
+      :desc "Harpoon 2" "2"    #'harpoon-go-to-2
+      :desc "Harpoon 3" "3"    #'harpoon-go-to-3
+      :desc "Harpoon 4" "4"    #'harpoon-go-to-4
+
       (:prefix-map ("k" . "kill-ring")
        :desc "Browse kill-ring"      "r"  #'consult-yank-from-kill-ring)
 

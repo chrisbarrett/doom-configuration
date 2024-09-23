@@ -4,3 +4,4 @@
 (package! evil-multiedit)
 (package! hide-comnt)
 (package! rotate)
+(package! harpoon)

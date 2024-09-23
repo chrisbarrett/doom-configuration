@@ -8,6 +8,9 @@
 ;;; Keybindings
 
 (map!
+ :mn "U" 'harpoon-quick-menu-hydra
+ :mn "C-s" 'harpoon-add-file
+
  ;; Global bindings to match what I have in terminals.
  :gniv "C-t"  #'project-find-file
  :gniv "C-/"  #'+vertico/project-search
