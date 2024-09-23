@@ -190,6 +190,8 @@
 
 ;;; Completion
 
+(map! :g "C-@" 'embark-act)
+
 (map! :after vertico
       :map vertico-map
       "C-k" #'kill-line
