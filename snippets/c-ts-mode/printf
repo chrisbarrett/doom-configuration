@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: printf
+# uuid: 2dd14cc8-512c-44f4-8794-890404380a2c
+# key: p
+# condition: (+yas-bolp)
+# --
+printf("$0");
