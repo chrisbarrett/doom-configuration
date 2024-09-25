@@ -12,7 +12,7 @@
 
 (set-file-template! 'typescript-ts-mode
   :when (lambda (file)
-          (and (string-suffix-p "/models/" (file-name-directory file))
+          (and (string-match-p "/models/" (file-name-directory file))
                (not (equal "index"
                            (file-name-sans-extension (file-name-nondirectory file))))))
   :mode 'typescript-base-mode
