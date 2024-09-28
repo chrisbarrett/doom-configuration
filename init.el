@@ -113,6 +113,7 @@
        :ui
        doom
        doom-exts
+       (popup +defaults +all)
        hl-todo
        indent-guides
        leader

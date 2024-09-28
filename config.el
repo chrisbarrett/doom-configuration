@@ -91,14 +91,3 @@
 (after! project
   (mapc #'project-remember-projects-under
         `("~/.config/" "~/src/" ,@(f-directories "~/src"))))
-
-
-;;; Window-management
-;;
-;; At some point I'd like to implement i3-style tiling. In the meantime, this
-;; will do:
-
-(setq
- switch-to-buffer-obey-display-actions  t
- switch-to-buffer-in-dedicated-window   'pop
- help-window-select                     t)
