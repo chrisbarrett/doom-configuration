@@ -294,6 +294,9 @@
                                        (find-file ".dir-locals.el")))
        :desc "Shell command..." "!"  #'project-async-shell-command
        :desc "Compile..."       "c"  #'+project-compile
+       ;; TODO: Think about how to generalise task running this across build
+       ;; systems.
+       :desc "Compile (target)..." "C" #'+make/run
        :desc "Test..."          "t"  #'+project-test
        :desc "Switch... (dired)" "j" (cmd!
                                       (let ((project-switch-commands (defun +switch-to-project-default ()
