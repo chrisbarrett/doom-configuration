@@ -27,12 +27,32 @@
   :defines (paren-face-modes)
   :hook (doom-first-input . global-paren-face-mode)
   :config
-  (setq paren-face-regexp (rx (any "{}();,")))
   (pushnew! paren-face-modes 'prog-mode 'inferior-emacs-lisp-mode)
 
-  (font-lock-add-keywords 'js-base-mode `((,(rx (any ":")) 0 'parenthesis)))
-  (font-lock-add-keywords 'typescript-ts-base-mode `((,(rx (any ":")) 0 'parenthesis)))
-  (font-lock-add-keywords 'zig-mode `((,(rx (any ":")) 0 'parenthesis))))
+  (let ((standard-chars "{}();,"))
+    (setq paren-face-regexp (rx-to-string `(any ,standard-chars)))
+
+    (setq-hook! '(js-base-mode-hook typescript-ts-base-mode-hook zig-mode-hook)
+      paren-face-regexp (rx-to-string `(any ,standard-chars ":"))))
+
+  (defconst +paren-face-complex-additions-alist
+    `((c-ts-mode . (
+                    ;; Designated initialiser indices
+                    (,(rx bol (+ space) (group "[") (+? nonl) (group "]" (* space) "="))
+                     (1 'parenthesis t)
+                     (2 'parenthesis t))))))
+
+  (define-advice paren-face-mode (:after (&rest _) complex-additions)
+    (when-let* ((settings (alist-get major-mode +paren-face-complex-additions-alist)))
+      (funcall (if paren-face-mode #'font-lock-add-keywords
+                 #'font-lock-remove-keywords)
+               nil
+               settings)
+      (when font-lock-mode
+        (save-restriction
+          (widen)
+          (font-lock-flush)
+          (font-lock-ensure))))))
 
 ;; Prevent display-buffer from creating new frames
 
