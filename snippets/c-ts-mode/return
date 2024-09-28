@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: return
+# uuid:
+# key: r
+# condition: (+yas-bolp)
+# --
+return $0;
