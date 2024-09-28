@@ -114,3 +114,9 @@
 ;;; Ispell
 
 (setq ispell-silently-savep t)
+
+;;; re-builder
+
+(setq reb-re-syntax 'rx)
+(after! evil
+  (evil-set-initial-state 'reb-lisp-mode 'insert))
