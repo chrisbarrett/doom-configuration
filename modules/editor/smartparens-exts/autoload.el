@@ -45,3 +45,8 @@
       (just-one-space)
       (search-forward "]" (line-end-position))
       (just-one-space))))
+
+;;;###autoload
+(defun +sp/C-include-line-p (_id action context)
+  (when (and (equal action 'insert) (equal context 'code))
+    (thing-at-point-looking-at (rx bol "#include" (+ space) "<"))))
