@@ -28,13 +28,11 @@
   :hook (doom-first-input . global-paren-face-mode)
   :config
   (setq paren-face-regexp (rx (any "{}();,")))
-
-  (pushnew! paren-face-modes 'csharp-mode 'js-base-mode 'lisp-data-mode 'typescript-ts-base-mode 'yaml-ts-mode 'zig-mode)
+  (pushnew! paren-face-modes 'prog-mode 'inferior-emacs-lisp-mode)
 
   (font-lock-add-keywords 'js-base-mode `((,(rx (any ":")) 0 'parenthesis)))
   (font-lock-add-keywords 'typescript-ts-base-mode `((,(rx (any ":")) 0 'parenthesis)))
-  (font-lock-add-keywords 'zig-mode `((,(rx (any ":")) 0 'parenthesis)))
-  )
+  (font-lock-add-keywords 'zig-mode `((,(rx (any ":")) 0 'parenthesis))))
 
 ;; Prevent display-buffer from creating new frames
 
