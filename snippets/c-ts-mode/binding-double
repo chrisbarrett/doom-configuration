@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: bind double
+# uuid: d6e06b35-f7d0-4d3c-a28b-d93f32cb87f1
+# key: d
+# condition: (+yas-bolp)
+# --
+double $1 = $0;

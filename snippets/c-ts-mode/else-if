@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: else-if
+# uuid: 5469b857-a717-4718-901f-250a62b71670
+# key: ei
+# condition: (thing-at-point-looking-at (rx bol (* space) "}" (* space) "ei" (* space) eol))
+# --
+else if ($1) {
+  $0
+}
