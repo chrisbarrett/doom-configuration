@@ -11,6 +11,8 @@
  :mn "U" 'harpoon-quick-menu-hydra
  :mn "C-s" 'harpoon-add-file
 
+ :mn "z SPC" '+spell/correct
+
  ;; Global bindings to match what I have in terminals.
  :gniv "C-t"  #'project-find-file
  :gniv "C-/"  #'+vertico/project-search
