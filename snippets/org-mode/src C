@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src C
+# uuid: f4969ca8-aa11-44ac-b517-1fa502f7507c
+# key: C
+# condition: (+yas-bolp)
+# --
+#+begin_src C
+$0
+#+end_src
