@@ -65,7 +65,7 @@
        direnv
        editorconfig
        (eval +overlay)
-       lookup
+       (lookup +dictionary +offline)
        (lsp +eglot)
        lsp-exts
        nix
