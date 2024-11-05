@@ -46,7 +46,6 @@
        (undo +tree)
        ediff-exts
        vc
-       vc-exts
 
        :completion
        (corfu +icons +orderless)
