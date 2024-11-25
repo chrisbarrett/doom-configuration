@@ -5,10 +5,7 @@
 
 ;; NOTE Press 'SPC h d h' to access Doom's documentation.
 
-(setq doom-modules-dirs
-      (list (file-name-concat doom-user-dir "modules/")
-            "~/org/modules/"
-            doom-modules-dir))
+(add-to-list 'doom-module-load-path "~/org/modules/")
 
 ;; NOTE Move your cursor over a module's name (or its flags) and press 'K' to
 ;;      view its documentation. This works on flags as well (those symbols that
