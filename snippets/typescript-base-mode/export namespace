@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: export namespace
+# uuid: ab206e41-5274-481a-b5cb-761f61cfb172
+# key: ens
+# condition: (+yas-bolp)
+# --
+export namespace $1 {
+  $0
+}

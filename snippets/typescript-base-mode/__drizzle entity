@@ -1,0 +1,41 @@
+# -*- mode: snippet -*-
+# name: __drizzle entity
+# uuid: 5fd27c89-8cca-4d09-8d0a-4068af6fba1d
+# key: __drizzle entity
+# expand-env: ((yas-indent-line 'fixed))
+# --
+import { sql } from "drizzle-orm";
+import * as pgcore from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
+
+export const createTable = sql\`
+  CREATE TABLE `(+snippet-filename-snake-case)` (
+      id               integer PRIMARY KEY,
+  );
+\`;
+
+export const table = pgcore.pgTable("`(+snippet-filename-snake-case)`", {
+  id: pgcore
+    .bigint("id", {
+      mode: "number",
+    })
+    .$type<`(+snippet-filename-upper-camel-case)`Id>()
+    .notNull(),
+});
+
+export const Row = createSelectSchema(table);
+
+export type Row = z.infer<typeof Row>;
+
+export namespace Row {
+  export type In = z.input<typeof Row>;
+}
+
+export const Insert = createInsertSchema(table);
+
+export type Insert = z.infer<typeof Insert>;
+
+export namespace Insert {
+  export type In = z.input<typeof Insert>;
+}

@@ -12,6 +12,6 @@ type Props = {
 
 export class `(+snippet-filename-upper-camel-case)` extends Construct {
   constructor(scope: Construct, id: string, props: Props) {
-    super(scope, id, props);
+    super(scope, id);
   }
 }

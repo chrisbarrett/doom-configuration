@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: zod model
+# uuid: 6fed8cd1-ab2d-4608-8c8e-463a5521cb63
+# key: zm
+# condition: (+yas-bolp)
+# --
+export const ${1:Name} = $0;
+
+export type $1 = z.infer<typeof $1>;
+export namespace $1 {
+  export type In = z.input<typeof $1>;
+}

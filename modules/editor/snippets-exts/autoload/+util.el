@@ -18,5 +18,13 @@ snippet's contents."
   (s-upper-camel-case (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))
 
 ;;;###autoload
+(defun +snippet-filename-lower-camel-case ()
+  (s-lower-camel-case (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))
+
+;;;###autoload
+(defun +snippet-filename-snake-case ()
+  (s-snake-case (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))
+
+;;;###autoload
 (defun +snippet-filename-kebab-case ()
   (s-dashed-words (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))

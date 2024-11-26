@@ -5,11 +5,9 @@
 # --
 import { z } from "zod";
 
-const schema = $0;
+export const ${1:`(+snippet-filename-upper-camel-case)`} = $0;
 
-export const `(+snippet-filename-upper-camel-case)` = schema;
-export type `(+snippet-filename-upper-camel-case)` = z.infer<typeof schema>;
-
-export namespace `(+snippet-filename-upper-camel-case)` {
-  export type In = z.input<typeof schema>;
+export type $1 = z.infer<typeof $1>;
+export namespace $1 {
+  export type In = z.input<typeof $1>;
 }
