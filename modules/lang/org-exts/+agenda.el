@@ -14,11 +14,8 @@
 ;; property to `ignore' or `scheduled'.
 
 (setq org-agenda-custom-commands
-      (let ((todos '(tags-todo "-bills-project-outline+TODO=\"TODO\""
+      (let ((todos '(tags-todo "-project-outline+TODO=\"TODO\""
                      ((org-agenda-overriding-header "Next Actions")
-                      (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
-            (bills '(tags-todo "+TODO=\"TODO\"+bills"
-                     ((org-agenda-overriding-header "Bills")
                       (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
             (projects '(tags-todo "+TODO=\"TODO\"+project"
                         ((org-agenda-overriding-header "Projects"))))
@@ -37,7 +34,7 @@
                                                                 :filetitle t))
                       (org-agenda-use-time-grid t))))
             (notes
-             '(tags-todo "-bills+outline-project+TODO=\"TODO\""
+             '(tags-todo "+outline-project+TODO=\"TODO\""
                ((org-agenda-overriding-header "Unprocessed Notes")
                 (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
 
@@ -66,7 +63,7 @@
                         (org-agenda-ignore-properties '(effort appt))
                         (org-agenda-archives-mode t))))
 
-        `(("p" "personal agenda" ,(list todos bills delegated today)
+        `(("p" "personal agenda" ,(list todos delegated today)
            (,@defaults
             (org-agenda-tag-filter-preset '("-someday" "-ignore" "-work" "-outline"))))
           ("w" "work agenda" ,(list todos delegated projects today notes)
