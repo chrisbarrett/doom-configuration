@@ -91,7 +91,7 @@
        (org +dragndrop +roam2)
        (org-exts
         +citations
-        ;; +initial-buffers
+        +initial-buffers
         +modern
         +nursery
         +roam

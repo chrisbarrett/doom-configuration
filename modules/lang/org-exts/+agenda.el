@@ -14,25 +14,35 @@
 ;; property to `ignore' or `scheduled'.
 
 (setq org-agenda-custom-commands
-      (let ((todos '(tags-todo "-project-outline+TODO=\"TODO\""
+      (let ((todos '(tags-todo "-project-tickler-outline-inbox+TODO=\"TODO\""
                      ((org-agenda-overriding-header "Next Actions")
                       (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
+
+            (inbox '(tags-todo "+inbox+TODO=\"TODO\""
+                     ((org-agenda-overriding-header "Inbox"))))
+
             (projects '(tags-todo "+TODO=\"TODO\"+project"
                         ((org-agenda-overriding-header "Projects"))))
+
             (delegated '(todo "WAIT"
                          ((org-agenda-overriding-header "Delegated")
                           (org-agenda-skip-function #'+agenda-skip-item-if-timestamp))))
-            (today '(agenda ""
 
+            (tickler
+             '(tags-todo "+tickler+TODO=\"TODO\""
+               ((org-agenda-overriding-header "Tickler")
+                (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
+
+            (today '(agenda ""
                      ((org-agenda-start-day "-3d")
                       (org-agenda-span 'week)
                       (org-agenda-overriding-header "Today")
+                      (org-agenda-use-time-grid t)
                       (org-agenda-clockreport-parameter-plist '(:compact t
                                                                 :link t
                                                                 :maxlevel 3
                                                                 :fileskip0 t
-                                                                :filetitle t))
-                      (org-agenda-use-time-grid t))))
+                                                                :filetitle t)))))
             (notes
              '(tags-todo "+outline-project+TODO=\"TODO\""
                ((org-agenda-overriding-header "Unprocessed Notes")
@@ -63,10 +73,10 @@
                         (org-agenda-ignore-properties '(effort appt))
                         (org-agenda-archives-mode t))))
 
-        `(("p" "personal agenda" ,(list todos delegated today)
+        `(("p" "personal agenda" ,(list today todos inbox delegated projects tickler)
            (,@defaults
             (org-agenda-tag-filter-preset '("-someday" "-ignore" "-work" "-outline"))))
-          ("w" "work agenda" ,(list todos delegated projects today notes)
+          ("w" "work agenda" ,(list today todos inbox delegated projects tickler notes)
            (,@defaults
             (org-agenda-clockreport-mode t)
             (org-agenda-tag-filter-preset (list "-someday" "-ignore" (format "+%s" (timekeep-work-tag))))
@@ -116,6 +126,8 @@
 ;;; Use page-break-lines to draw separator in org-agenda.
 
 (setq org-agenda-block-separator (char-to-string ?\f))
+
+(autoload 'page-break-lines--update-display-tables "page-break-lines")
 
 (define-advice org-agenda (:after (&rest _) draw-separator)
   (page-break-lines--update-display-tables))
