@@ -6,6 +6,7 @@
 (setq org-agenda-text-search-extra-files `(agenda-archives ,(expand-file-name "archive.org" org-directory)))
 (setq org-agenda-search-view-always-boolean t)
 
+
 ;;; Configure my agenda views.
 
 (setq org-agenda-custom-commands
@@ -80,6 +81,9 @@
                :min-duration 0
                :max-gap 0)))))))
 
+
+;;; Configure keymaps
+
 (after! evil
   ;; FIXME: Figure out why initial state is currently defaulting to `emacs'.
   (evil-set-initial-state 'org-agenda-mode 'motion))
@@ -111,12 +115,9 @@
       :m "-" 'org-agenda-manipulate-query-subtract
       :m "_" 'org-agenda-manipulate-query-subtract-re)
 
-;; Automatically remove deleted files from agenda
-(define-advice org-check-agenda-file (:override (file) always-remove-missing)
-  (unless (file-exists-p file)
-    (org-remove-file file)
-    (throw 'nextfile t)))
 
+
+
 ;;; Use page-break-lines to draw separator in org-agenda.
 
 (setq org-agenda-block-separator (char-to-string ?\f))
@@ -129,6 +130,8 @@
 (define-advice org-agenda-redo (:after (&rest _) draw-separator)
   (page-break-lines--update-display-tables))
 
+
+
 ;;; Search for and update agenda files automatically
 
 (defvar +org--agenda-update-process nil)
@@ -145,8 +148,17 @@
     (+org-agenda-update-ids)))
 
 
-;;; Reveal context around item on TAB
+
+;;; Forget deleted agenda files without prompting
+(define-advice org-check-agenda-file (:override (file) always-remove-missing)
+  (unless (file-exists-p file)
+    (org-remove-file file)
+    (throw 'nextfile t)))
 
+
+
+
+;;; Reveal context around item on TAB
 (add-hook! 'org-agenda-after-show-hook
   (org-overview)
   (org-reveal)
