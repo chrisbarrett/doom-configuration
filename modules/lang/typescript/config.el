@@ -1,6 +1,6 @@
 ;;; lang/typescript/config.el -*- lexical-binding: t; -*-
 
-(add-hook! find-file-hook
+(add-hook! 'find-file-hook
   (when (string-match-p  "/node_modules/" default-directory)
     (read-only-mode +1)))
 

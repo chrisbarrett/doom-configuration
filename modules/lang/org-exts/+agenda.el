@@ -140,8 +140,8 @@
       (setq +org--agenda-update-process
             (start-process-shell-command "update-org-agenda-files" nil "rg --follow --files-with-matches '^(CLOCK:|[*]+ +(TODO|WAIT))' roam -g '!attach' -g '!daily' > org-agenda-files")))))
 
-(add-hook! after-save-hook
-  (when (derived-mode-p 'org-mode)
+(add-hook! 'org-mode-hook
+  (add-hook! 'after-save-hook :local t
     (+org-agenda-update-ids)))
 
 

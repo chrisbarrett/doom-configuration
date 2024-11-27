@@ -14,7 +14,7 @@
   (setq eglot-extend-to-xref t)
   (eglot-booster-mode +1))
 
-(add-hook! eglot-managed-mode
+(add-hook! 'eglot-managed-mode-hook
   (eglot-inlay-hints-mode -1))
 
 ;;; Java - woe is me

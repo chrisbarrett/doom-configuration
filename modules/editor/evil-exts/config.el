@@ -111,7 +111,7 @@
   )
 
 (after! evil-surround
-  (add-hook! magit-mode (evil-surround-mode -1))
+  (add-hook! 'magit-mode-hook (evil-surround-mode -1))
 
   (setf (alist-get ?` evil-surround-pairs-alist)
         (fn! (cons "`" (if (derived-mode-p 'emacs-lisp-mode)
