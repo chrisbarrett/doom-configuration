@@ -62,12 +62,6 @@
 
 
 ;;;###autoload
-(defun +agenda-delegated-section-skip-function ()
-  "Skip the item if it has a scheduled or deadline timestamp."
-  (when (+agenda--any-scheduled-or-deadline-p)
-    (+agenda--skip-heading-safe)))
-
-;;;###autoload
 (defun +agenda-tickler-section-skip-function ()
   (when (or (+agenda--scheduled-in-future-p)
             (not (seq-contains-p (org-get-tags) "tickler")))
