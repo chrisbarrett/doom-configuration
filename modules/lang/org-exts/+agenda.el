@@ -145,16 +145,17 @@
 
 (defvar +org--agenda-update-process nil)
 
-(defun +org-agenda-update-ids ()
+(defconst +agenda-files-update-script (file-name-concat (dir!) "update-agenda-files.sh"))
+
+(defun +org-agenda-update-files ()
   (interactive)
   (unless (and +org--agenda-update-process (process-live-p +org--agenda-update-process))
-    (let ((default-directory org-directory))
-      (setq +org--agenda-update-process
-            (start-process-shell-command "update-org-agenda-files" nil "rg --follow --files-with-matches '^(CLOCK:|[*]+ +(TODO|WAIT))' roam -g '!attach' -g '!daily' > org-agenda-files")))))
+    (setq +org--agenda-update-process
+          (start-process "update-org-agenda-files" nil +agenda-files-update-script))))
 
 (add-hook! 'org-mode-hook
   (add-hook! 'after-save-hook :local t
-    (+org-agenda-update-ids)))
+    (+org-agenda-update-files)))
 
 
 
