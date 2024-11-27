@@ -75,9 +75,10 @@
 
 ;;;###autoload
 (defun +agenda-view-skip-function ()
-  (when (and (seq-contains-p (org-get-tags) "tickler")
-             (+agenda--at-TODO-p))
-    (+agenda--skip-heading-safe)))
+  (let ((tags (org-get-tags)))
+    (when (and (seq-contains-p tags "tickler")
+               (not (seq-contains-p tags "archived")))
+      (+agenda--skip-heading-safe))))
 
 ;;;###autoload
 (defun +agenda-next-actions-skip-function ()

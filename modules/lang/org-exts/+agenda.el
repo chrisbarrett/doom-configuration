@@ -5,6 +5,7 @@
 (setq org-agenda-files (expand-file-name "org-agenda-files" org-directory))
 (setq org-agenda-text-search-extra-files `(agenda-archives ,(expand-file-name "archive.org" org-directory)))
 (setq org-agenda-search-view-always-boolean t)
+(setq org-archive-tag "ARCHIVED")
 
 
 ;;; Configure my agenda views.
@@ -71,10 +72,10 @@
 
         `(("p" "personal agenda" ,(list today next-actions inbox delegated projects tickler)
            (,@defaults
-            (org-agenda-tag-filter-preset '("-someday" "-ignore" "-work" "-outline"))))
+            (org-agenda-tag-filter-preset '("-work" "-ignore" "-outline"))))
           ("w" "work agenda" ,(list today next-actions inbox delegated projects tickler unprocessed-notes)
            (,@defaults
-            (org-agenda-tag-filter-preset (list "-someday" "-ignore" (format "+%s" (timekeep-work-tag))))
+            (org-agenda-tag-filter-preset (list "-ignore" (format "+%s" (timekeep-work-tag))))
             (org-agenda-clock-consistency-checks
              '(:gap-ok-around ("12:20" "12:40" "4:00")
                :max-duration "10:00"
