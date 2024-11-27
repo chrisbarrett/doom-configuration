@@ -7,7 +7,9 @@
 (package! page-break-lines)
 (package! poporg)
 (package! gnuplot)
-(package! org-super-agenda)
+
+(when (modulep! +super-agenda)
+  (package! org-super-agenda))
 
 (when (modulep! +citations)
   (package! citar)

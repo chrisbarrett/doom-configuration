@@ -82,6 +82,15 @@
                :max-gap 0)))))))
 
 
+;;; Configure org-super-agenda
+
+(use-package! org-super-agenda
+  :after org-agenda
+  :if (modulep! +super-agenda)
+  :config
+  (org-super-agenda-mode +1))
+
+
 ;;; Configure keymaps
 
 (after! evil
