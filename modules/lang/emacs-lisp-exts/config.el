@@ -11,7 +11,13 @@
                    (newline-and-indent))
 
                  (when (ppss-comment-depth (syntax-ppss)) ; at a comment?
-                   (just-one-space))))
+                   (just-one-space)))
+      :nm "TAB" #'evil-toggle-fold
+      :nm "C-<return>" #'macrostep-expand
+
+      :map macrostep-mode-map
+      :n "<escape>" #'macrostep-collapse
+      :n "c" #'macrostep-collapse)
 
 (after! checkdoc
   (setq checkdoc-force-docstrings-flag nil))
