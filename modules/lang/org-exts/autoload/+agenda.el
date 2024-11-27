@@ -13,7 +13,9 @@
   (require 'org)
   (org-agenda nil (if (org-clocking-p) "w" "p")))
 
-(defun +agenda--scheduled-or-deadline-p ()
+
+
+(defun +agenda--any-scheduled-or-deadline-p ()
   (or (org-get-scheduled-time (point))
       (org-get-deadline-time (point))))
 
@@ -21,32 +23,26 @@
   (or (outline-next-heading)
       (goto-char (point-max))))
 
-(defun +agenda--skipping-ignored-p ()
-  (when-let* ((prop (org-entry-get-with-inheritance "AGENDA_SKIP")))
-    (cond
-     ((string-match-p (rx bos "ignore" eos) prop)
-      t)
-     ((and (string-match-p (rx bos "scheduled" eos) prop)
-           (not (org-get-scheduled-time (point) t)))
-      nil
-      t))))
+(defun +agenda--scheduled-in-future-p (&optional now)
+  (let ((now (or now (current-time))))
+    (when-let* ((scheduled (org-get-scheduled-time (point) t)))
+      (time-less-p now scheduled))))
 
-;;;###autoload
-(defun +agenda-skip-item-if-timestamp ()
-  "Skip the item if it has a scheduled or deadline timestamp."
-  (when (+agenda--scheduled-or-deadline-p)
-    (+agenda--skip-heading-safe)))
+(defun +agenda--scheduled-now-p (&optional now)
+  (let ((now (or now (current-time))))
+    (when-let* ((scheduled (org-get-scheduled-time (point) t)))
+      (time-equal-p now scheduled))))
 
-(defun +agenda--current-headline-is-todo ()
+(defun +agenda--at-TODO-p ()
   (equal "TODO" (org-get-todo-state)))
 
 (defun +agenda--first-todo-at-this-level-p ()
   (let (should-skip-entry)
-    (unless (+agenda--current-headline-is-todo)
+    (unless (+agenda--at-TODO-p)
       (setq should-skip-entry t))
     (save-excursion
       (while (and (not should-skip-entry) (org-goto-sibling t))
-        (when (+agenda--current-headline-is-todo)
+        (when (+agenda--at-TODO-p)
           (setq should-skip-entry t))))
     should-skip-entry))
 
@@ -60,27 +56,40 @@
       (let ((found)
             (now (current-time)))
         (while (and (not found) (org-up-heading-safe))
-          (when-let* ((scheduled (org-get-scheduled-time (point) t)))
-            (when (time-less-p now scheduled)
-              (setq found t))))
+          (setq found (+agenda--scheduled-in-future-p now)))
         found))))
 
-;;;###autoload
-(defun +agenda-skip-items-already-shown ()
-  (cond
-   ((+agenda--skipping-ignored-p)
-    nil)
+
 
+;;;###autoload
+(defun +agenda-delegated-section-skip-function ()
+  "Skip the item if it has a scheduled or deadline timestamp."
+  (when (+agenda--any-scheduled-or-deadline-p)
+    (+agenda--skip-heading-safe)))
+
+;;;###autoload
+(defun +agenda-tickler-section-skip-function ()
+  (when (or (+agenda--scheduled-in-future-p)
+            (not (seq-contains-p (org-get-tags) "tickler")))
+    (+agenda--skip-heading-safe)))
+
+;;;###autoload
+(defun +agenda-view-skip-function ()
+  (when (and (seq-contains-p (org-get-tags) "tickler")
+             (+agenda--at-TODO-p))
+    (+agenda--skip-heading-safe)))
+
+;;;###autoload
+(defun +agenda-next-actions-skip-function ()
+  (cond
    ;; Don't show things that will naturally show in the agenda.
-   ((or (+agenda--scheduled-or-deadline-p) (+agenda--parent-scheduled-in-future-p))
+   ((or (+agenda--any-scheduled-or-deadline-p)
+        (+agenda--parent-scheduled-in-future-p))
     (+agenda--skip-heading-safe))
 
-   ((and (+agenda--high-priority-p) (+agenda--current-headline-is-todo))
-    ;; Show these items.
+   ;; Always include high-priority todos
+   ((and (+agenda--high-priority-p) (+agenda--at-TODO-p))
     nil)
-
-   ((+org-project-p)
-    (+org-project-skip-stuck-projects))
 
    ((+agenda--first-todo-at-this-level-p)
     (+agenda--skip-heading-safe))))

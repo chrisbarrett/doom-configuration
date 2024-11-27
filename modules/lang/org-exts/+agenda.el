@@ -8,52 +8,47 @@
 
 ;;; Configure my agenda views.
 
-;; The todos shown in the agenda are aggressively filtered using skip functions, so
-;; that subtasks are preferred. This is used to model GTD-style /next actions/.
-;; Filtering can be suppressed for a specific tree by setting the `AGENDA_SKIP'
-;; property to `ignore' or `scheduled'.
-
 (setq org-agenda-custom-commands
-      (let ((todos '(tags-todo "-project-tickler-outline-inbox+TODO=\"TODO\""
-                     ((org-agenda-overriding-header "Next Actions")
-                      (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
-
-            (inbox '(tags-todo "+inbox+TODO=\"TODO\""
-                     ((org-agenda-overriding-header "Inbox"))))
-
-            (projects '(tags-todo "+TODO=\"TODO\"+project"
-                        ((org-agenda-overriding-header "Projects"))))
-
-            (delegated '(todo "WAIT"
-                         ((org-agenda-overriding-header "Delegated")
-                          (org-agenda-skip-function #'+agenda-skip-item-if-timestamp))))
-
-            (tickler
-             '(tags-todo "+tickler+TODO=\"TODO\""
-               ((org-agenda-overriding-header "Tickler")
-                (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
-
-            (today '(agenda ""
-                     ((org-agenda-start-day "-3d")
-                      (org-agenda-span 'week)
-                      (org-agenda-overriding-header "Today")
+      (let ((today '(agenda ""
+                     ((org-agenda-overriding-header "Today")
                       (org-agenda-use-time-grid t)
                       (org-agenda-clockreport-parameter-plist '(:compact t
                                                                 :link t
                                                                 :maxlevel 3
                                                                 :fileskip0 t
-                                                                :filetitle t)))))
-            (notes
+                                                                :filetitle t))
+                      (org-agenda-skip-function #'+agenda-view-skip-function))))
+            (next-actions '(tags-todo "-project-tickler-outline-inbox+TODO=\"TODO\""
+                            ((org-agenda-overriding-header "Next Actions")
+                             (org-agenda-skip-function #'+agenda-next-actions-skip-function))))
+
+            (inbox '(tags-todo "+inbox+TODO=\"TODO\""
+                     ((org-agenda-overriding-header "Inbox"))))
+
+            (delegated '(todo "WAIT"
+                         ((org-agenda-overriding-header "Delegated")
+                          (org-agenda-skip-function #'+agenda-delegated-section-skip-function))))
+
+            (projects '(tags-todo "+TODO=\"TODO\"+project"
+                        ((org-agenda-overriding-header "Projects"))))
+
+            (tickler
+             '(todo "TODO"
+               ((org-agenda-overriding-header "Tickler")
+                (org-agenda-skip-function #'+agenda-tickler-section-skip-function))))
+
+
+            (unprocessed-notes
              '(tags-todo "+outline-project+TODO=\"TODO\""
                ((org-agenda-overriding-header "Unprocessed Notes")
-                (org-agenda-skip-function #'+agenda-skip-items-already-shown))))
+                (org-agenda-skip-function #'+agenda-next-actions-skip-function))))
 
-            (defaults `(
-                        ;; (org-stuck-projects '("" nil nil ""))
-                        (org-agenda-todo-ignore-scheduled t)
+            (defaults `((org-agenda-todo-ignore-scheduled t)
+                        (org-agenda-span 'day)
+                        (org-agenda-window-setup 'only-window)
+                        (org-agenda-start-day nil)
                         (org-agenda-include-diary nil)
                         (org-agenda-insert-diary-extract-time nil)
-                        (org-agenda-show-all-dates nil)
                         (org-agenda-show-inherited-tags nil)
                         (org-agenda-skip-deadline-if-done t)
                         (org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
@@ -73,12 +68,11 @@
                         (org-agenda-ignore-properties '(effort appt))
                         (org-agenda-archives-mode t))))
 
-        `(("p" "personal agenda" ,(list today todos inbox delegated projects tickler)
+        `(("p" "personal agenda" ,(list today next-actions inbox delegated projects tickler)
            (,@defaults
             (org-agenda-tag-filter-preset '("-someday" "-ignore" "-work" "-outline"))))
-          ("w" "work agenda" ,(list today todos inbox delegated projects tickler notes)
+          ("w" "work agenda" ,(list today next-actions inbox delegated projects tickler unprocessed-notes)
            (,@defaults
-            (org-agenda-clockreport-mode t)
             (org-agenda-tag-filter-preset (list "-someday" "-ignore" (format "+%s" (timekeep-work-tag))))
             (org-agenda-clock-consistency-checks
              '(:gap-ok-around ("12:20" "12:40" "4:00")
