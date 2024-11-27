@@ -8,7 +8,7 @@
 ;;; Keybindings
 
 (map!
- :mn "U" 'harpoon-quick-menu-hydra
+ :mn "C-|" 'harpoon-quick-menu-hydra
  :mn "C-s" 'harpoon-add-file
 
  :mn "z SPC" '+spell/correct
