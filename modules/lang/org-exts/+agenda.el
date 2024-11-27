@@ -56,7 +56,6 @@
                         (org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
                         (org-agenda-skip-scheduled-if-done t)
                         (org-agenda-start-on-weekday nil)
-                        (org-agenda-window-setup 'only-window)
                         (org-agenda-dim-blocked-tasks 'invisible)
                         (org-agenda-sorting-strategy '((agenda time-up category-up priority-down todo-state-up)
                                                        (todo priority-down category-up scheduled-up)
