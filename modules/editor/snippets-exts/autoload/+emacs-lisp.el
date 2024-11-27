@@ -57,7 +57,7 @@ Fall back to the file name sans extension."
 ;;;###autoload
 (defun +yas-emacs-lisp-doom-file-p ()
   (or (seq-find (fn! (f-descendant-of-p default-directory %))
-                doom-modules-dirs)
+                doom-module-load-path)
       (equal default-directory doom-user-dir)))
 
 ;;;###autoload

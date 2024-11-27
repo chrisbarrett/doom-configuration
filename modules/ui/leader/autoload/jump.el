@@ -36,7 +36,7 @@
 (defun +jump-to-doom-module (file)
   (interactive (list
                 (let* ((all-files
-                        (->> doom-modules-dirs
+                        (->> doom-module-load-path
                              (seq-mapcat (fn!
                                           (let ((default-directory %))
                                             (seq-map #'file-relative-name (directory-files-recursively % (rx (or ".org" ".el")))))))
@@ -44,7 +44,7 @@
                        (choice (completing-read "File: " all-files nil t)))
                   (expand-file-name
                    choice
-                   (seq-find (fn! (file-exists-p (expand-file-name choice %))) doom-modules-dirs)))))
+                   (seq-find (fn! (file-exists-p (expand-file-name choice %))) doom-module-load-path)))))
   (xref-push-marker-stack)
   (find-file file))
 
