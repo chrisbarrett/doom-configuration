@@ -86,5 +86,6 @@
    ((and (+agenda--high-priority-p) (+agenda--at-TODO-p))
     nil)
 
-   ((+agenda--first-todo-at-this-level-p)
-    (+agenda--skip-heading-safe))))
+   ;; ((+agenda--first-todo-at-this-level-p)
+   ;;  (+agenda--skip-heading-safe))
+   ))

@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-org_dir="${ORG_DIRECTORY:~/org}"
+org_dir=${ORG_DIRECTORY:-$HOME/org}
 
 cd "$org_dir"
 
@@ -11,4 +11,4 @@ cd "$org_dir"
     find archive -type f -name '*.org'
     rg --follow --files-with-matches '^(CLOCK:|[*]+ +(TODO|WAIT))' roam -g '!attach' -g '!daily'
 
-} > "$org_dir"/org-agenda-files
+} >"$org_dir"/org-agenda-files

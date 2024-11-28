@@ -96,7 +96,8 @@
         +nursery
         +roam
         +slack
-        +super-agenda)
+        ;; +super-agenda
+        )
 
        plantuml
        ;; haskell

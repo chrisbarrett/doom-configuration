@@ -31,7 +31,7 @@
                          ((org-agenda-overriding-header "Delegated")
                           (org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled)))))
 
-            (projects '(tags-todo "+TODO=\"TODO\"+project"
+            (projects '(tags-todo "+project+TODO=\"TODO\""
                         ((org-agenda-overriding-header "Projects"))))
 
             (tickler
