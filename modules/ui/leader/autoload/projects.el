@@ -1,7 +1,7 @@
 ;;; ui/leader/autoload/projects.el -*- lexical-binding: t; -*-
 
-(persist-defvar +project-test-commands nil
-  "An alist of project roots to compilation commands.")
+(persist-defvar +project-test-commands (make-hash-table :test #'equal)
+  "A map of project roots to compilation commands.")
 
 (cl-defgeneric +project-default-test-command (project))
 
@@ -10,14 +10,12 @@
 (defvar +projects-default-test-command-fallback "make test")
 
 (defun +project-test-command (project)
-  (alist-get (project-root project) +project-test-commands
-             (+project-default-test-command project)
-             nil
-             #'equal))
+  (gethash (project-root project)
+           +project-test-commands
+           (+project-default-test-command project)))
 
 (defun +project--update-test-command (project command)
-  (setf (alist-get (project-root project) +project-test-commands nil #'equal)
-        command))
+  (puthash (project-root project) command +project-test-commands))
 
 ;;;###autoload
 (defun +project-test (&optional arg)
@@ -44,8 +42,8 @@ if one has already been saved."
 
 
 
-(persist-defvar +project-compile-commands nil
-  "An alist of project roots to compilation commands.")
+(persist-defvar +project-compile-commands (make-hash-table :test #'equal)
+  "A map of project roots to compilation commands.")
 
 (cl-defgeneric +project-default-compile-command (project))
 
@@ -54,14 +52,12 @@ if one has already been saved."
 (defvar +projects-default-compile-command-fallback "make -k")
 
 (defun +project-compile-command (project)
-  (alist-get (project-root project) +project-compile-commands
-             (+project-default-compile-command project)
-             nil
-             #'equal))
+  (gethash (project-root project)
+           +project-compile-commands
+           (+project-default-compile-command project)))
 
 (defun +project--update-compile-command (project command)
-  (setf (alist-get (project-root project) +project-compile-commands nil #'equal)
-        command))
+  (puthash (project-root project) command +project-compile-commands))
 
 ;;;###autoload
 (defun +project-compile (&optional arg)
