@@ -33,13 +33,12 @@
   (setq js--prettify-symbols-alist nil))
 
 ;; https://docs.deno.com/runtime/getting_started/setup_your_environment/#eglot
-;; (after! eglot
-;;   (add-to-list 'eglot-server-programs '((js-mode js-ts-mode typescript-mode typescript-ts-mode) . (eglot-deno "deno" "lsp")))
-
-;;   (defclass eglot-deno (eglot-lsp-server) ()
-;;     :documentation "A custom class for deno lsp.")
-
-;;   (cl-defmethod eglot-initialization-options ((server eglot-deno))
-;;     "Passes through required deno initialization options"
-;;     (list :enable t
-;;           :lint t)))
+(after! eglot
+  (let ((langs '((js-mode :language-id "javascript")
+                 (js-ts-mode :language-id "javascript")
+                 (tsx-ts-mode :language-id "typescriptreact")
+                 (typescript-ts-mode :language-id "typescript")
+                 (typescript-mode :language-id "typescript"))))
+    (add-to-list 'eglot-server-programs `(,langs . ,(eglot-alternatives
+                                                     '(("deno" "lsp" :initializationOptions (:enable t :lint t))
+                                                       ("typescript-language-server" "--stdio")))))))
