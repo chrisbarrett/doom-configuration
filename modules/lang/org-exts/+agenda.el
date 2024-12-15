@@ -46,6 +46,7 @@
                 (org-agenda-skip-function #'+agenda-next-actions-skip-function))))
 
             (defaults `((org-agenda-todo-ignore-scheduled t)
+                        (org-habit-show-habits-only-for-today nil)
                         (org-agenda-span 'day)
                         (org-agenda-window-setup 'only-window)
                         (org-agenda-start-day nil)

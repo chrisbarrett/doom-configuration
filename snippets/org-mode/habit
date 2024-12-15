@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: habit
+# uuid: 4eeee1ed-869e-41f6-a71a-68868502c9d5
+# key: hab
+# condition: (+yas-bolp)
+# --
+`(make-string (org-current-level) ?* )` TODO $0
+SCHEDULED: <`(format-time-string "%Y-%m-%d %a")` .+5d/2w>
+:PROPERTIES:
+:STYLE:    habit
+:END:

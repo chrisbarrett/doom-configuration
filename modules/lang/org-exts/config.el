@@ -158,6 +158,11 @@
   (defalias 'evil-org-agenda-mode 'ignore)
   (defvar evil-org-agenda-mode-map (make-sparse-keymap)))
 
+;; Enable org-habit
+(after! org
+  (setq org-habit-show-habits-only-for-today nil)
+  (add-to-list 'org-modules 'org-habit))
+
 ;; Remove doom's default capture templates.
 (remove-hook 'org-load-hook #'+org-init-capture-defaults-h)
 
