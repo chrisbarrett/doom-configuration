@@ -160,7 +160,8 @@
 
 ;; Enable org-habit
 (after! org
-  (setq org-habit-show-habits-only-for-today nil)
+  (setq org-habit-today-glyph ?▲)
+  (setq org-habit-completed-glyph ?✓)
   (add-to-list 'org-modules 'org-habit))
 
 ;; Remove doom's default capture templates.
