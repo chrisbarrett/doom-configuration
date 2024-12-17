@@ -45,7 +45,7 @@
                ((org-agenda-overriding-header "Unprocessed Notes")
                 (org-agenda-skip-function #'+agenda-next-actions-skip-function))))
 
-            (defaults `((org-agenda-todo-ignore-scheduled t)
+            (defaults `((org-agenda-todo-ignore-scheduled 'future)
                         (org-habit-preceding-days 14)
                         (org-habit-following-days 7)
                         (org-agenda-span 'day)
