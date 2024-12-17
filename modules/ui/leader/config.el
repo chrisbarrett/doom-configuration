@@ -96,7 +96,6 @@
        :desc "Eshell"               "e"    #'eshell
        :desc "Quick calc"           "c"    #'quick-calc
        :desc "Calc"                 "C"    #'full-calc
-       :desc "ChatGPT"              "g"    #'chatgpt-shell
        :desc "Profiler stop/start"  "r"    (general-predicate-dispatch 'profiler-start
                                              (and (featurep 'profiler) (profiler-running-p)) #'+profiler-stop-and-report)
        (:prefix-map ("d" . "debugger")
