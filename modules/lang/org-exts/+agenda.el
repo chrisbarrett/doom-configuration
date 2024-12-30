@@ -20,7 +20,7 @@
                                                                 :fileskip0 t
                                                                 :filetitle t))
                       (org-agenda-skip-function #'+agenda-view-skip-function))))
-            (next-actions '(tags-todo "-project-tickler-outline-inbox+TODO=\"TODO\""
+            (next-actions '(tags-todo "-project-tickler-inbox+TODO=\"TODO\""
                             ((org-agenda-overriding-header "Next Actions")
                              (org-agenda-skip-function #'+agenda-next-actions-skip-function))))
 
@@ -73,7 +73,7 @@
 
         `(("p" "personal agenda" ,(list today next-actions inbox delegated projects tickler)
            (,@defaults
-            (org-agenda-tag-filter-preset '("-work" "-ignore" "-outline"))))
+            (org-agenda-tag-filter-preset '("-work" "-ignore"))))
           ("w" "work agenda" ,(list today next-actions inbox delegated projects tickler unprocessed-notes)
            (,@defaults
             (org-agenda-tag-filter-preset (list "-ignore" (format "+%s" (timekeep-work-tag))))
