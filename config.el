@@ -21,6 +21,7 @@
   :map 'magit-status-mode-map
   :niv "C-t" nil))
 
+(setq default-input-method "french-postfix")
 
 
 ;;; org-mode
