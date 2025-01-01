@@ -46,6 +46,8 @@
     (sp-local-pair "{" "}" :pre-handlers nil))
 
   (sp-with-modes '(org-mode markdown-mode gfm-mode)
+    (sp-local-pair "«" "»" :post-handlers '(" | "))
+
     (sp-local-pair "[" "]" :post-handlers '(+sp/format-checkitem)))
 
   (smartparens-global-strict-mode +1))
