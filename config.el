@@ -26,8 +26,6 @@
   :map 'magit-status-mode-map
   :niv "C-t" nil))
 
-(setq default-input-method "french-postfix")
-
 
 ;;; org-mode
 
@@ -39,6 +37,31 @@
  +roam-index-node-id    "0F0670F7-A280-4DD5-8FAC-1DB3D38CD37F"
  +git-auto-commit-dirs  (list org-directory)
  ispell-dictionary      "en_GB")
+
+
+;;; Input methods
+
+(setq default-input-method "french-postfix")
+
+(load! "+quail")
+
+(with-eval-after-load "quail/latin-post"
+  (message "Initializing custom keybindings for latin-post")
+
+  (+quail-defun "french-postfix" ";"
+    (delete-horizontal-space)
+    (insert " ; "))
+
+  (+quail-defun "french-postfix" ":"
+    (delete-horizontal-space)
+    (let ((left-pad (cond
+                     ((equal (char-before) ?:)
+                      "")
+                     ((and (derived-mode-p 'org-mode) (org-at-item-p) (not (org-at-item-description-p)))
+                      " ")
+                     (t
+                      " "))))
+      (insert left-pad ": "))))
 
 
 ;;; LSP
