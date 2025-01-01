@@ -33,6 +33,9 @@
     (setq-hook! '(js-base-mode-hook typescript-ts-base-mode-hook zig-mode-hook)
       paren-face-regexp (rx-to-string `(any ,standard-chars ":"))))
 
+  (setq-hook! 'org-mode-hook paren-face-regexp (rx "::"))
+  (pushnew! paren-face-modes 'org-mode)
+
   (defconst +paren-face-complex-additions-alist
     `((c-ts-mode . (
                     ;; Designated initialiser indices
