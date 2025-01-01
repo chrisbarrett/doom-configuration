@@ -94,7 +94,12 @@
          (bullet '((((background light))
                     (:foreground "#96A7A9"))
                    (((background dark))
-                    (:foreground "#5B6268")))))
+                    (:foreground "#5B6268"))))
+         (low-vis '((((background dark))
+                     (:foreground "#869799" :italic nil :weight light :inherit unspecified))
+                    (((background light))
+                     (:foreground "#9ca0a4" :italic nil :weight light :inherit unspecified)))))
+
     `((font-lock-comment-face
        ((((background dark))
          (:foreground "#869799" :italic t))))
@@ -106,11 +111,8 @@
          (:foreground "#a9a1e1" :weight semibold))
         (((background light))
          (:foreground "#6c71c4" :weight semibold))))
-      (parenthesis
-       ((((background dark))
-         (:foreground "#869799" :italic nil :weight light :inherit unspecified))
-        (((background light))
-         (:foreground "#9ca0a4" :italic nil :weight light :inherit unspecified))))
+      (parenthesis ,low-vis)
+      (nobreak-space ,low-vis)
       (org-roam-search-highlight
        ((((background dark))
          (:foreground "#98be65" :background "#3e493d" :weight bold :inherit magit-diff-added-highlight))
