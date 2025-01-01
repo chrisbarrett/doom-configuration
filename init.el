@@ -20,7 +20,7 @@
        (:if IS-MAC macos)
 
        :config
-       (default +smartparens) ; Doom's built-in defaults
+       (default +gnupg +smartparens) ; Doom's built-in defaults
        default-exts
 
        :editor
