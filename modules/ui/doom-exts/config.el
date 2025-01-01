@@ -12,9 +12,7 @@
                                  help-mode
                                  special-mode)))
 
-(map! "C-c SPC" 'emojify-insert-emoji
-      "C-x SPC" 'insert-char
-      :map (global-map) [remap make-frame] #'ignore)
+(map! :map (global-map) [remap make-frame] #'ignore)
 
 (when IS-MAC
   (load! "+macos"))
@@ -207,8 +205,6 @@
 
 
 ;;; Completion
-
-(map! :g "C-@" 'embark-act)
 
 (map! :after vertico
       :map vertico-map

@@ -8,10 +8,15 @@
 ;;; Keybindings
 
 (map!
+ :g "C-x SPC" 'insert-char
+ :g "C-c SPC" (cmd! (insert-char #x00A0)) ; insert non-breaking space
+
  :mn "C-|" 'harpoon-quick-menu-hydra
  :mn "C-s" 'harpoon-add-file
 
  :mn "z SPC" '+spell/correct
+
+ :g "C-@" 'embark-act
 
  ;; Global bindings to match what I have in terminals.
  :gniv "C-t"  #'project-find-file
